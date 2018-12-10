@@ -51,6 +51,14 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('categorias.index') }}" class="nav-link">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Categorias</p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="pages/widgets.html" class="nav-link">
                 <i class="nav-icon fa fa-th"></i>

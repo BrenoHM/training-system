@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	if( Auth::check() ){
+		return redirect()->route('home');
+	}else{
+		return redirect()->route('login');
+	}
 });
 
 Auth::routes();
@@ -22,5 +26,7 @@ Route::get('/dashboard/v2', 'DashboardController@versiontwo')->name('v2');
 Route::get('/dashboard/v3', 'DashboardController@versionthree')->name('v3');
 
 Route::resource('categorias', 'CategoriasController');
+Route::resource('cursos', 'CursosController');
+Route::resource('usuarios', 'UsuariosController');
 
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

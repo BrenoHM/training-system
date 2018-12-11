@@ -11,7 +11,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="csrf-token" content={{csrf_token()}}>
 
-    <title>Laravel Starter</title>
+    <title>Training Sytem</title>
     <link rel="stylesheet" href="/css/app.css"></link>
     <link rel="stylesheet" href="/dist/plugins/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -70,35 +70,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 <script src="/dist/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- datatables -->
+<script src="/dist/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/dist/plugins/datatables/dataTables.bootstrap4.js"></script>
 <!-- datepicker -->
 <script src="/dist/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
 <script src="/dist/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
 <script src="/dist/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- jQuery Data Table -->
-<script src="/dist/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/dist/plugins/datatables/dataTables.bootstrap4.js"></script>
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
 <!-- FastClick -->
 <script src="/dist/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="/dist/js/adminlte.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
-    @yield('javascript')
+<!-- Scripts do sistema -->
+<script src="/dist/js/scripts.js"></script>
+
+<!-- Scripts adicionais caso queira adicionar na view -->
+@yield('javascript')
     
 </body>
 </html>

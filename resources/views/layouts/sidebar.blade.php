@@ -53,9 +53,30 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('categorias.index') }}" class="nav-link">
+                    <a href="{{ route('categorias.index') }}" class="nav-link {!! classActiveSegment(1, 'categorias') !!}">
                         <i class="fa fa-circle-o nav-icon"></i>
                         <p>Categorias</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('cursos.index') }}" class="nav-link {!! classActiveSegment(1, 'cursos') !!}">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Cursos</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('usuarios.index') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Usuários</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
+                        <i class="fa fa-circle-o nav-icon"></i>
+                        <p>Sair</p>
                     </a>
                 </li>
 

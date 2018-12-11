@@ -6,13 +6,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Categorias de Cursos</h1>
+            <h1 class="m-0 text-dark">Cursos Cadastrados</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Categorias</li>
+              <li class="breadcrumb-item active">Cursos</li>
             </ol>
           </div>
           <!-- /.col -->
@@ -33,7 +33,7 @@
             <div class="card-header">
               <!--<h3 class="box-title">Categorias de Cursos</h3>-->
               <div class="pull-right">
-                  <a class="btn btn-success" href="{{ route('categorias.create') }}">Nova</a>
+                  <a class="btn btn-success" href="{{ route('cursos.create') }}">Novo</a>
               </div>
             </div>
             <!-- /.box-header -->
@@ -45,18 +45,20 @@
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th>Curso</th>
                     <th>Categoria</th>
                     <th data-orderable="false">Ação</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach( $categorias as $categoria )
+                    @foreach( $cursos as $curso )
                         <tr>
-                          <td>{{ $categoria->idCategoria }}</td>
-                          <td>{{ $categoria->categoria }}</td>
+                          <td>{{ $curso->idCurso }}</td>
+                          <td>{{ $curso->curso }}</td>
+                          <td>{{ $curso->categoria->categoria }}</td>
                           <td>
-                              <form action="{{ route('categorias.destroy', $categoria->idCategoria) }}" method="POST">
-                                  <a class="btn btn-primary" href="{{ route('categorias.edit', $categoria->idCategoria) }}"><i class="fas fa-edit"></i></a>
+                              <form action="{{ route('cursos.destroy', $curso->idCurso) }}" method="POST">
+                                  <a class="btn btn-primary" href="{{ route('cursos.edit', $curso->idCurso) }}"><i class="fas fa-edit"></i></a>
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir este registro?');"><i class="fa fa-trash"></i></button>
@@ -68,6 +70,7 @@
                 <tfoot>
                   <tr>
                     <th>#</th>
+                    <th>Curso</th>
                     <th>Categoria</th>
                     <th>Ação</th>
                   </tr>

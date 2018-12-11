@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class CategoriasController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class CategoriasController extends Controller
      */
     public function index()
     {
-        return view('categorias.index');
+        $data['categorias'] = Categorias::all();
+        return view('categorias.index', $data);
     }
 
     /**
@@ -24,7 +31,7 @@ class CategoriasController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -35,7 +42,18 @@ class CategoriasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $request->validate([
+            'categoria' => 'required',
+        ]);
+
+        Categorias::create([
+            'categoria' => $request->categoria,
+            'idUsuario' => $request->user()->id
+        ]);
+
+        return redirect()->route('categorias.index')
+                        ->with('success', 'Categoria criada com sucesso!');
     }
 
     /**
@@ -55,9 +73,9 @@ class CategoriasController extends Controller
      * @param  \App\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorias $categorias)
+    public function edit(Categorias $categoria)
     {
-        //
+        return view('categorias.edit', compact('categoria'));
     }
 
     /**
@@ -67,9 +85,19 @@ class CategoriasController extends Controller
      * @param  \App\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorias $categorias)
+    public function update(Request $request, Categorias $categoria)
     {
-        //
+        $request->validate([
+            'categoria' => 'required',
+        ]);
+
+        $categoria->update([
+           'categoria' => $request->categoria,
+           'idUsuario' => $request->user()->id 
+        ]);
+
+        return redirect()->route('categorias.index')
+                            ->with('success', 'Categoria atualizada com sucesso!');
     }
 
     /**
@@ -78,8 +106,11 @@ class CategoriasController extends Controller
      * @param  \App\Categorias  $categorias
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categorias $categorias)
+    public function destroy(Categorias $categoria)
     {
-        //
+        $categoria->delete();
+  
+        return redirect()->route('categorias.index')
+                        ->with('success','Categoria deletada com sucesso!');
     }
 }

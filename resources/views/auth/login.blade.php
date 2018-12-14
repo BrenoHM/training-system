@@ -24,8 +24,8 @@
                     <div class="input-group-append">
                         <span class="fa fa-lock input-group-text"></span> @if ($errors->has('password'))
                         <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span> @endif
+                        <strong>{{ $errors->first('password') }}</strong>
+                        </span> @endif
                     </div>
                 </div>
                 <div class="row">
@@ -38,29 +38,29 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
-            <div class="social-auth-links text-center mb-3">
+            <!--<div class="social-auth-links text-center mb-3">
                 <p>- OR -</p>
                 <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook-f mr-2"></i> Sign in using Facebook
-        </a>
-                <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus-g mr-2"></i> Sign in using Google+
-        </a>
-            </div>
+                  <i class="fab fa-facebook-f mr-2"></i> Sign in using Facebook
+                </a>
+                        <a href="#" class="btn btn-block btn-danger">
+                  <i class="fab fa-google-plus-g mr-2"></i> Sign in using Google+
+                </a>
+            </div>-->
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="#">I forgot my password</a>
+                <a href="#">Esqueci minha senha</a>
             </p>
-            <p class="mb-0">
+            <!--<p class="mb-0">
                 <a href="{{route('register')}}" class="text-center">Register a new membership</a>
-            </p>
+            </p>-->
         </div>
         <!-- /.login-card-body -->
     </div>

@@ -1,94 +1,119 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-    <img src="/img/logo.png" alt="Laravel Starter" class="brand-image img-circle elevation-3"
-   style="opacity: .8">
-<span class="brand-text font-weight-light">Laravel Starter</span>
-</a>
+    
+    <!--<a href="#" class="brand-link">
+        <img src="/img/logo.png" alt="Laravel Starter" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Laravel Starter</span>
+    </a>-->
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/img/profile.png" class="img-circle elevation-2" alt="User Image">
+                <img src="/img/profile.png" class="img-circle elevation-2" alt="Imagem do usuário">
             </div>
             <div class="info">
-                <a href="#" class="d-block"> {{auth()->user()->name!=null ? auth()->user()->name : "Administrator"}} </a>
+                <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="d-block"> {{auth()->user()->name != null ? auth()->user()->name : "Administrador"}} </a>
             </div>
         </div>
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item has-treeview {!! classActivePath(1,'dashboard') !!}">
+                
+                <!--<li class="nav-item has-treeview {!! classActivePath(1,'dashboard') !!}">
                     <a href="{!! route('home') !!}" class="nav-link {!! classActiveSegment(1, 'dashboard') !!}">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Dashboard
-                  <i class="right fa fa-angle-left"></i>
-                </p>
-              </a>
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                          Dashboard
+                          <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link {!! classActiveSegment(2, 'home') !!}">
-                    <i class="fas fa-circle"></i>
-                    <p>Dashboard v1</p>
-                  </a>
+                                <i class="fas fa-circle"></i>
+                                <p>Dashboard v1</p>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('v2') }}" class="nav-link {!! classActiveSegment(2, 'v2') !!}">
-                    <i class="fas fa-circle"></i>
-                    <p>Dashboard v2</p>
-                  </a>
+                                <i class="fas fa-circle"></i>
+                                <p>Dashboard v2</p>
+                          </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('v3') }}" class="nav-link {!! classActiveSegment(2, 'v3') !!}">
-                    <i class="fas fa-circle"></i>
-                    <p>Dashboard v3</p>
-                  </a>
+                                <i class="fas fa-circle"></i>
+                                <p>Dashboard v3</p>
+                            </a>
                         </li>
                     </ul>
-                </li>
+                </li>-->
 
                 <li class="nav-item">
-                    <a href="{{ route('categorias.index') }}" class="nav-link {!! classActiveSegment(1, 'categorias') !!}">
-                        <i class="fa fa-circle-o nav-icon"></i>
-                        <p>Categorias</p>
+                    <a href="{{ route('home') }}" class="nav-link {!! classActiveSegment(1, 'home') !!}">
+                        <i class="nav-icon fa fa-home"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+
+                @if( auth()->user()->profile == 'admin' )
+                    <li class="nav-item">
+                        <a href="{{ route('categorias.index') }}" class="nav-link {!! classActiveSegment(1, 'categorias') !!}">
+                            <i class="nav-icon fa fa-th"></i>
+                            <p>Categorias</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('cursos.index') }}" class="nav-link {!! classActiveSegment(1, 'cursos') !!}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>Cursos</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('modulos.index') }}" class="nav-link {!! classActiveSegment(1, 'modulos') !!}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>Módulos</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('usuarios.index') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>Usuários</p>
+                        </a>
+                    </li>
+                @endif
+
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}" class="nav-link">
+                        <i class="nav-icon fa fa-th"></i>
+                        <p>Meus Cursos</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('cursos.index') }}" class="nav-link {!! classActiveSegment(1, 'cursos') !!}">
-                        <i class="fa fa-circle-o nav-icon"></i>
-                        <p>Cursos</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('usuarios.index') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
-                        <i class="fa fa-circle-o nav-icon"></i>
-                        <p>Usuários</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
-                        <i class="fa fa-circle-o nav-icon"></i>
+                    <a href="{{ route('logout') }}" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>Sair</p>
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a href="pages/widgets.html" class="nav-link">
-                <i class="nav-icon fa fa-th"></i>
-                <p>
-                  Widgets
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </a>
+                    <i class="nav-icon fa fa-th"></i>
+                    <p>
+                      Widgets
+                      <span class="right badge badge-danger">New</span>
+                    </p>
+                  </a>
                 </li>
+
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-chart-pie"></i>
@@ -204,8 +229,8 @@
                   </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-header">EXAMPLES</li>
+                </li>-->
+                <!--<li class="nav-header">EXAMPLES</li>
                 <li class="nav-item">
                     <a href="pages/calendar.html" class="nav-link">
                 <i class="nav-icon fa fa-calendar"></i>
@@ -319,8 +344,8 @@
                   </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-header">MISCELLANEOUS</li>
+                </li>-->
+                <!--<li class="nav-header">MISCELLANEOUS</li>
                 <li class="nav-item">
                     <a href="https://adminlte.io/docs" class="nav-link">
                 <i class="nav-icon fa fa-file"></i>
@@ -345,7 +370,7 @@
                 <i class="nav-icon fa fas fa-circle-notch text-info"></i>
                 <p>Informational</p>
               </a>
-                </li>
+                </li>-->
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

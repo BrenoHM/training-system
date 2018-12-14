@@ -21,12 +21,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'DashboardController@versionone')->name('home');
+Route::get('/home', 'DashboardController@dashboard')->name('home');
 Route::get('/dashboard/v2', 'DashboardController@versiontwo')->name('v2');
 Route::get('/dashboard/v3', 'DashboardController@versionthree')->name('v3');
 
 Route::resource('categorias', 'CategoriasController');
 Route::resource('cursos', 'CursosController');
-Route::resource('usuarios', 'UsuariosController');
+Route::resource('modulos', 'ModulosController');
+Route::get('/modulos/{idCurso}/list', 'ModulosController@list');
+
+Route::resource('usuarios', 'UserController');
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

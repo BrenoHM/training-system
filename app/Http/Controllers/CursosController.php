@@ -11,7 +11,7 @@ class CursosController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'admin']);
     }
 
     /**
@@ -69,9 +69,10 @@ class CursosController extends Controller
      * @param  \App\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function show(Cursos $cursos)
+    public function show(Cursos $curso)
     {
-        //
+        //$c = $curso->categoria()->orderBy('categoria')->get();
+        return view('cursos.show', compact('curso'));
     }
 
     /**

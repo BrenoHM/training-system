@@ -15,4 +15,9 @@ class Cursos extends Model
     {
     	return $this->belongsTo('App\Categorias', 'idCategoria');
     }
+
+    public function modulos()
+    {
+    	return $this->hasMany('App\Modulos', 'idModulo');
+    }
 }

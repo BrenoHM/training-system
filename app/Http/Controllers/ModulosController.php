@@ -83,9 +83,12 @@ class ModulosController extends Controller
      * @param  \App\Modulos  $modulos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Modulos $modulos)
+    public function edit(Request $request)
     {
-        //
+
+        $modulo = Modulos::find($request->modulo);
+        return view('modulos.edit', $modulo);
+
     }
 
     public function list(Request $request)
@@ -109,7 +112,19 @@ class ModulosController extends Controller
      */
     public function update(Request $request, Modulos $modulos)
     {
-        //
+
+        $request->validate([
+            'modulo' => 'required',
+            'ordem' => 'required',
+        ]);
+
+        $modulo = Modulos::find($request->idModulo);
+        $modulo->modulo = $request->modulo;
+        $modulo->ordem = $request->ordem;
+        $modulo->save();
+
+        return redirect()->route('modulos.index')
+                            ->with('success', 'Módulo atualizado com sucesso!');
     }
 
     /**
@@ -126,8 +141,31 @@ class ModulosController extends Controller
             'message' => '',
         ];
 
-        Modulos::find($request->modulo)->delete();
+        $modulo = Modulos::find($request->modulo);
+
+        if( $modulo->conteudo()->count() > 0 ) {
+            $response['status'] = 0;
+            $response['message'] = 'Existem conteúdos vinculados a este módulo!';
+        }else{
+            $modulo->delete();
+        }
 
         return response()->json($response);
+    }
+
+    public function delete(Request $request)
+    {
+
+        $modulo = Modulos::find($request->modulo);
+
+        if( $modulo->conteudo()->count() > 0 ) {
+            return redirect()->route('modulos.index')
+                            ->with('warning', 'Existem conteúdos vinculados a este módulo!');
+        }
+
+        $modulo->delete();
+
+        return redirect()->route('modulos.index')
+                            ->with('success', 'Módulo excluído com sucesso!');
     }
 }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Cursos;
 use App\Categorias;
+use App\Inscricoes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CursosController extends Controller
@@ -72,7 +74,9 @@ class CursosController extends Controller
     public function show(Cursos $curso)
     {
         //$c = $curso->categoria()->orderBy('categoria')->get();
-        return view('cursos.show', compact('curso'));
+        $data['curso'] = $curso;
+        $data['inscrito'] = (Inscricoes::where('idUsuario', Auth::user()->id)->where('idCurso', $curso->idCurso)->count()) > 0 ? true : false;
+        return view('cursos.show', $data);
     }
 
     /**

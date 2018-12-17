@@ -15,11 +15,11 @@ class DashboardController extends Controller
         $data['categorias'] = Categorias::all();
 
         if( isset( $request->categoria ) ){
-            $cursos = Cursos::with('categoria')
+            $cursos = Cursos::with(['categoria', 'inscricoes'])
                         ->where('idCategoria', $request->categoria)
                         ->get();
         }else{
-            $cursos = Cursos::with('categoria')->get();
+            $cursos = Cursos::with(['categoria', 'inscricoes'])->get();
         }
 
         $data['cursos'] = $cursos;

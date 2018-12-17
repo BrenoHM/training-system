@@ -164,6 +164,8 @@ function deleteModulos(idModulo){
             $("#div-loader").hide();
             if( data.status == 1 ){
               buscaModulos(idCurso);
+            }else if( data.status == 0 ){
+              alert(data.message);
             }
           }
       });

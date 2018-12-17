@@ -57,7 +57,7 @@
                           <td>{{ $modulo->modulo }}</td>
                           <td>{{ $modulo->curso->curso }}</td>
                           <td>
-                              <form action="{{ route('modulos.destroy', $modulo->idModulo) }}" method="POST">
+                              <form action="/modulos/{{ $modulo->idModulo }}/delete" method="POST">
                                   <a class="btn btn-primary" href="{{ route('modulos.edit', $modulo->idModulo) }}"><i class="fas fa-edit"></i></a>
                                   @csrf
                                   @method('DELETE')

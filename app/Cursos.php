@@ -18,6 +18,13 @@ class Cursos extends Model
 
     public function modulos()
     {
-    	return $this->hasMany('App\Modulos', 'idModulo');
+    	return $this->hasMany('App\Modulos', 'idCurso')
+                        ->orderBy('ordem')
+                        ->orderBy('modulo');
+    }
+
+    public function inscricoes()
+    {
+        return $this->hasMany('App\Inscricoes', 'idCurso');
     }
 }

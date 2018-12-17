@@ -10,6 +10,12 @@
     </div>
 @endif
 
+@if ($message = Session::get('warning'))
+    <div class="alert alert-warning">
+        <p>{{ $message }}</p>
+    </div>
+@endif
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <strong>Erro!</strong> Os seguintes problemas foram detectados.<br><br>

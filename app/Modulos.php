@@ -15,4 +15,9 @@ class Modulos extends Model
     {
     	return $this->belongsTo('App\Cursos', 'idCurso');
     }
+
+    public function conteudo()
+    {
+    	return $this->hasMany('App\Conteudos', 'idModulo');
+    }
 }

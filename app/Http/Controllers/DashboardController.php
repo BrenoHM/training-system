@@ -19,7 +19,7 @@ class DashboardController extends Controller
                         ->where('idCategoria', $request->categoria)
                         ->get();
         }else{
-            $cursos = Cursos::with(['categoria', 'inscricoes'])->get();
+            $cursos = Cursos::with(['categoria', 'inscricoes', 'inscrito'])->get();
         }
 
         $data['cursos'] = $cursos;

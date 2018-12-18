@@ -30,11 +30,11 @@
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <div class="checkbox icheck">
+                        <!--<div class="checkbox icheck">
                             <label>
-                <input type="checkbox"> Remember Me
-              </label>
-                        </div>
+                                <input type="checkbox"> Remember Me
+                            </label>
+                        </div>-->
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
@@ -56,7 +56,7 @@
             <!-- /.social-auth-links -->
 
             <p class="mb-1">
-                <a href="#">Esqueci minha senha</a>
+                <a href="{{ route('password.request') }}">Esqueci minha senha</a>
             </p>
             <!--<p class="mb-0">
                 <a href="{{route('register')}}" class="text-center">Register a new membership</a>

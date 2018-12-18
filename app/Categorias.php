@@ -10,4 +10,9 @@ class Categorias extends Model
     protected $primaryKey = 'idCategoria';
 
     protected $fillable = ['categoria', 'idUsuario'];
+
+    public function cursos()
+    {
+        return $this->hasMany('App\Cursos', 'idCategoria');
+    }
 }

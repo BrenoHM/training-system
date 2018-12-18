@@ -42,7 +42,7 @@
                       <option value="">Selecione uma categoria</option>
                       @foreach( $categorias as $categoria )
                         <option value="{{ $categoria->idCategoria }}" {{ (!empty(app('request')->input('categoria')) && app('request')->input('categoria') == $categoria->idCategoria) ? 'selected' : '' }}>
-                          {{ $categoria->categoria }}
+                          {{ $categoria->categoria }} ( {{ $categoria->cursos->count() }} )
                         </option>
                       @endforeach
                     </select>
@@ -62,7 +62,7 @@
                     <div class="row">
                       @foreach( $cursos as $curso )
                           <div class="col-lg-3 col-6">
-                              <div class="small-box bg-info">
+                              <div class="small-box {{ $curso->inscrito->count() > 0 ? 'bg-success' : 'bg-info' }}">
                                   <div class="inner">
                                       <h3>{{ $curso->inscricoes->count() }} Inscritos</h3>
                                       <p>{{ $curso->curso }}</p>
@@ -70,7 +70,9 @@
                                   <div class="icon">
                                       <i class="fas fa-graduation-cap"></i>
                                   </div>
-                                  <a href="{{ route('cursos.show', $curso->idCurso) }}" class="small-box-footer">Mais informações <i class="fa fa-arrow-circle-right"></i></a>
+                                  <a href="{{ route('cursos.show', $curso->idCurso) }}" class="small-box-footer">
+                                    {{ $curso->inscrito->count() > 0 ? 'Continuar no curso' : 'Mais informações' }}
+                                  <i class="fa fa-arrow-circle-right"></i></a>
                               </div>
                           </div>
                       @endforeach

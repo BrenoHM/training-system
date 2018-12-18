@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Cursos extends Model
 {
@@ -26,5 +27,11 @@ class Cursos extends Model
     public function inscricoes()
     {
         return $this->hasMany('App\Inscricoes', 'idCurso');
+    }
+
+    public function inscrito()
+    {
+        return $this->hasMany('App\Inscricoes', 'idCurso')
+                    ->where('idUsuario', Auth::user()->id);
     }
 }

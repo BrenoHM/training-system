@@ -28,6 +28,7 @@ Route::get('/dashboard/v3', 'DashboardController@versionthree')->name('v3');
 Route::resource('categorias', 'CategoriasController');
 Route::resource('cursos', 'CursosController');
 Route::resource('modulos', 'ModulosController');
+Route::resource('inscricoes', 'InscricoesController');
 Route::get('/modulos/{idCurso}/list', 'ModulosController@list');
 Route::delete('/modulos/{modulo}/delete', 'ModulosController@delete');
 

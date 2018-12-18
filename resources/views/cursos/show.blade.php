@@ -16,7 +16,11 @@
           <div class="col-sm-3">
             @if( !$inscrito )
               <div class="pull-right">
-                  <a class="btn btn-primary" href="{{ route('cursos.create') }}">Matricular-se</a>
+                <form method="POST" action="{{ route('inscricoes.store') }}">
+                  @csrf
+                  <input type="hidden" name="curso" value="{{ $curso->idCurso }}" />
+                  <input type="submit" class="btn btn-primary" value="Matricular-se" />
+                </form>
               </div>
             @endif
           </div>

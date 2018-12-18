@@ -35,7 +35,16 @@ class InscricoesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'curso' => 'required',
+        ]);
+
+        Inscricoes::create([
+            'idCurso' => $request->curso,
+            'idUsuario' => $request->user()->id
+        ]);
+
+        return redirect()->route('cursos.show', $request->curso);
     }
 
     /**

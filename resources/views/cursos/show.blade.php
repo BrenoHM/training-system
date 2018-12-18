@@ -14,11 +14,11 @@
             <p class="m-0">Alunos inscritos: {{ $curso->inscricoes()->count() }}</p>
           </div>
           <div class="col-sm-3">
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('cursos.create') }}">
-                  {{ $inscrito ? 'Continuar' : 'Matricular-se' }}
-                </a>
-            </div>
+            @if( !$inscrito )
+              <div class="pull-right">
+                  <a class="btn btn-primary" href="{{ route('cursos.create') }}">Matricular-se</a>
+              </div>
+            @endif
           </div>
           <!-- /.col -->
           <!--<div class="col-sm-6">
@@ -50,32 +50,11 @@
 
               @include('layouts.mensagens')
 
-              <ol>
-                  @foreach( $curso->modulos as $modulo )
-                    <li>{{ $modulo->modulo }}
-                      <ol>
-                        <li>Phasellus iaculis neque</li>
-                        <li>Purus sodales ultricies</li>
-                        <li>Vestibulum laoreet porttitor sem</li>
-                        <li>Ac tristique libero volutpat at</li>
-                      </ol>
-                    </li>
-                  @endforeach
-                  <!--<li>Consectetur adipiscing elit</li>
-                  <li>Integer molestie lorem at massa</li>
-                  <li>Facilisis in pretium nisl aliquet</li>
-                  <li>Nulla volutpat aliquam velit
-                    <ol>
-                      <li>Phasellus iaculis neque</li>
-                      <li>Purus sodales ultricies</li>
-                      <li>Vestibulum laoreet porttitor sem</li>
-                      <li>Ac tristique libero volutpat at</li>
-                    </ol>
-                  </li>
-                  <li>Faucibus porta lacus fringilla vel</li>
-                  <li>Aenean sit amet erat nunc</li>
-                  <li>Eget porttitor lorem</li>-->
-              </ol>
+              @if( $inscrito )
+                @include('cursos.modulos')
+              @else
+                @include('cursos.conteudo')
+              @endif
 
             </div>
             <!-- /.box-body -->

@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class ConteudosController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth', 'admin']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class ConteudosController extends Controller
      */
     public function index()
     {
-        //
+        $data['conteudos'] = Conteudos::with('modulo')->get();
+        return view('conteudos.index', $data);
     }
 
     /**

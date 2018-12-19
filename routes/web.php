@@ -31,6 +31,7 @@ Route::resource('modulos', 'ModulosController');
 Route::resource('inscricoes', 'InscricoesController');
 Route::get('/modulos/{idCurso}/list', 'ModulosController@list');
 Route::delete('/modulos/{modulo}/delete', 'ModulosController@delete');
+Route::resource('conteudos', 'ConteudosController');
 
 Route::resource('usuarios', 'UserController');
 

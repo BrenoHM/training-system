@@ -83,6 +83,13 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{ route('conteudos.index') }}" class="nav-link {!! classActiveSegment(1, 'conteudos') !!}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>Conteudos</p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{ route('usuarios.index') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
                             <i class="nav-icon fa fa-users"></i>
                             <p>Usuários</p>

@@ -61,7 +61,7 @@
                       </div>
                       <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                           <button type="submit" class="btn btn-primary">Atualizar</button>
-                          <input type="text" name="idModulo" value="{{ $idModulo }}">
+                          <input type="hidden" name="idModulo" value="{{ $idModulo }}">
                       </div>
                   </div>
                  

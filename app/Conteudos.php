@@ -9,7 +9,7 @@ class Conteudos extends Model
     protected $table = "conteudos";
     protected $primaryKey = 'idConteudo';
 
-    protected $fillable = ['conteudo', 'tipoConteudo', 'idModulo', 'idUsuario'];
+    protected $fillable = ['conteudo', 'tipoConteudo', 'idModulo', 'ordem', 'url', 'idUsuario'];
 
     public function modulo()
     {

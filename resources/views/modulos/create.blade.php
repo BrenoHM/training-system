@@ -100,7 +100,7 @@ function buscaModulos(idCurso){
 
     $.ajax({ 
         url: "/modulos/" + idCurso + "/list",
-        data: {},
+        data: {json: false},
         dataType: "html",
         type: "GET",
         beforeSend: function(){

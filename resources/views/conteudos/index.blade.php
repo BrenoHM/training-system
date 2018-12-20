@@ -33,7 +33,7 @@
             <div class="card-header">
               <!--<h3 class="box-title">Categorias de Cursos</h3>-->
               <div class="pull-right">
-                  <a class="btn btn-success" href="{{ route('modulos.create') }}">Novo</a>
+                  <a class="btn btn-success" href="{{ route('conteudos.create') }}">Novo</a>
               </div>
             </div>
             <!-- /.box-header -->

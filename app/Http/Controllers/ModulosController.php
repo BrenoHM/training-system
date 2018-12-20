@@ -94,12 +94,19 @@ class ModulosController extends Controller
     public function list(Request $request)
     {
 
-        $data['modulos'] = Modulos::where('idCurso', $request->idCurso)
+        $data['modulos'] = Modulos::with('conteudo')
+                                    ->where('idCurso', $request->idCurso)
                                     ->orderBy('ordem')
                                     ->orderBy('modulo')
                                     ->get();
 
-        return view('modulos.list', $data);
+        if( $request->json === 'true' ){
+
+            return response()->json($data);
+
+        }else{
+            return view('modulos.list', $data);
+        }
 
     }
 

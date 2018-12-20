@@ -18,6 +18,8 @@ class Modulos extends Model
 
     public function conteudo()
     {
-    	return $this->hasMany('App\Conteudos', 'idModulo');
+    	return $this->hasMany('App\Conteudos', 'idModulo')
+                        ->orderBy('ordem')
+                        ->orderBy('conteudo');
     }
 }

@@ -26,3 +26,5 @@
         </ul>
     </div>
 @endif
+
+<div id="mensagemTratada"></div>

@@ -1,5 +1,5 @@
 <div id="accordion">
-  @foreach( $curso->modulos as $modulo )                  
+  @foreach( $curso->modulos as $modulo )
     <div class="card card-secondary">
       <div class="card-header">
         <h4 class="card-title">
@@ -14,7 +14,10 @@
             @foreach( $modulo->conteudo as $conteudo )
               <li class="mb-2">
                 <i class="{{ $conteudo->tipoConteudo == 'video' ? 'fa fa-file-video' : 'fas fa-paperclip' }}"></i> 
-                <a href="#">{{ $conteudo->conteudo }}</a>
+                <a href="{{ route('conteudos.show', $conteudo->idConteudo) }}" {{ $conteudo->tipoConteudo == 'anexo' ? 'target="_blank"' : '' }}>
+                  {{ $conteudo->conteudo }}
+                </a>
+                <i class="fa fa-check-circle pull-right" title="{{ $conteudo->realizado->count() > 0 ? 'Conteúdo Estudado' : 'Conteúdo não Estudado' }}" style="color: {{ $conteudo->realizado->count() > 0 ? 'green' : '' }}"></i>
               </li>
             @endforeach
           </ul>

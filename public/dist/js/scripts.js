@@ -35,3 +35,13 @@
   });
 
 })(jQuery)
+
+function mostraErro(error, alvo){
+  var msg = "<div class='alert alert-danger'><ul>";
+  for(i in error.responseJSON.errors.url){
+    msg += "<li>"+error.responseJSON.errors.url[i]+"</li>";
+    //alert(error.responseJSON.errors.url[i]);
+  }
+  msg += "</ul></div>";
+  $("#"+alvo).html(msg);
+}

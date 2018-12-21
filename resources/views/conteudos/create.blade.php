@@ -32,6 +32,9 @@
             <div class="card">
               <div class="card-header">
                 <!--<h3 class="box-title">Categorias de Cursos</h3>-->
+
+                @include('layouts.mensagens')
+
                 <div class="pull-right">
                     <a class="btn btn-primary" href="{{ route('conteudos.index') }}">Voltar</a>
                 </div>
@@ -64,7 +67,7 @@
                       </div>
                       <div class="col-xs-1 col-sm-1 col-md-1">
                         <strong>Ordem:</strong>
-                        <input type="number" id="ordem" class="form-control">
+                        <input type="number" min="0" id="ordem" class="form-control">
                       </div>
                       <div class="col-xs-1 col-sm-1 col-md-1">
                       <strong>Tipo:</strong>
@@ -231,9 +234,7 @@ function adicionarConteudo(){
         },
         error: function(error){
           $("#div-loader").hide();
-          alert('errou');
-          alert(error.responseJSON.errors.url[0]);
-          console.dir(error);
+          mostraErro(error, "mensagemTratada");
         }
     });
   }

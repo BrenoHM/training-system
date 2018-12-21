@@ -59,7 +59,7 @@
                           <td>{{ $conteudo->modulo->modulo }}</td>
                           <td>{{ $conteudo->modulo->curso->curso }}</td>
                           <td>
-                              <form action="/conteudos/{{ $conteudo->idConteudo }}/delete" method="POST">
+                              <form action="{{ route('conteudos.destroy', $conteudo->idConteudo) }}" method="POST">
                                   <a class="btn btn-primary" href="{{ route('conteudos.edit', $conteudo->idConteudo) }}"><i class="fas fa-edit"></i></a>
                                   @csrf
                                   @method('DELETE')

@@ -60,23 +60,23 @@
                       </div>
                       <div class="col-xs-5 col-sm-5 col-md-5">
                         <strong>Conteudo:</strong>
-                        <input type="text" name="conteudo" id="conteudo" value="" class="form-control" placeholder="Descrição do Conteúdo">
+                        <input type="text" id="conteudo" class="form-control" placeholder="Descrição do Conteúdo">
                       </div>
                       <div class="col-xs-1 col-sm-1 col-md-1">
-                        <strong>Tipo:</strong>
+                        <strong>Ordem:</strong>
+                        <input type="number" id="ordem" class="form-control">
+                      </div>
+                      <div class="col-xs-1 col-sm-1 col-md-1">
+                      <strong>Tipo:</strong>
                         <select id="tipoConteudo" class="form-control">
                           <option value="">Selecione</option>
                           <option value="video">Vídeo</option>
                           <option value="anexo">Anexo</option>
                         </select>
                       </div>
-                      <div class="col-xs-1 col-sm-1 col-md-1">
-                        <strong>Ordem:</strong>
-                        <input type="number" name="ordem" id="ordem" value="" class="form-control">
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-md-12 mb-2 text-center">
-                        <strong id="descricaoTipo"></strong>
-                        <textarea id="video" class="form-control" style="display: none;"></textarea>
+                      <div class="col-xs-12 col-sm-12 col-md-12 mb-3 mt-3 text-center">
+                        <strong id="descricaoTipo" class="d-block"></strong>
+                        <textarea id="video" class="form-control" rows="5" style="display: none;"></textarea>
                         <input type="file" id="anexo" style="display: none;" />
                       </div>
                       <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -112,13 +112,13 @@ $(function(){
   $("#tipoConteudo").on('change', function(){
     var valor = $(this).val();
     if( valor == 'video' ) {
-      $("#descricaoTipo").text("Embeded do vídeo");
-      $("#video").show();
+      $("#descricaoTipo").text("Embeded do vídeo:");
+      $("#video").show().focus();
       $("#anexo").hide();
     }else if( valor == 'anexo' ){
-      $("#descricaoTipo").text("Documento de Anexo");
+      $("#descricaoTipo").text("Documento de Anexo:");
       $("#video").hide();
-      $("#anexo").show();
+      $("#anexo").show().click();
     }else{
       $("#descricaoTipo").text("");
       $("#video").hide();
@@ -155,7 +155,8 @@ function buscaModulos(idCurso){
             if( data.modulos[i].conteudo ){
               for( x in data.modulos[i].conteudo )
               {
-                conteudos += "<p><i class='fa fa-file-video'></i> "+data.modulos[i].conteudo[x].conteudo+"</p>";
+                let icon = data.modulos[i].conteudo[x].tipoConteudo == 'video' ? 'fa fa-file-video' : 'fas fa-paperclip';
+                conteudos += "<p><i class='"+icon+"'></i> "+data.modulos[i].conteudo[x].conteudo+"</p>";
               }
             }
 
@@ -227,6 +228,12 @@ function adicionarConteudo(){
             $("#anexo").val('');
             buscaModulos(idCurso);
           }
+        },
+        error: function(error){
+          $("#div-loader").hide();
+          alert('errou');
+          alert(error.responseJSON.errors.url[0]);
+          console.dir(error);
         }
     });
   }

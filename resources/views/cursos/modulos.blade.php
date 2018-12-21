@@ -12,7 +12,10 @@
         <div class="card-body">
           <ul class="list-unstyled">
             @foreach( $modulo->conteudo as $conteudo )
-              <li class="mb-2"><i class="fa fa-file-video"></i> <a href="#">{{ $conteudo->conteudo }}</a></li>
+              <li class="mb-2">
+                <i class="{{ $conteudo->tipoConteudo == 'video' ? 'fa fa-file-video' : 'fas fa-paperclip' }}"></i> 
+                <a href="#">{{ $conteudo->conteudo }}</a>
+              </li>
             @endforeach
           </ul>
         </div>

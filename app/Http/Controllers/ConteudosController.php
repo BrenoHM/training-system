@@ -66,19 +66,35 @@ class ConteudosController extends Controller
 
         $request->validate($validate);
 
-        if( $request->tipoConteudo == 'anexo' ){
-            $anexo = md5(time().rand(0,999)) . '.' . $request->url->getClientOriginalExtension();
-            $request->url->move(public_path('uploads/conteudos'), $anexo);
+        //VERIFICA SE O CONTEUDO JA EXISTE
+        $conteudoExiste = Conteudos::where('idModulo', $request->idModulo)
+                                    ->where('ordem', $request->ordem)
+                                    ->count();
+
+        if( $conteudoExiste ) {
+            $response = [
+                'status'  => 0,
+                'message' => 'Já existe um conteúdo cadastrado nessa ordem!',
+            ];
         }
 
-        Conteudos::create([
-            'conteudo'     => $request->conteudo,
-            'tipoConteudo' => $request->tipoConteudo,
-            'idModulo'     => $request->idModulo,
-            'ordem'        => $request->ordem,
-            'url'          => $request->tipoConteudo == 'video' ? $request->url : $anexo,
-            'idUsuario'    => $request->user()->id
-        ]);
+        if( $response['status'] == 1 ){
+            
+            if( $request->tipoConteudo == 'anexo' ){
+                $anexo = md5(time().rand(0,999)) . '.' . $request->url->getClientOriginalExtension();
+                $request->url->move(public_path('uploads/conteudos'), $anexo);
+            }
+
+            Conteudos::create([
+                'conteudo'     => $request->conteudo,
+                'tipoConteudo' => $request->tipoConteudo,
+                'idModulo'     => $request->idModulo,
+                'ordem'        => $request->ordem,
+                'url'          => $request->tipoConteudo == 'video' ? $request->url : $anexo,
+                'idUsuario'    => $request->user()->id
+            ]);
+
+        }
 
         return response()->json($response);
     }
@@ -92,6 +108,15 @@ class ConteudosController extends Controller
     public function show(Request $request)
     {
 
+        $conteudo = Conteudos::find($request->conteudo);
+
+        if( $conteudo->modulo->curso->inscrito->count() == 0 ) {
+            return redirect()->route('home')
+                            ->with('warning', 'Você ainda nao se matriculou neste curso!');
+        }
+
+        $idCurso  = $conteudo->modulo->curso->idCurso;
+
         //MARCA CONTEUDO COMO FEITO
         $isRealizado = ConteudosRealizados::where('idUsuario', $request->user()->id)
                                             ->where('idConteudo', $request->conteudo)
@@ -103,8 +128,6 @@ class ConteudosController extends Controller
             ]);
         }
 
-        $conteudo = Conteudos::find($request->conteudo);
-
         if( $conteudo->tipoConteudo == 'anexo' ){
             $path = 'uploads/conteudos/'.$conteudo->url;
             $nomeArquivo = $conteudo->url;
@@ -113,7 +136,30 @@ class ConteudosController extends Controller
                 'Content-Disposition' => 'inline; filename="'. $nomeArquivo .'"'
             ]);
         }else{
-            return view('conteudos.show', ['conteudo' => $conteudo]);
+
+            $conteudos = Conteudos::join('modulos', 'modulos.idModulo', '=', 'conteudos.idModulo')
+                            ->where('modulos.idCurso', $idCurso)
+                            ->where('conteudos.tipoConteudo', 'video')
+                            ->orderBy('modulos.ordem')
+                            ->orderBy('modulos.modulo')
+                            ->orderBy('conteudos.ordem')
+                            ->orderBy('conteudos.conteudo')->get();
+
+            $anterior = null;
+            $proximo  = null;
+
+            foreach( $conteudos as $key => $value ) {
+                if( $value->idConteudo == $request->conteudo ){
+                    if( isset($conteudos[$key+1]) ) {
+                        $proximo = $conteudos[$key+1];
+                    }
+                    if( isset($conteudos[$key-1]) ) {
+                        $anterior = $conteudos[$key-1];
+                    }
+                    break;
+                }
+            }
+            return view('conteudos.show', ['conteudo' => $conteudo, 'anterior' => $anterior, 'proximo' => $proximo]);
         }
     }
 

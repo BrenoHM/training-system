@@ -60,7 +60,7 @@
                       </div>
                       <div class="col-xs-1 col-sm-1 col-md-1">
                         <strong>Ordem:</strong>
-                        <input type="number" name="ordem" id="ordem" value="" class="form-control">
+                        <input type="number" min="0" name="ordem" id="ordem" value="" class="form-control">
                       </div>
                       <div class="col-xs-1 col-sm-1 col-md-1 text-center">
                         <strong>Cadastrar:</strong>

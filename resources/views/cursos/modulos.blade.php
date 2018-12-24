@@ -8,7 +8,7 @@
           </a>
         </h4>
       </div>
-      <div id="collapse{{ $modulo->idModulo }}" class="panel-collapse collapse in">
+      <div id="collapse{{ $modulo->idModulo }}" class="panel-collapse collapse {{ (!empty(app('request')->input('m')) && app('request')->input('m') == $modulo->idModulo) ? 'show' : '' }}">
         <div class="card-body">
           <ul class="list-unstyled">
             @foreach( $modulo->conteudo as $conteudo )

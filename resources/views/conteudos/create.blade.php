@@ -159,7 +159,7 @@ function buscaModulos(idCurso){
               for( x in data.modulos[i].conteudo )
               {
                 let icon = data.modulos[i].conteudo[x].tipoConteudo == 'video' ? 'fa fa-file-video' : 'fas fa-paperclip';
-                conteudos += "<p><i class='"+icon+"'></i> "+data.modulos[i].conteudo[x].conteudo+"</p>";
+                conteudos += "<p>"+data.modulos[i].conteudo[x].ordem+". <i class='"+icon+"'></i> "+data.modulos[i].conteudo[x].conteudo+"</p>";
               }
             }
 
@@ -227,9 +227,12 @@ function adicionarConteudo(){
             $("#conteudo").val('');
             $("#tipoConteudo").val('');
             $("#ordem").val('');
-            $("#video").val('');
-            $("#anexo").val('');
+            $("#video").val('').hide();
+            $("#anexo").val('').hide();
+            $("#descricaoTipo").text("");
             buscaModulos(idCurso);
+          }else{
+            alert(data.message);
           }
         },
         error: function(error){
@@ -241,36 +244,5 @@ function adicionarConteudo(){
 
 }
 
-function deleteModulos(idModulo){
-
-  if( confirm('Deseja realmente excluir este módulo?') ){
-
-    var idCurso = $("#idCurso").val();
-
-    if( idModulo != "" ){
-
-      $.ajax({ 
-          url: "/modulos/" + idModulo,
-          data: {},
-          dataType: "json",
-          type: "DELETE",
-          beforeSend: function(){
-            $("#div-loader").show();
-          },
-          success: function(data){
-            $("#div-loader").hide();
-            if( data.status == 1 ){
-              buscaModulos(idCurso);
-            }else if( data.status == 0 ){
-              alert(data.message);
-            }
-          }
-      });
-
-    }
-
-  }
-
-}
 </script>
 @endsection

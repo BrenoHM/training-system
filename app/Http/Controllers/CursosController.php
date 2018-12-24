@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Cursos;
 use App\Categorias;
 use App\Inscricoes;
+use App\Conteudos;
+use App\ConteudosRealizados;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -75,8 +77,36 @@ class CursosController extends Controller
     public function show(Cursos $curso)
     {
         //$c = $curso->categoria()->orderBy('categoria')->get();
-        $data['curso'] = $curso;
+        $data['curso']    = $curso;
+        $certificado      = false;
         $data['inscrito'] = (Inscricoes::where('idUsuario', Auth::user()->id)->where('idCurso', $curso->idCurso)->count()) > 0 ? true : false;
+
+        if( $data['inscrito'] ){
+
+            $qtdAulas = Conteudos::join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
+                                    ->where('modulos.idCurso', $curso->idCurso)
+                                    ->where('conteudos.tipoConteudo', 'video')
+                                    ->count();
+
+            $aulasVistas = ConteudosRealizados::join('conteudos', 'conteudos_realizados.idConteudo', '=', 'conteudos.idConteudo')
+                                            ->join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
+                                            ->join('cursos', 'modulos.idCurso', '=', 'cursos.idCurso')
+                                            ->where('modulos.idCurso', $curso->idCurso)
+                                            ->where('conteudos.tipoConteudo', 'video')
+                                            ->where('conteudos_realizados.idUsuario', Auth::user()->id)
+                                            ->count();
+
+            $porcentagemAssistidas = ( $aulasVistas / $qtdAulas ) * 100;
+
+            if( $porcentagemAssistidas >= 70 ){
+                $certificado = true;
+            }
+        }
+
+        $data['certificado'] = $certificado;
+
+        //dd($porcentagemAssistidas);
+
         return view('cursos.show', $data);
     }
 

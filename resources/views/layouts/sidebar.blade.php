@@ -88,13 +88,6 @@
                             <p>Conteudos</p>
                         </a>
                     </li>
-
-                    <li class="nav-item">
-                        <a href="{{ route('usuarios.index') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
-                            <i class="nav-icon fa fa-users"></i>
-                            <p>Usuários</p>
-                        </a>
-                    </li>
                 @endif
 
                 <li class="nav-item">
@@ -103,6 +96,15 @@
                         <p>Meus Cursos</p>
                     </a>
                 </li>
+
+                @if( auth()->user()->profile == 'admin' )
+                    <li class="nav-item">
+                        <a href="{{ route('usuarios.index') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">
+                            <i class="nav-icon fa fa-users"></i>
+                            <p>Usuários</p>
+                        </a>
+                    </li>
+                @endif
 
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link">

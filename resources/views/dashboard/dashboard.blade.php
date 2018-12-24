@@ -60,6 +60,7 @@
               <div class="card">
                   <div class="card-body">
                     <div class="row">
+                    @if( count($cursos) )
                       @foreach( $cursos as $curso )
                           <div class="col-lg-3 col-6">
                               <div class="small-box {{ $curso->inscrito->count() > 0 ? 'bg-success' : 'bg-info' }}">
@@ -76,6 +77,11 @@
                               </div>
                           </div>
                       @endforeach
+                    @else
+                      <div class=" col-12 alert alert-info">
+                        <p>Não há nenhum curso cadastrado no momento!</p>
+                      </div>
+                    @endif
                     </div>
                   </div>
               </div>

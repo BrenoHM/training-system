@@ -2,7 +2,7 @@
 @section('content')
 <div class="content-wrapper">
      <!-- Content Header (Page header) -->
-    <div class="content-header mb-3" style="background-color: #ffc107">
+    <div class="content-header mb-4" style="background-color: #ffc107">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-9">
@@ -35,6 +35,15 @@
         </div>
         <!-- /.row -->
       </div>
+      @if( $inscrito && $certificado )
+        <div class="col-sm-12 mb-4">
+          <div class="pull-right">
+            <a href="#" title="Emitir Certificado" target="_blank">
+              <i class="fas fa-2x fa-certificate"></i>
+            </a>
+          </div>
+        </div>
+      @endif
       <!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -54,10 +63,16 @@
 
               @include('layouts.mensagens')
 
-              @if( $inscrito )
-                @include('cursos.modulos')
+              @if( count($curso->modulos) )
+                @if( $inscrito )
+                  @include('cursos.modulos')
+                @else
+                  @include('cursos.conteudo')
+                @endif
               @else
-                @include('cursos.conteudo')
+              <div class=" col-12 alert alert-info">
+                <p>Não há nenhum conteúdo cadastrado no momento!</p>
+              </div>
               @endif
 
             </div>

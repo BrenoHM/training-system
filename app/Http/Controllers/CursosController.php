@@ -76,6 +76,7 @@ class CursosController extends Controller
      */
     public function show(Cursos $curso)
     {
+        
         //$c = $curso->categoria()->orderBy('categoria')->get();
         $data['curso']    = $curso;
         $certificado      = false;
@@ -84,6 +85,15 @@ class CursosController extends Controller
         if( $data['inscrito'] ){
             $certificado = Cursos::certificado($curso->idCurso);
         }
+
+        $rating = 0;
+
+        $qtdAvaliacoes  = $curso->avaliacoes()->count();
+        $somaAvaliacoes = $curso->avaliacoes()->sum('nota');
+
+        $rating = $somaAvaliacoes / $qtdAvaliacoes;
+
+        $data['rating'] = $rating;
 
         $data['certificado'] = $certificado;
 

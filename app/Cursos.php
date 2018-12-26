@@ -32,6 +32,16 @@ class Cursos extends Model
         return $this->hasMany('App\Inscricoes', 'idCurso');
     }
 
+    public function avaliacoes()
+    {
+        return $this->hasMany('App\Avaliacoes', 'idCurso');
+    }
+
+    public function rating()
+    {
+        return ($this->hasMany('App\Avaliacoes', 'idCurso')->sum('nota') / $this->hasMany('App\Avaliacoes', 'idCurso')->count());
+    }
+
     public function inscrito()
     {
         return $this->hasMany('App\Inscricoes', 'idCurso')

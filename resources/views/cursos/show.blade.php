@@ -13,10 +13,14 @@
             <p class="m-0">Palavras chave: {{ $curso->palavrasChave }}</p>
             <p class="m-0">Alunos inscritos: {{ $curso->inscricoes()->count() }}</p>
             <p>
-              <a href="">
-                <input type="hidden" class="rating" value="3" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x" />
-                Editar Avaliação
-              </a>
+              @if( $inscrito )
+                <a href="#">
+                  <input type="hidden" class="rating" value="{{ $rating }}" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x" disabled="disabled" style="cursor:pointer;" />
+                  Editar Avaliação
+                </a>
+              @else
+                  <input type="hidden" class="rating" value="{{ $rating }}" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x" disabled="disabled" />
+              @endif
             </p>
           </div>
           <div class="col-sm-3">
@@ -85,7 +89,35 @@
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+
+          @if( !$inscrito )
+            <div class="card">
+              <div class="card-header">
+                <h3 class="box-title">Avaliação dos Alunos</h3>
+                <div class="glyphicon glyphicon-heart"></div>
+              </div>
+              <!-- /.box-header -->
+              <div class="card-body" id="avaliacoes">
+
+                @if( count($curso->avaliacoes) )
+                  @foreach( $curso->avaliacoes as $avaliacao )
+                    <p><strong>{{ $avaliacao->usuario->name }}</strong>
+                      <input type="hidden" class="rating" value="{{ $avaliacao->nota }}" data-filled="fa fa-star" data-empty="fa fa-star-o" disabled="disabled" />
+                      <br>
+                      {{ $avaliacao->comentario }}
+                    </p>
+                    <hr>
+                  @endforeach
+                @else
+                <div class=" col-12 alert alert-info">
+                  <p>Não há nenhuma avaliação para este curso!</p>
+                </div>
+                @endif
+
+              </div>
+            </div>
+          @endif
+          
         </div>
         <!-- /.col -->
       </div>

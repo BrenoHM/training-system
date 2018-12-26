@@ -35,4 +35,6 @@ Route::resource('conteudos', 'ConteudosController');
 
 Route::resource('usuarios', 'UserController');
 
+Route::get('/certificado/{idCurso}', 'CursosController@certificado')->name('certificado');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');

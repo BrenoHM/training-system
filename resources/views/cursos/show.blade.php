@@ -12,6 +12,12 @@
             <p class="m-0">Criado em: {{ $curso->created_at->format('d/m/Y') }}</p>
             <p class="m-0">Palavras chave: {{ $curso->palavrasChave }}</p>
             <p class="m-0">Alunos inscritos: {{ $curso->inscricoes()->count() }}</p>
+            <p>
+              <a href="">
+                <input type="hidden" class="rating" value="3" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x" />
+                Editar Avaliação
+              </a>
+            </p>
           </div>
           <div class="col-sm-3">
             @if( !$inscrito )
@@ -38,7 +44,7 @@
       @if( $inscrito && $certificado )
         <div class="col-sm-12 mb-4">
           <div class="pull-right">
-            <a href="#" title="Emitir Certificado" target="_blank">
+            <a href="{{ route('certificado', $curso->idCurso) }}" title="Emitir Certificado" target="_blank">
               <i class="fas fa-2x fa-certificate"></i>
             </a>
           </div>
@@ -57,6 +63,7 @@
           <div class="card">
             <div class="card-header">
               <h3 class="box-title">Conteúdo do Curso</h3>
+              <div class="glyphicon glyphicon-heart"></div>
             </div>
             <!-- /.box-header -->
             <div class="card-body">
@@ -87,4 +94,17 @@
     </section>
     <!-- /.content -->
 </div>
+@endsection
+
+@section('css')
+<link rel="stylesheet" href="/dist/plugins/rating/bootstrap-rating.css">
+@endsection
+
+@section('javascript')
+<script src="/dist/js/bootstrap-rating.min.js"></script>
+<script>
+$(function(){
+  $('.rating').rating();
+});
+</script>
 @endsection

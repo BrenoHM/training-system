@@ -16,7 +16,7 @@ class CursosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin')->except('show');
+        $this->middleware('admin')->except(['show', 'certificado']);
     }
 
     /**
@@ -82,30 +82,10 @@ class CursosController extends Controller
         $data['inscrito'] = (Inscricoes::where('idUsuario', Auth::user()->id)->where('idCurso', $curso->idCurso)->count()) > 0 ? true : false;
 
         if( $data['inscrito'] ){
-
-            $qtdAulas = Conteudos::join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
-                                    ->where('modulos.idCurso', $curso->idCurso)
-                                    ->where('conteudos.tipoConteudo', 'video')
-                                    ->count();
-
-            $aulasVistas = ConteudosRealizados::join('conteudos', 'conteudos_realizados.idConteudo', '=', 'conteudos.idConteudo')
-                                            ->join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
-                                            ->join('cursos', 'modulos.idCurso', '=', 'cursos.idCurso')
-                                            ->where('modulos.idCurso', $curso->idCurso)
-                                            ->where('conteudos.tipoConteudo', 'video')
-                                            ->where('conteudos_realizados.idUsuario', Auth::user()->id)
-                                            ->count();
-
-            $porcentagemAssistidas = ( $aulasVistas / $qtdAulas ) * 100;
-
-            if( $porcentagemAssistidas >= 70 ){
-                $certificado = true;
-            }
+            $certificado = Cursos::certificado($curso->idCurso);
         }
 
         $data['certificado'] = $certificado;
-
-        //dd($porcentagemAssistidas);
 
         return view('cursos.show', $data);
     }
@@ -160,5 +140,36 @@ class CursosController extends Controller
     public function destroy(Cursos $cursos)
     {
         //
+    }
+
+    public function certificado(Request $request)
+    {
+
+        $data['curso'] = Cursos::with('modulos')
+                    ->with('modulos.conteudo')
+                    ->where('idCurso', $request->idCurso)
+                    ->first();
+
+        //CHECA SE ESTA INSCRITO
+        if($data['curso']->inscrito->count() == 0) {
+            return redirect()->route('home')
+                            ->with('info', 'Você não esta matriculado neste curso!');
+        }
+
+        //CASO NAO TENHA ATINGIDO OS 70%
+        if( !Cursos::certificado($request->idCurso) ) {
+            return redirect()->route('home')
+                            ->with('info', 'Você não atingiu o percentual necessário para emissão do certificado!');
+        }
+
+        $data['nome'] = Auth::user()->name;
+        setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+        date_default_timezone_set('America/Sao_Paulo');
+        $data['dataExtenso'] = ucwords(strftime('Belo Horizonte, %d de %B de %Y.', strtotime('today')));
+        
+
+        return \PDF::loadView('certificado.certificado', $data)
+                    // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
+                    ->stream($data['nome'] . '.pdf');
     }
 }

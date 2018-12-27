@@ -43,6 +43,16 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="card-body">
                     <div class="row">
+
+                        <div class="col-md-12 text-right mb-2">
+                          <div class="dropdown" id="anotacoes">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bloco de Anotações</button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <textarea rows="10" cols="50" id="anotation" onchange="salvaAnotacao()">{{ isset($conteudo->anotacao()->anotacao) ? $conteudo->anotacao()->anotacao : '' }}</textarea>
+                            </div>
+                          </div>
+                        </div>
+
                         <div class="col-md-12 text-center" id="box-video">
                             <?php echo $conteudo->url; ?>
                         </div>
@@ -77,46 +87,22 @@
 @section('javascript')
 <script>
 
-function buscaModulos(idCurso){
+function salvaAnotacao(){
 
-  if( idCurso != "" ){
+  var idConteudo = {{ $conteudo->idConteudo }};
+  var anotacao = $("#anotation").val();
+ 
+  if( idConteudo != "" ){
 
     $.ajax({ 
-        url: "/modulos/" + idCurso + "/list",
-        data: {json: true},
+        url: "/anotacao",
+        data: {idConteudo: idConteudo, anotacao: anotacao},
         dataType: "json",
-        type: "GET",
+        type: "POST",
         beforeSend: function(){
-          $("#div-loader").show();
+          //$("#div-loader").show();
         },
         success: function(data){
-
-          var options = "<option value=''>Selecione</option>";
-          
-          var conteudos = "";
-
-          for( i in data.modulos )
-          {
-            options += "<option value='"+data.modulos[i].idModulo+"'>"+data.modulos[i].modulo+"</option>";
-            conteudos += "<div class='card'>";
-            conteudos += "<div class='card-header'><h3 class='box-title'>"+data.modulos[i].modulo+"</h3></div>";
-            conteudos += "<div class='card-body'>";
-
-            if( data.modulos[i].conteudo ){
-              for( x in data.modulos[i].conteudo )
-              {
-                let icon = data.modulos[i].conteudo[x].tipoConteudo == 'video' ? 'fa fa-file-video' : 'fas fa-paperclip';
-                conteudos += "<p><i class='"+icon+"'></i> "+data.modulos[i].conteudo[x].conteudo+"</p>";
-              }
-            }
-
-            conteudos += "</div>";
-            conteudos += "</div>";
-          }
-          
-          $("#idModulo").html(options);
-          $("#conteudos").html(conteudos);
-          $("#div-loader").hide();
 
         }
     });

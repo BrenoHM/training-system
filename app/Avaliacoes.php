@@ -9,7 +9,7 @@ class Avaliacoes extends Model
     protected $table = "avaliacoes";
     protected $primaryKey = 'idAvaliacao';
 
-    protected $fillable = ['idCurso', 'idUsuario', 'nota'];
+    protected $fillable = ['idCurso', 'idUsuario', 'nota', 'comentario'];
 
     public function usuario()
     {

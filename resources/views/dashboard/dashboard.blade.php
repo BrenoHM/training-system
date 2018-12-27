@@ -67,6 +67,7 @@
                                   <div class="inner">
                                       <h3>{{ $curso->inscricoes->count() }} Inscritos</h3>
                                       <p>{{ $curso->curso }}</p>
+                                      <p class="rating-curso"><input type="hidden" class="rating" value="{{ $curso->rating() }}" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x" disabled="disabled" /> ({{ $curso->avaliacoes->count() }})</p>
                                   </div>
                                   <div class="icon">
                                       <i class="fas fa-graduation-cap"></i>
@@ -95,6 +96,4 @@
 <!-- /.content-wrapper -->
 @endsection
  
-@section('javascript')
-
-@stop
+@include('scripts.rating')

@@ -21,5 +21,11 @@ class Conteudos extends Model
     {
         return $this->hasMany('App\ConteudosRealizados', 'idConteudo')->where('idUsuario', Auth::user()->id);
     }
+
+    public function anotacao()
+    {
+        //ANOTACAO DO USUARIO LOGADO
+        return $this->hasMany('App\Anotacoes', 'idConteudo')->where('idUsuario', Auth::user()->id)->first();
+    }
     
 }

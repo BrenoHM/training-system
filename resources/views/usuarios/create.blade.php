@@ -57,6 +57,7 @@
                           <div class="form-group">
                               <strong>Senha:</strong>
                               <input type="password" name="password" class="form-control" placeholder="Senha do Usuário">
+                              <input type="button" class="btn btn-default" onclick="geraSenha()" value="Gerar Senha" />
                           </div>
                           <div class="form-group">
                               <strong>Perfil:</strong>
@@ -85,4 +86,13 @@
     </section>
     <!-- /.content -->
 </div>
+@endsection
+
+@section('javascript')
+<script>
+function geraSenha(){
+  var randomstring = Math.random().toString(36).slice(-6);
+  $("input[name=password]").val(randomstring);
+}
+</script>
 @endsection

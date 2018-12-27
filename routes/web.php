@@ -33,6 +33,13 @@ Route::get('/modulos/{idCurso}/list', 'ModulosController@list');
 Route::delete('/modulos/{modulo}/delete', 'ModulosController@delete');
 Route::resource('conteudos', 'ConteudosController');
 
+Route::get('/avaliacao/{idCurso}', 'AvaliacoesController@create')->name('avaliacao.create');
+Route::post('/avaliacao', 'AvaliacoesController@store')->name('avaliacao.store');
+
+Route::post('/anotacao', 'ConteudosController@anotacao');
+
+Route::get('/meus-cursos', 'CursosController@meusCursos');
+
 Route::resource('usuarios', 'UserController');
 
 Route::get('/certificado/{idCurso}', 'CursosController@certificado')->name('certificado');

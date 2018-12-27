@@ -16,7 +16,7 @@ class CursosController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('admin')->except(['show', 'certificado']);
+        $this->middleware('admin')->except(['show', 'certificado', 'meusCursos']);
     }
 
     /**
@@ -91,7 +91,9 @@ class CursosController extends Controller
         $qtdAvaliacoes  = $curso->avaliacoes()->count();
         $somaAvaliacoes = $curso->avaliacoes()->sum('nota');
 
-        $rating = $somaAvaliacoes / $qtdAvaliacoes;
+        if( $qtdAvaliacoes > 0 ){
+            $rating = $somaAvaliacoes / $qtdAvaliacoes;
+        }
 
         $data['rating'] = $rating;
 
@@ -181,5 +183,16 @@ class CursosController extends Controller
         return \PDF::loadView('certificado.certificado', $data)
                     // Se quiser que fique no formato a4 retrato: ->setPaper('a4', 'landscape')
                     ->stream($data['nome'] . '.pdf');
+    }
+
+    public function meusCursos(Request $request)
+    {
+        $cursos = Cursos::with(['categoria', 'inscricoes', 'inscrito', 'avaliacoes'])
+                        ->join('inscricoes', 'cursos.idCurso', '=', 'inscricoes.idCurso')
+                        ->where('inscricoes.idUsuario', $request->user()->id)
+                        ->get();
+
+        $data['cursos'] = $cursos;
+        return view('cursos.meus_cursos', $data);
     }
 }

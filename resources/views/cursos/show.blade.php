@@ -14,8 +14,8 @@
             <p class="m-0">Alunos inscritos: {{ $curso->inscricoes()->count() }}</p>
             <p>
               @if( $inscrito )
-                <a href="#">
-                  <input type="hidden" class="rating" value="{{ $rating }}" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x" disabled="disabled" style="cursor:pointer;" />
+                <a href="{{ route('avaliacao.create', $curso->idCurso) }}">
+                  <input type="hidden" class="rating" value="{{ $rating }}" data-filled="fa fa-star fa-1x" data-empty="fa fa-star-o fa-1x" disabled="disabled" />
                   Editar Avaliação
                 </a>
               @else
@@ -128,15 +128,4 @@
 </div>
 @endsection
 
-@section('css')
-<link rel="stylesheet" href="/dist/plugins/rating/bootstrap-rating.css">
-@endsection
-
-@section('javascript')
-<script src="/dist/js/bootstrap-rating.min.js"></script>
-<script>
-$(function(){
-  $('.rating').rating();
-});
-</script>
-@endsection
+@include('scripts.rating')

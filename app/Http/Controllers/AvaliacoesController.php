@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Avaliacoes;
+use App\Cursos;
 use Illuminate\Http\Request;
 
 class AvaliacoesController extends Controller
@@ -22,9 +23,24 @@ class AvaliacoesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $data['idCurso'] = $request->idCurso;
+        $data['rating'] = 0;
+        $curso = Cursos::find($request->idCurso);
+
+        if( $curso->inscrito->count() == 0 ){
+            return redirect()->route('home')
+                        ->with('info', 'Você não pode avaliar este curso pois não existe uma inscrição realizada!');
+        }
+
+        if( $curso->avaliacao() ){
+            $data['rating'] = $curso->avaliacao()->nota;
+        }else if( $curso->rating() > 0 ){
+            $data['rating'] = $curso->rating();
+        }
+        
+        return view('avaliacoes.create', $data);
     }
 
     /**
@@ -35,7 +51,24 @@ class AvaliacoesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $avaliacao = Avaliacoes::where('idCurso', $request->idCurso)
+                               ->where('idUsuario', $request->user()->id)
+                               ->first();
+        if( $avaliacao ){
+            $avaliacao->nota       = $request->rating;
+            $avaliacao->comentario = $request->comentario;
+            $avaliacao->save();
+        }else{
+            Avaliacoes::create([
+                'idCurso'    => $request->idCurso,
+                'idUsuario'  => $request->user()->id,
+                'nota'       => $request->rating,
+                'comentario' => $request->comentario,
+            ]);
+        }
+
+        return redirect()->route('cursos.show', $request->idCurso)
+                        ->with('success', 'Avaliação realizada com sucesso!');
     }
 
     /**

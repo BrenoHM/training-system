@@ -91,7 +91,7 @@
                 @endif
 
                 <li class="nav-item">
-                    <a href="{{ route('logout') }}" class="nav-link">
+                    <a href="/meus-cursos" class="nav-link {!! classActiveSegment(1, 'meus-cursos') !!}">
                         <i class="nav-icon fa fa-th"></i>
                         <p>Meus Cursos</p>
                     </a>

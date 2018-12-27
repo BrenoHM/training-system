@@ -6,6 +6,7 @@ use App\Conteudos;
 use App\Cursos;
 use App\Modulos;
 use App\ConteudosRealizados;
+use App\Anotacoes;
 use Illuminate\Http\Request;
 
 class ConteudosController extends Controller
@@ -15,7 +16,7 @@ class ConteudosController extends Controller
     {
         
         $this->middleware('auth');
-        $this->middleware('admin')->except('show');
+        $this->middleware('admin')->except(['show', 'anotacao']);
     }
 
     /**
@@ -286,5 +287,31 @@ class ConteudosController extends Controller
 
         return redirect()->route('conteudos.index')
                             ->with('success', 'Conteúdo excluído com sucesso!');
+    }
+
+    public function anotacao(Request $request)
+    {
+
+        /*$response = [
+            'status'  => 1,
+            'message' => '',
+        ];*/
+
+        $anotacao = Anotacoes::where('idConteudo', $request->idConteudo)
+                             ->where('idUsuario', $request->user()->id)
+                             ->first();
+
+        if( $anotacao ) {
+            $anotacao->anotacao = $request->anotacao;
+            $anotacao->save();
+        }else{
+            Anotacoes::create([
+                'idConteudo' => $request->idConteudo,
+                'idUsuario'  => $request->user()->id,
+                'anotacao'   => $request->anotacao,
+            ]);
+        }
+
+        //return response()->json($response);
     }
 }

@@ -48,7 +48,7 @@
                           <div class="dropdown" id="anotacoes">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bloco de Anotações</button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <textarea rows="10" cols="50" id="anotation" onchange="salvaAnotacao()">{{ isset($conteudo->anotacao()->anotacao) ? $conteudo->anotacao()->anotacao : '' }}</textarea>
+                              <textarea rows="10" cols="50" class="form-control" id="anotation" onchange="salvaAnotacao()">{{ isset($conteudo->anotacao()->anotacao) ? $conteudo->anotacao()->anotacao : '' }}</textarea>
                             </div>
                           </div>
                         </div>
@@ -86,6 +86,14 @@
 
 @section('javascript')
 <script>
+
+$(function() {
+    $('#anotacoes').on('show.bs.dropdown', function () {
+        //$("#anotation").click().focus();
+        //NAO ESTA FUNCIONANDO
+        $(this).find('#anotation').show().focus();
+    });
+});
 
 function salvaAnotacao(){
 

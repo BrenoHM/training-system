@@ -97,6 +97,13 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="/minhas-anotacoes" class="nav-link {!! classActiveSegment(1, 'minhas-anotacoes') !!}">
+                        <i class="nav-icon fa fa-th"></i>
+                        <p>Minhas Anotações</p>
+                    </a>
+                </li>
+
                 @if( auth()->user()->profile == 'admin' )
                     <li class="nav-item">
                         <a href="{{ route('usuarios.index') }}" class="nav-link {!! classActiveSegment(1, 'usuarios') !!}">

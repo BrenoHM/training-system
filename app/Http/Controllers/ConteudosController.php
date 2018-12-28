@@ -16,7 +16,7 @@ class ConteudosController extends Controller
     {
         
         $this->middleware('auth');
-        $this->middleware('admin')->except(['show', 'anotacao']);
+        $this->middleware('admin')->except(['show', 'anotacao', 'minhasAnotacoes']);
     }
 
     /**
@@ -292,11 +292,6 @@ class ConteudosController extends Controller
     public function anotacao(Request $request)
     {
 
-        /*$response = [
-            'status'  => 1,
-            'message' => '',
-        ];*/
-
         $anotacao = Anotacoes::where('idConteudo', $request->idConteudo)
                              ->where('idUsuario', $request->user()->id)
                              ->first();
@@ -312,6 +307,15 @@ class ConteudosController extends Controller
             ]);
         }
 
-        //return response()->json($response);
+    }
+
+    public function minhasAnotacoes(Request $request)
+    {
+        $anotacoes = Anotacoes::with('conteudo', 'conteudo.modulo', 'conteudo.modulo.curso')
+                                ->where('idUsuario', $request->user()->id)
+                                ->get();
+
+        //$anotacoes = Anotacoes::info()->find(2);
+        return view('anotacoes.minhas_anotacoes', ['anotacoes' => $anotacoes]);
     }
 }

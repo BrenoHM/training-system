@@ -37,6 +37,7 @@ Route::get('/avaliacao/{idCurso}', 'AvaliacoesController@create')->name('avaliac
 Route::post('/avaliacao', 'AvaliacoesController@store')->name('avaliacao.store');
 
 Route::post('/anotacao', 'ConteudosController@anotacao');
+Route::get('/minhas-anotacoes', 'ConteudosController@minhasAnotacoes');
 
 Route::get('/meus-cursos', 'CursosController@meusCursos');
 

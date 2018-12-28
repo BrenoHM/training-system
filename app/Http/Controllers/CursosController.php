@@ -26,7 +26,7 @@ class CursosController extends Controller
      */
     public function index()
     {
-        $data['cursos'] = Cursos::all();
+        $data['cursos'] = Cursos::with('categoria')->get();
         return view('cursos.index', $data);
     }
 
@@ -89,15 +89,15 @@ class CursosController extends Controller
         $rating = 0;
 
         $qtdAvaliacoes  = $curso->avaliacoes()->count();
-        $somaAvaliacoes = $curso->avaliacoes()->sum('nota');
 
         if( $qtdAvaliacoes > 0 ){
+            $somaAvaliacoes = $curso->avaliacoes()->sum('nota');
             $rating = $somaAvaliacoes / $qtdAvaliacoes;
         }
 
-        $data['rating'] = $rating;
-
         $data['certificado'] = $certificado;
+
+        $data['rating'] = $rating;
 
         return view('cursos.show', $data);
     }

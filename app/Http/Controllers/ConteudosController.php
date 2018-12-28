@@ -26,7 +26,7 @@ class ConteudosController extends Controller
      */
     public function index()
     {
-        $data['conteudos'] = Conteudos::with('modulo')->get();
+        $data['conteudos'] = Conteudos::with('modulo', 'modulo.curso')->get();
         return view('conteudos.index', $data);
     }
 

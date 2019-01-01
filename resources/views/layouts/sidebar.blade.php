@@ -12,7 +12,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="/img/profile.png" class="img-circle elevation-2" alt="Imagem do usuário">
+                <img src="{{url('/img/profile.png')}}" class="img-circle elevation-2" alt="Imagem do usuário">
             </div>
             <div class="info">
                 <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="d-block"> {{auth()->user()->name != null ? auth()->user()->name : "Administrador"}} </a>
@@ -70,35 +70,35 @@
 
                     <li class="nav-item">
                         <a href="{{ route('cursos.index') }}" class="nav-link {!! classActiveSegment(1, 'cursos') !!}">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="nav-icon fa fa-th"></i>
                             <p>Cursos</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('modulos.index') }}" class="nav-link {!! classActiveSegment(1, 'modulos') !!}">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="nav-icon fa fa-th"></i>
                             <p>Módulos</p>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a href="{{ route('conteudos.index') }}" class="nav-link {!! classActiveSegment(1, 'conteudos') !!}">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="nav-icon fa fa-th"></i>
                             <p>Conteudos</p>
                         </a>
                     </li>
                 @endif
 
                 <li class="nav-item">
-                    <a href="/meus-cursos" class="nav-link {!! classActiveSegment(1, 'meus-cursos') !!}">
+                    <a href="{{url('/meus-cursos')}}" class="nav-link {!! classActiveSegment(1, 'meus-cursos') !!}">
                         <i class="nav-icon fa fa-th"></i>
                         <p>Meus Cursos</p>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/minhas-anotacoes" class="nav-link {!! classActiveSegment(1, 'minhas-anotacoes') !!}">
+                    <a href="{{url('/minhas-anotacoes')}}" class="nav-link {!! classActiveSegment(1, 'minhas-anotacoes') !!}">
                         <i class="nav-icon fa fa-th"></i>
                         <p>Minhas Anotações</p>
                     </a>
@@ -115,7 +115,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link">
-                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <i class="nav-icon fa fa-sign-out"></i>
                         <p>Sair</p>
                     </a>
                 </li>

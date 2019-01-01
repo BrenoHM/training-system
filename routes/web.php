@@ -29,7 +29,7 @@ Route::resource('categorias', 'CategoriasController');
 Route::resource('cursos', 'CursosController');
 Route::resource('modulos', 'ModulosController');
 Route::resource('inscricoes', 'InscricoesController');
-Route::get('/modulos/{idCurso}/list', 'ModulosController@list');
+Route::get('/modulos/list/{idCurso}', 'ModulosController@list');
 Route::delete('/modulos/{modulo}/delete', 'ModulosController@delete');
 Route::resource('conteudos', 'ConteudosController');
 

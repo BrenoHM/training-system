@@ -99,7 +99,7 @@ function buscaModulos(idCurso){
   if( idCurso != "" ){
 
     $.ajax({ 
-        url: "/modulos/" + idCurso + "/list",
+        url: "{{url('/modulos/list/')}}/"+idCurso,
         data: {json: false},
         dataType: "html",
         type: "GET",

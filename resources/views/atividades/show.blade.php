@@ -89,9 +89,9 @@
 
 $(function() {
     $('#anotacoes').on('show.bs.dropdown', function () {
+        //$("#anotation").click().focus();
         //NAO ESTA FUNCIONANDO
-        $("#anotation").trigger('focus');
-        //$(this).find('#anotation').show().focus();
+        $(this).find('#anotation').show().focus();
     });
 });
 

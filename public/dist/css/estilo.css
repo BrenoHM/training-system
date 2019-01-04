@@ -33,3 +33,14 @@
 .rating-curso .rating-symbol {
   color: yellow;
 }
+.dropdown-meus-cursos {
+  border: 1px solid #ccc;
+}
+.dropdown-meus-cursos:hover>.dropdown-menu {
+  display: block;
+}
+
+.dropdown-meus-cursos>.dropdown-toggle:active {
+  /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}

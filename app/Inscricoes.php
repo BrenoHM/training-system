@@ -10,4 +10,9 @@ class Inscricoes extends Model
     protected $primaryKey = 'idInscricao';
 
     protected $fillable = ['idCurso', 'idUsuario'];
+
+    public function curso()
+    {
+    	return $this->belongsTo('App\Cursos', 'idCurso');
+    }
 }

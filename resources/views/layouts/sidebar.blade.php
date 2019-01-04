@@ -88,6 +88,13 @@
                             <p>Conteudos</p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{ route('atividades.index') }}" class="nav-link {!! classActiveSegment(1, 'atividades') !!}">
+                            <i class="nav-icon fa fa-th"></i>
+                            <p>Atividades</p>
+                        </a>
+                    </li>
                 @endif
 
                 <li class="nav-item">

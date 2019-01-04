@@ -32,6 +32,8 @@ Route::resource('inscricoes', 'InscricoesController');
 Route::get('/modulos/list/{idCurso}', 'ModulosController@list');
 Route::delete('/modulos/{modulo}/delete', 'ModulosController@delete');
 Route::resource('conteudos', 'ConteudosController');
+Route::resource('atividades', 'AtividadesController');
+Route::get('/atividades/list/{idModulo}', 'AtividadesController@list');
 
 Route::get('/avaliacao/{idCurso}', 'AvaliacoesController@create')->name('avaliacao.create');
 Route::post('/avaliacao', 'AvaliacoesController@store')->name('avaliacao.store');

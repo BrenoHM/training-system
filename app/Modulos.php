@@ -22,4 +22,9 @@ class Modulos extends Model
                         ->orderBy('ordem')
                         ->orderBy('conteudo');
     }
+
+    public function atividade()
+    {
+        return $this->hasMany('App\Atividades', 'idModulo');
+    }
 }

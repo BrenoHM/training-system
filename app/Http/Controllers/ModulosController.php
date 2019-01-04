@@ -94,7 +94,7 @@ class ModulosController extends Controller
     public function list(Request $request)
     {
 
-        $data['modulos'] = Modulos::with('conteudo')
+        $data['modulos'] = Modulos::with(['conteudo', 'atividade'])
                                     ->where('idCurso', $request->idCurso)
                                     ->orderBy('ordem')
                                     ->orderBy('modulo')

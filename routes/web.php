@@ -12,18 +12,12 @@
 */
 
 Route::get('/', function () {
-	if( Auth::check() ){
-		return redirect()->route('home');
-	}else{
-		return redirect()->route('login');
-	}
+	return redirect()->route('home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'DashboardController@dashboard')->name('home');
-Route::get('/dashboard/v2', 'DashboardController@versiontwo')->name('v2');
-Route::get('/dashboard/v3', 'DashboardController@versionthree')->name('v3');
 
 Route::resource('categorias', 'CategoriasController');
 Route::resource('cursos', 'CursosController');

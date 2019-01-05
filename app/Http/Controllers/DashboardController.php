@@ -31,7 +31,7 @@ class DashboardController extends Controller
         $data['cursos'] = $cursos;
 
         if (!$request->session()->exists('meuscursos')) {
-            $meuscursos = Cursos::with(['inscrito', 'inscrito.curso'])->get();
+            $meuscursos = Cursos::with(['inscrito'])->get();
             $request->session()->put('meuscursos', $meuscursos);
         }
 
@@ -39,13 +39,4 @@ class DashboardController extends Controller
 
     }
 
-    public function versiontwo()
-    {
-        return view('dashboard.v2');
-    }
-
-    public function versionthree()
-    {
-        return view('dashboard.v3');
-    }
 }

@@ -69,10 +69,32 @@
                         <strong>&nbsp;</strong>
                         <button class="btn btn-default" data-toggle="modal" data-target="#incluiAtividade">+Atividade</button>
                       </div>
-                      <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
-                        <button class="btn btn-primary" onclick="adicionarConteudo()">Cadastrar Questão</button>
-                      </div>
                     </div>
+                    
+                    <form id="formPerguntas">
+                      <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                          <strong>Pergunta:</strong>
+                          <input type="text" class="form-control" id="pergunta" required="required">
+                        </div>
+                        
+                        <div class="col-xs-1 col-sm-1 col-md-1 mt-3 text-center"><input type="radio" name="rdAlternativa" required="required" value=""></div>
+                        <div class="col-xs-11 col-sm-11 col-md-11 mt-2"><input type="text" class="alternativas form-control" required="required"></div>
+
+                        <div class="col-xs-1 col-sm-1 col-md-1 mt-3 text-center"><input type="radio" name="rdAlternativa" required="required" value=""></div>
+                        <div class="col-xs-11 col-sm-11 col-md-11 mt-2"><input type="text" class="alternativas form-control" required="required"></div>
+
+                        <div class="col-xs-1 col-sm-1 col-md-1 mt-3 text-center"><input type="radio" name="rdAlternativa" required="required" value=""></div>
+                        <div class="col-xs-11 col-sm-11 col-md-11 mt-2"><input type="text" class="alternativas form-control" required="required"></div>
+
+                        <div class="col-xs-1 col-sm-1 col-md-1 mt-3 text-center"><input type="radio" name="rdAlternativa" required="required" value=""></div>
+                        <div class="col-xs-11 col-sm-11 col-md-11 mt-2"><input type="text" class="alternativas form-control" required="required"></div>
+                      </div>
+                      
+                      <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-4">
+                        <button class="btn btn-primary">Cadastrar Questão</button>
+                      </div>
+                    </form>
 
                     <!-- SEÇÃO ONDE SERÃO LISTADOS OS CONTEUDOS -->
                     <div class="row">
@@ -127,6 +149,44 @@ $(function(){
 
   $('#incluiAtividade').on('hidden.bs.modal', function (e) {
     $('#atividade').val('');
+  });
+
+  $("#formPerguntas").submit(function(e){
+
+    var idAtividade  = $("#idAtividade").val();
+    var pergunta     = $("#pergunta").val();
+    var radios       = [];
+    var alternativas = [];
+
+    $("input[name=rdAlternativa]").each(function(){
+      let checado = $(this).is(":checked");
+      radios.push(checado);
+    });
+
+    $(".alternativas").each(function(){
+      alternativas.push($(this).val());
+    });
+
+    $.ajax({ 
+        url: "{{route('pergunta.cadastrar')}}",
+        data: {idAtividade: idAtividade, pergunta:pergunta, radios:radios, alternativas:alternativas},
+        dataType: "json",
+        type: "POST",
+        beforeSend: function(){
+          //$("#div-loader").show();
+        },
+        success: function(data){
+          /*if( data.status == 1 ){
+            populaAtividades(idModulo);
+          }else{
+            alert(data.message);
+          }
+          $('#incluiAtividade').modal('hide');*/
+          //$("#div-loader").hide();
+        }
+    });
+    
+    e.preventDefault();
   });
   
 });

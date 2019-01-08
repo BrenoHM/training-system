@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Atividades;
 use App\Cursos;
+use App\Perguntas;
+use App\Alternativas;
 use Illuminate\Http\Request;
 
 class AtividadesController extends Controller
@@ -91,9 +93,9 @@ class AtividadesController extends Controller
      * @param  \App\Atividades  $atividades
      * @return \Illuminate\Http\Response
      */
-    public function edit(Atividades $atividades)
+    public function edit(Request $request)
     {
-        //
+        
     }
 
     public function list(Request $request)
@@ -126,5 +128,28 @@ class AtividadesController extends Controller
     public function destroy(Atividades $atividades)
     {
         //
+    }
+
+    public function cadastraPergunta(Request $request)
+    {
+        
+        //CADASTRO DA PERGUNTA
+        $pergunta = Perguntas::create([
+                        'pergunta'    => $request->pergunta,
+                        'idAtividade' => $request->idAtividade,
+                        'idUsuario'   => $request->user()->id
+                    ]);
+
+        //CADASTRO DAS ALTERNATIVAS
+        if( $pergunta ) {
+            foreach ($request->alternativas as $key => $value) {
+                Alternativas::create([
+                    'alternativa' => $value,
+                    'idPergunta'  => $pergunta->idPergunta,
+                    'certa'       => $request->radios[$key] === 'true' ? 'S' : 'N'
+                ]);
+            }
+        }
+
     }
 }

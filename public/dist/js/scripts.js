@@ -7,6 +7,11 @@
     }
   });
 
+  $.notify.defaults({
+    className: 'info',
+    globalPosition: 'top center',
+  });
+
   $('.dataTable').DataTable({
   	"paging": true,
       "ordering": true,

@@ -20,7 +20,22 @@
                 <i class="fa fa-check-circle pull-right" title="{{ $conteudo->realizado->count() > 0 ? 'Conteúdo Estudado' : 'Conteúdo não Estudado' }}" style="color: {{ $conteudo->realizado->count() > 0 ? 'green' : '' }}"></i>
               </li>
             @endforeach
+            
           </ul>
+
+          @if( $modulo->atividade->count() )
+          <hr>
+            <h5>Atividades</h5>
+
+            <ul class="list-unstyled">
+              @foreach( $modulo->atividade as $atividade )
+                <li class="mb-2">
+                  <i class="fas fa-tasks"></i>
+                  <a href="{{ route('conteudos.show', $atividade->idAtividade) }}">{{ $atividade->atividade }}</a>
+                </li>
+              @endforeach
+            </ul>
+          @endif
         </div>
       </div>
     </div>

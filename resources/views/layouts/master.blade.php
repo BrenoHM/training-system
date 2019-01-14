@@ -82,6 +82,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{url('/dist/plugins/slimScroll/jquery.slimscroll.min.js')}}"></script>
 <!-- FastClick -->
 <script src="{{url('/dist/plugins/fastclick/fastclick.js')}}"></script>
+<!-- Notify -->
+<script src="{{url('/dist/plugins/notify/notify.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->

@@ -95,7 +95,11 @@ class AtividadesController extends Controller
      */
     public function edit(Request $request)
     {
-        
+        $atividade = Atividades::find($request->atividade);
+
+        $data['atividade'] = $atividade;
+
+        return view('atividades.edit', $data);
     }
 
     public function list(Request $request)
@@ -132,6 +136,11 @@ class AtividadesController extends Controller
 
     public function cadastraPergunta(Request $request)
     {
+
+        $response = [
+            'status'  => 1,
+            'message' => '',
+        ];
         
         //CADASTRO DA PERGUNTA
         $pergunta = Perguntas::create([
@@ -146,10 +155,19 @@ class AtividadesController extends Controller
                 Alternativas::create([
                     'alternativa' => $value,
                     'idPergunta'  => $pergunta->idPergunta,
-                    'certa'       => $request->radios[$key] === 'true' ? 'S' : 'N'
+                    'certa'       => $request->radios[$key] === 'true' ?? 'S'
                 ]);
             }
+        }else{
+
+            $response = [
+                'status'  => 0,
+                'message' => 'Erro ao cadastrar pergunta!',
+            ];
+
         }
+
+        return response()->json($response);
 
     }
 }

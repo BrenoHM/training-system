@@ -74,8 +74,7 @@
                     <form id="formPerguntas">
                       <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                          <strong>Pergunta:</strong>
-                          <input type="text" class="form-control" id="pergunta" required="required">
+                          <textarea id="pergunta" required="required" class="form-control" rows="5" placeholder="Descrição da Pergunta..."></textarea>
                         </div>
                         
                         <div class="col-xs-1 col-sm-1 col-md-1 mt-3 text-center"><input type="radio" name="rdAlternativa" required="required" value=""></div>
@@ -97,9 +96,9 @@
                     </form>
 
                     <!-- SEÇÃO ONDE SERÃO LISTADOS OS CONTEUDOS -->
+                    <br>
                     <div class="row">
-                      <div class="col-md-12" id="conteudos">
-                      </div>
+                      <div class="col-md-12" id="conteudos"></div>
                     </div>
 
                   </div>
@@ -141,7 +140,7 @@
 
 @section('javascript')
 <script>
-$(function(){
+$(function(){  
 
   $('#incluiAtividade').on('shown.bs.modal', function () {
     $('#atividade').trigger('focus');
@@ -167,29 +166,39 @@ $(function(){
       alternativas.push($(this).val());
     });
 
-    $.ajax({ 
-        url: "{{route('pergunta.cadastrar')}}",
-        data: {idAtividade: idAtividade, pergunta:pergunta, radios:radios, alternativas:alternativas},
-        dataType: "json",
-        type: "POST",
-        beforeSend: function(){
-          //$("#div-loader").show();
-        },
-        success: function(data){
-          /*if( data.status == 1 ){
-            populaAtividades(idModulo);
-          }else{
-            alert(data.message);
+    if( idAtividade != "" && idAtividade != null ){
+      $.ajax({ 
+          url: "{{route('pergunta.cadastrar')}}",
+          data: {idAtividade: idAtividade, pergunta:pergunta, radios:radios, alternativas:alternativas},
+          dataType: "json",
+          type: "POST",
+          beforeSend: function(){
+            $("#div-loader").show();
+          },
+          success: function(data){
+            if( data.status == 0 ){
+              $.notify(data.message);
+            }else{
+              $.notify("Pergunta cadastrada com sucesso!", "success");
+            }
+            clearInputs();
+            $("#div-loader").hide();
           }
-          $('#incluiAtividade').modal('hide');*/
-          //$("#div-loader").hide();
-        }
-    });
+      });
+    }else{
+      $.notify("Favor selecionar a atividade!");
+    }
     
     e.preventDefault();
   });
   
 });
+
+function clearInputs(){
+  $("#pergunta").val('');
+  $("input[name=rdAlternativa]:checked").prop('checked', false);
+  $(".alternativas").val('');
+}
 
 function populaAtividades(idModulo) {
 

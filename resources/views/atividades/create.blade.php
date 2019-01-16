@@ -248,16 +248,20 @@ function cadastrarAtividade() {
             if( data.status == 1 ){
               populaAtividades(idModulo);
             }else{
-              alert(data.message);
+              $.notify(data.message);
+              $("#div-loader").hide();
             }
             $('#incluiAtividade').modal('hide');
+          },
+          error: function(){
             $("#div-loader").hide();
+            $.notify('Erro ao cadastrar atividade!');
           }
       });
 
     }
   }else{
-    alert('Favor selecionar o módulo desejado!');
+    $.notify('Favor selecionar o módulo desejado!', 'info');
   }
   
 }

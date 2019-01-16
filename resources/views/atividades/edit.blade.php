@@ -6,13 +6,13 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Editar Conteúdo</h1>
+            <h1 class="m-0 text-dark">Editar Atividade</h1>
           </div>
           <!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Conteúdo</li>
+              <li class="breadcrumb-item active">Atividade</li>
             </ol>
           </div>
           <!-- /.col -->
@@ -33,58 +33,56 @@
             <div class="card-header">
               <!--<h3 class="box-title">Categorias de Cursos</h3>-->
               <div class="pull-right">
-                  <a class="btn btn-primary" href="{{ route('conteudos.index') }}">Voltar</a>
+                  <a class="btn btn-primary" href="{{ route('atividades.index') }}">Voltar</a>
               </div>
             </div>
             <!-- /.box-header -->
             <div class="card-body">
 
               @include('layouts.mensagens')
-
-              <form action="{{ route('conteudos.update', $conteudo->idConteudo) }}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')
                 
-                   <div class="row">
-
-                      <div class="col-xs-5 col-sm-5 col-md-5">
-                        <strong>Módulo:</strong>
-                        <select id="idModulo" name="idModulo" class="form-control">
-                          <option value="">Selecione</option>
-                          @foreach( $modulos as $modulo )
-                            <option value="{{ $modulo->idModulo }}" {{ $conteudo->idModulo == $modulo->idModulo ? 'selected' : '' }}>{{ $modulo->modulo }}</option>
-                          @endforeach
-                        </select>
-                      </div>
-                      <div class="col-xs-5 col-sm-5 col-md-5">
-                        <strong>Conteúdo:</strong>
-                        <input type="text" id="conteudo" name="conteudo" value="{{ $conteudo->conteudo }}" class="form-control" placeholder="Descrição do Conteúdo">
-                      </div>
-                      <div class="col-xs-1 col-sm-1 col-md-1">
-                        <strong>Ordem:</strong>
-                        <input type="number" min="0" id="ordem" name="ordem" value="{{ $conteudo->ordem }}" class="form-control">
-                      </div>
-                      <div class="col-xs-1 col-sm-1 col-md-1">
-                      <strong>Tipo:</strong>
-                        <select id="tipoConteudo" name="tipoConteudo" class="form-control">
-                          <option value="">Selecione</option>
-                          <option value="video" {{ $conteudo->tipoConteudo == 'video' ? 'selected' : '' }}>Vídeo</option>
-                          <option value="anexo" {{ $conteudo->tipoConteudo == 'anexo' ? 'selected' : '' }}>Anexo</option>
-                        </select>
-                      </div>
-                      <div class="col-xs-12 col-sm-12 col-md-12 mb-3 mt-3 text-center">
-                        <strong id="descricaoTipo" class="d-block">{{ $conteudo->tipoConteudo == 'video' ? 'Embeded do vídeo:' : 'Documento de Anexo:' }}</strong>
-                        <textarea id="video" name="url" class="form-control" rows="5" style="display: {{ $conteudo->tipoConteudo == 'video' ? 'block' : 'none' }};">{{ $conteudo->url }}</textarea>
-                        <input type="file" id="anexo" name="anexo" style="display: {{ $conteudo->tipoConteudo == 'anexo' ? 'inline-block' : 'none' }};" />
-                      </div>
-
-                      <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                          <button type="submit" class="btn btn-primary">Atualizar</button>
-                          <input type="hidden" name="idConteudo" value="{{ $conteudo->idConteudo }}">
-                      </div>
+              <form action="{{ route('atividades.update', $atividade->idAtividade) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <strong>Atividade:</strong>
+                    <input type="text" name="atividade" value="{{ $atividade->atividade }}" class="form-control" required="required">
                   </div>
-                 
+                  @foreach( $atividade->perguntas as $pergunta )
+                    <div class="col-xs-11 col-sm-11 col-md-11 offset-1">
+                      <strong>Pergunta:</strong>
+                      <textarea name="perguntas[{{ $pergunta->idPergunta }}]" class="form-control" rows="4" required="required">{{ $pergunta->pergunta }}</textarea>
+                    </div>
+                    <div class="row">
+                      @foreach( $pergunta->alternativas as $key => $alternativa )
+                        
+                        @if( $key == 0 )
+                          <div class="col-xs-10 col-sm-10 col-md-10 offset-2">
+                            <strong>Alternativas:</strong>
+                          </div>
+                        @endif
+                        <div class="col-xs-1 col-sm-1 col-md-1 offset-1 text-center">
+                          <input type="radio" class="mt-2" name="certa[{{ $pergunta->idPergunta }}]" value="{{ $alternativa->idAlternativa }}" {{ $alternativa->certa == 1 ? 'checked' : '' }} required="required">
+                        </div>
+                        <div class="col-xs-10 col-sm-10 col-md-10">
+                          <input type="text" name="alternativas[{{ $pergunta->idPergunta }}][{{ $alternativa->idAlternativa }}]" value="{{ $alternativa->alternativa }}" class="form-control" required="required">
+                        </div>
+                        
+                      @endforeach
+                    </div>
+                  @endforeach
+                </div>
+
+                <br>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                  <button type="submit" class="btn btn-primary">Atualizar</button>
+                  <input type="hidden" name="idAtividade" value="{{ $atividade->idAtividade }}">
+                </div>
+
               </form>
+                 
             </div>
             <!-- /.box-body -->
           </div>
@@ -102,22 +100,7 @@
 @section('javascript')
 <script>
 $(function(){
-  $("#tipoConteudo").on('change', function(){
-    var valor = $(this).val();
-    if( valor == 'video' ) {
-      $("#descricaoTipo").text("Embeded do vídeo:");
-      $("#video").show().val('').focus();
-      $("#anexo").hide();
-    }else if( valor == 'anexo' ){
-      $("#descricaoTipo").text("Documento de Anexo:");
-      $("#video").hide();
-      $("#anexo").show().click();
-    }else{
-      $("#descricaoTipo").text("");
-      $("#video").hide();
-      $("#anexo").hide();
-    }
-  });
+  
 });
 
 </script>

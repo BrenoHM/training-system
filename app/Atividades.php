@@ -15,4 +15,9 @@ class Atividades extends Model
     {
     	return $this->belongsTo('App\Modulos', 'idModulo');
     }
+
+    public function perguntas()
+    {
+    	return $this->hasMany('App\Perguntas', 'idAtividade');
+    }
 }

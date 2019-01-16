@@ -38,6 +38,7 @@
 }
 .dropdown-meus-cursos:hover>.dropdown-menu {
   display: block;
+  top: 39px;
 }
 
 .dropdown-meus-cursos>.dropdown-toggle:active {

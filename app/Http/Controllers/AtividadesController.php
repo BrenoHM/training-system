@@ -95,7 +95,7 @@ class AtividadesController extends Controller
      */
     public function edit(Request $request)
     {
-        $atividade = Atividades::find($request->atividade);
+        $atividade = Atividades::with(['perguntas', 'perguntas.alternativas'])->where('idAtividade', $request->atividade)->first();
 
         $data['atividade'] = $atividade;
 
@@ -120,7 +120,36 @@ class AtividadesController extends Controller
      */
     public function update(Request $request, Atividades $atividades)
     {
-        //
+        
+        $dados = $request->all();
+
+        //ATUALIZANDO A ATIVIDADE
+        Atividades::where('idAtividade', $dados['idAtividade'])->update([
+            'atividade' => $dados['atividade'],
+            'idUsuario' => $request->user()->id,
+        ]);
+
+        //ATUALIZANDO PERGUNTAS
+        foreach ( $dados['perguntas'] as $idPergunta => $pergunta ) {
+
+            Perguntas::where('idPergunta', $idPergunta)->update([
+                'pergunta' => $pergunta,
+                'idUsuario' => $request->user()->id,
+            ]);
+
+            //ATUALIZANDO AS ALTERNATIVAS
+            foreach ( $dados['alternativas'][$idPergunta] as $idAlternativa => $alternativa ) {
+
+                Alternativas::where('idAlternativa', $idAlternativa)->update([
+                    'alternativa' => $alternativa,
+                    'certa'       => ( $dados['certa'][$idPergunta] == $idAlternativa ) ? '1' : '0',
+                ]);
+
+            }
+
+        }
+
+        return redirect()->route('atividades.index')->with('success', 'Atividade atualizada com sucesso!');
     }
 
     /**
@@ -129,9 +158,26 @@ class AtividadesController extends Controller
      * @param  \App\Atividades  $atividades
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Atividades $atividades)
+    public function destroy(Request $request)
     {
-        //
+
+        $atividade = Atividades::with(['perguntas', 'perguntas.alternativas'])->where('idAtividade', $request->atividade)->first();
+
+        $perguntas = $atividade->perguntas();
+
+        foreach ( $perguntas->get() as $pergunta ) {
+            //DELETA ALTERNATIVAS
+            Alternativas::where('idPergunta', $pergunta->idPergunta)->delete();
+        }
+
+        // DELETA PERGUNTAS
+        $perguntas->delete();
+
+        //DELETA ATIVIDADE
+        $atividade->delete();
+
+        return redirect()->route('atividades.index')->with('success', 'Atividade excluída com sucesso!');
+
     }
 
     public function cadastraPergunta(Request $request)

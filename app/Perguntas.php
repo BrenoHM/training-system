@@ -10,4 +10,9 @@ class Perguntas extends Model
     protected $primaryKey = 'idPergunta';
 
     protected $fillable = ['pergunta', 'idAtividade', 'idUsuario'];
+
+    public function alternativas()
+    {
+    	return $this->hasMany('App\Alternativas', 'idPergunta');
+    }
 }

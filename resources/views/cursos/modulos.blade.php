@@ -31,7 +31,7 @@
               @foreach( $modulo->atividade as $atividade )
                 <li class="mb-2">
                   <i class="fas fa-tasks"></i>
-                  <a href="{{ route('conteudos.show', $atividade->idAtividade) }}">{{ $atividade->atividade }}</a>
+                  <a href="{{ route('tentativas.show', $atividade->idAtividade) }}">{{ $atividade->atividade }}</a>
                 </li>
               @endforeach
             </ul>

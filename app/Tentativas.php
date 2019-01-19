@@ -9,5 +9,10 @@ class Tentativas extends Model
     protected $table = "tentativas";
     protected $primaryKey = 'idTentativa';
 
-    protected $fillable = ['idAtividade', 'idUsuario', 'nota'];
+    protected $fillable = ['idAtividade', 'idUsuario', 'nota', 'finished_at'];
+
+    public function atividade()
+    {
+    	return $this->belongsTo('App\Atividades', 'idAtividade');
+    }
 }

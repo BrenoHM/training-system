@@ -20,4 +20,9 @@ class Atividades extends Model
     {
     	return $this->hasMany('App\Perguntas', 'idAtividade');
     }
+
+    public static function getAtividade($idAtividade)
+    {
+        return Atividades::with(['perguntas', 'perguntas.alternativas'])->where('idAtividade', $idAtividade)->first();
+    }
 }

@@ -25,7 +25,7 @@ class TentativasController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -36,7 +36,24 @@ class TentativasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //VERIFICAR SE JA EXISTE UMA TENTATIVA PARA ESTA ATIVIDADE AINDA NAO TERMINADA
+        $tentativa = Tentativas::where('idAtividade', $request->idAtividade)
+                                ->where('idUsuario', $request->user()->id)
+                                ->where('finished_at', null)
+                                ->first();
+
+        if( !$tentativa ) {
+            //SE NAO TIVER UMA ATIVIDADE, CRIA OUTRA
+            $tentativa = Tentativas::create([
+                'idAtividade' => $request->idAtividade,
+                'idUsuario'   => $request->user()->id,
+                'nota'        => null
+            ]);
+        }
+
+        return redirect()->route('atividades.show', $tentativa->idTentativa); 
+
     }
 
     /**
@@ -52,6 +69,7 @@ class TentativasController extends Controller
 
         $tentativas = Tentativas::where('idAtividade', $request->tentativa)
                                 ->where('idUsuario', $request->user()->id)
+                                ->where('finished_at', '!=', null)
                                 ->get();
 
         $data['tentativas'] = $tentativas;

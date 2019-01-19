@@ -40,8 +40,13 @@
   display: block;
   top: 39px;
 }
-
 .dropdown-meus-cursos>.dropdown-toggle:active {
   /*Without this, clicking will make it sticky*/
     pointer-events: none;
+}
+.question {
+  background: #d9edf7;
+  border-radius: 5px;
+  border: 1px solid #bce8f1;
+  margin-bottom: 10px;
 }

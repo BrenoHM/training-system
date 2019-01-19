@@ -33,7 +33,11 @@
             <div class="card-header">
               <h3 class="box-title">Resumo das suas tentativas anteriores</h3>
               <div class="pull-right">
-                  <a class="btn btn-success" href="{{ route('atividades.create') }}">Nova Tentativa</a>
+                <form action="{{ route('tentativas.store') }}" method="post">
+                  @csrf
+                  <input type="submit" value="Nova Tentativa" class="btn btn-success">
+                  <input type="hidden" name="idAtividade" value="{{ $atividade->idAtividade }}">
+                </form>
               </div>
             </div>
             <!-- /.box-header -->
@@ -55,7 +59,7 @@
                     @foreach( $tentativas as $tentativa )
                         <tr>
                           <td align="center">{{ $tentativa->idTentativa }}</td>
-                          <td>{{ 'Finalizada Enviada(s) quarta, 9 Jan 2019, 16:33' }}</td>
+                          <td>{{ $tentativa->finished_at }}</td>
                           <th>{{ $tentativa->nota }}</th>
                           <td><a href="{{ route('atividades.edit', $tentativa->idTentativa) }}">Revisão</a></td>
                         </tr>

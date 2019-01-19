@@ -6,6 +6,7 @@ use App\Atividades;
 use App\Cursos;
 use App\Perguntas;
 use App\Alternativas;
+use App\Tentativas;
 use Illuminate\Http\Request;
 
 class AtividadesController extends Controller
@@ -82,9 +83,20 @@ class AtividadesController extends Controller
      * @param  \App\Atividades  $atividades
      * @return \Illuminate\Http\Response
      */
-    public function show(Atividades $atividades)
+    public function show(Request $request)
     {
-        //
+
+        $idTentativa = $request->atividade;
+
+        $idAtividade = Tentativas::find($idTentativa)->idAtividade;
+
+        $atividade = Atividades::getAtividade($idAtividade);
+
+        $data['idTentativa'] = $idTentativa;
+
+        $data['atividade'] = $atividade;
+
+        return view('atividades.show', $data);
     }
 
     /**

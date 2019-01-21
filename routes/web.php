@@ -28,6 +28,7 @@ Route::delete('/modulos/{modulo}/delete', 'ModulosController@delete');
 Route::resource('conteudos', 'ConteudosController');
 Route::resource('atividades', 'AtividadesController');
 Route::resource('tentativas', 'TentativasController');
+Route::resource('respostas', 'RespostasController');
 Route::get('/atividades/list/{idModulo}', 'AtividadesController@list');
 Route::post('/pergunta', 'AtividadesController@cadastraPergunta')->name('pergunta.cadastrar');
 

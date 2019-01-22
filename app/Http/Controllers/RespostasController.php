@@ -35,7 +35,35 @@ class RespostasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $response = [
+            'status'  => 1,
+            'message' => '',
+        ];
+
+        //VERIFICAR SE JA EXISTE UMA RESPOSTA DESSA ATIVIDADE NESSA TENTATIVA
+        $resposta = Respostas::where('idTentativa', $request->idTentativa)
+                                ->where('idAtividade', $request->idAtividade)
+                                ->where('idPergunta', $request->idPergunta)
+                                ->first();
+
+        if( !$resposta ) {
+            Respostas::create([
+                'idTentativa'   => $request->idTentativa,
+                'idAtividade'   => $request->idAtividade,
+                'idPergunta'    => $request->idPergunta,
+                'idAlternativa' => $request->idAlternativa,
+                'idUsuario'   => $request->user()->id
+            ]);
+        } else {
+            Respostas::where('idTentativa', $request->idTentativa)
+                        ->where('idAtividade', $request->idAtividade)
+                        ->where('idPergunta', $request->idPergunta)
+                        ->update(['idAlternativa' => $request->idAlternativa]);
+        }
+
+        return response()->json($response);
+
     }
 
     /**

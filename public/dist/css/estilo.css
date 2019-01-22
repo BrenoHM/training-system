@@ -50,3 +50,7 @@
   border: 1px solid #bce8f1;
   margin-bottom: 10px;
 }
+.question label,
+.question input[type=radio] {
+  cursor: pointer;
+}

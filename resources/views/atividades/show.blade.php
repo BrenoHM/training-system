@@ -53,7 +53,7 @@
                       <div class="row">
                         @foreach( $pergunta->alternativas as $key => $alternativa )
                           <div class="col-xs-1 col-sm-1 col-md-1 text-center">
-                            <input type="radio" id="{{ $alternativa->idAlternativa }}" class="mt-2" name="certa[{{ $pergunta->idPergunta }}]" value="{{ $alternativa->idAlternativa }}" {{ $alternativa->certa == 1 ? 'checked' : '' }} required="required">
+                            <input type="radio" id="{{ $alternativa->idAlternativa }}" class="mt-2" name="certa[{{ $pergunta->idPergunta }}]" value="{{ $alternativa->idAlternativa }}" onchange="salvaPergunta(this.value, '{{ $pergunta->idPergunta }}')" {{ $respostas[$pergunta->idPergunta] == $alternativa->idAlternativa ? 'checked' : '' }}>
                           </div>
                           <div class="col-xs-11 col-sm-11 col-md-11">
                             <label for="{{ $alternativa->idAlternativa }}">{{ $alternativa->alternativa }}</label>
@@ -90,8 +90,33 @@
 @section('javascript')
 <script>
 $(function(){
+
   
 });
+
+var idTentativa = '{{ $idTentativa }}';
+var idAtividade = '{{ $atividade->idAtividade }}';
+
+function salvaPergunta(idAlternativa, idPergunta){
+
+  if( idTentativa && idAtividade && idAlternativa ) {
+    $.ajax({ 
+        url: "{{route('respostas.store')}}",
+        data: {idTentativa: idTentativa, idAtividade: idAtividade, idAlternativa: idAlternativa, idPergunta: idPergunta},
+        dataType: "json",
+        type: "POST",
+        beforeSend: function(){
+          //("#div-loader").show();
+        },
+        success: function(data){
+          if( data.status == 1 ){
+            $.notify("Resposta salva!", "success");
+          }
+          //$("#div-loader").hide();
+        }
+    });
+  }
+}
 
 </script>
 @endsection

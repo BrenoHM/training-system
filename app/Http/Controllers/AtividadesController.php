@@ -7,6 +7,7 @@ use App\Cursos;
 use App\Perguntas;
 use App\Alternativas;
 use App\Tentativas;
+use App\Respostas;
 use Illuminate\Http\Request;
 
 class AtividadesController extends Controller
@@ -91,6 +92,18 @@ class AtividadesController extends Controller
         $idAtividade = Tentativas::find($idTentativa)->idAtividade;
 
         $atividade = Atividades::getAtividade($idAtividade);
+
+        $respostas = Respostas::where('idTentativa', $idTentativa)
+                                ->where('idAtividade', $idAtividade)
+                                ->get();
+
+        $data['respostas'] = [];
+
+        if( count($respostas) ) {
+            foreach ( $respostas as $resposta ) {
+                $data['respostas'][$resposta->idPergunta] = $resposta->idAlternativa;
+            }
+        }
 
         $data['idTentativa'] = $idTentativa;
 

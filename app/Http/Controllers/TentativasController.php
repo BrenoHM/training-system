@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Tentativas;
 use App\Atividades;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class TentativasController extends Controller
 {
@@ -96,9 +97,47 @@ class TentativasController extends Controller
      * @param  \App\Tentativas  $tentativas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tentativas $tentativas)
+    public function update(Request $request)
     {
-        //
+        //RESPOSTAS DAS TENTATIVAS
+        $respTentativas = Respostas::where('idTentativa', $request->idTentativa)->get();
+        $respT = [];
+
+        //RESPOSTAS DA ATIVIDADE QUE FOI REALIZADA
+        $respAtividade = Perguntas::with('alternativas')
+                                    ->where('idAtividade', $request->idAtividade)
+                                    ->get();
+        $respA = [];
+
+        if( count($respTentativas) ) {
+            foreach ($respTentativas as $r) {
+                $respT[$r->idPergunta] = $r->idAlternativa;
+            }
+        }
+
+        if( count($respAtividade) ) {
+            foreach ($respAtividade as $resp) {
+                foreach ($resp->alternativas() as $r) {
+                    if( $r->certa == 1 ){
+                        $respA[$r->idPergunta] = $r->idAlternativa;
+                    }
+                }
+            }
+        }
+
+        //CALCULO DA NOTA
+        $nota = 0;
+        foreach ($respT as $idPergunta => $resposta) {
+            if( $respT[$idPergunta] == $respA[$idPergunta] ){
+                $nota += 5;
+            }
+        }
+
+        //ATUALIZA A NOTA E A DATA DE FINALIZAÇÃO NA TENTATIVA
+        Tentativas::where('idTentativa' $request->idTentativa)->update([
+            'nota' => $nota,
+            'finished_at' => Carbon::now()
+        ]);
     }
 
     /**

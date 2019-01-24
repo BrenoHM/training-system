@@ -31,6 +31,7 @@ Route::resource('tentativas', 'TentativasController');
 Route::resource('respostas', 'RespostasController');
 Route::get('/atividades/list/{idModulo}', 'AtividadesController@list');
 Route::post('/pergunta', 'AtividadesController@cadastraPergunta')->name('pergunta.cadastrar');
+Route::get('/revisao/{idTentativa}', 'TentativasController@revisao')->name('revisao');
 
 Route::get('/avaliacao/{idCurso}', 'AvaliacoesController@create')->name('avaliacao.create');
 Route::post('/avaliacao', 'AvaliacoesController@store')->name('avaliacao.store');

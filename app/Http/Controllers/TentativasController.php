@@ -11,6 +11,13 @@ use Carbon\Carbon;
 
 class TentativasController extends Controller
 {
+
+    public function __construct()
+    {
+        
+        $this->middleware('auth');
+        //$this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -153,5 +160,53 @@ class TentativasController extends Controller
     public function destroy(Tentativas $tentativas)
     {
         //
+    }
+
+    public function revisao(Request $request)
+    {
+
+        $idTentativa = $request->idTentativa;
+
+        $tentativa = Tentativas::find($idTentativa);
+
+        $idAtividade = $tentativa->idAtividade;
+
+        $atividade = Atividades::getAtividade($idAtividade);
+
+        //RESPOSTAS DAS TENTATIVAS
+        $respTentativas = Respostas::where('idTentativa', $idTentativa)->get();
+        $respT = [];
+
+        //RESPOSTAS DA ATIVIDADE QUE FOI REALIZADA
+        $respAtividade = Perguntas::with('alternativas')
+                                    ->where('idAtividade', $idAtividade)
+                                    ->get();
+        $respA = [];
+
+        if( count($respTentativas) ) {
+            foreach ($respTentativas as $r) {
+                $respT[$r->idPergunta] = $r->idAlternativa;
+            }
+        }
+
+        if( count($respAtividade) ) {
+            foreach ($respAtividade as $resp) {
+                foreach ($resp->alternativas as $r) {
+                    if( $r->certa == 1 ){
+                        $respA[$r->idPergunta] = $r->idAlternativa;
+                    }
+                }
+            }
+        }
+
+        $data['nota']  = $tentativa->nota;
+        $data['respT'] = $respT;
+        $data['respA'] = $respA;
+
+        $data['idTentativa'] = $idTentativa;
+
+        $data['atividade'] = $atividade;
+
+        return view('revisao.revisao', $data);
     }
 }

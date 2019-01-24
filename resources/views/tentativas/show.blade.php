@@ -61,7 +61,7 @@
                           <td align="center">{{ $tentativa->idTentativa }}</td>
                           <td>Finalizada em: <br>{{ $tentativa->finished_at->format('d/m/Y H:m:i') }}</td>
                           <th>{{ $tentativa->nota }}</th>
-                          <td><a href="{{ route('atividades.edit', $tentativa->idTentativa) }}">Revisão</a></td>
+                          <td><a href="{{ route('revisao', $tentativa->idTentativa) }}">Revisão</a></td>
                         </tr>
                     @endforeach
                   @else

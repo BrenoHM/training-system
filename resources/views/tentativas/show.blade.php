@@ -59,7 +59,7 @@
                     @foreach( $tentativas as $tentativa )
                         <tr>
                           <td align="center">{{ $tentativa->idTentativa }}</td>
-                          <td>{{ $tentativa->finished_at }}</td>
+                          <td>Finalizada em: <br>{{ $tentativa->finished_at->format('d/m/Y H:m:i') }}</td>
                           <th>{{ $tentativa->nota }}</th>
                           <td><a href="{{ route('atividades.edit', $tentativa->idTentativa) }}">Revisão</a></td>
                         </tr>

@@ -8,6 +8,7 @@ class Tentativas extends Model
 {
     protected $table = "tentativas";
     protected $primaryKey = 'idTentativa';
+    protected $dates = ['finished_at'];
 
     protected $fillable = ['idAtividade', 'idUsuario', 'nota', 'finished_at'];
 

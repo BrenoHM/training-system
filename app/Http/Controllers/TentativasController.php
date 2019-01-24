@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Tentativas;
 use App\Atividades;
+use App\Respostas;
+use App\Perguntas;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -117,7 +119,7 @@ class TentativasController extends Controller
 
         if( count($respAtividade) ) {
             foreach ($respAtividade as $resp) {
-                foreach ($resp->alternativas() as $r) {
+                foreach ($resp->alternativas as $r) {
                     if( $r->certa == 1 ){
                         $respA[$r->idPergunta] = $r->idAlternativa;
                     }
@@ -134,10 +136,12 @@ class TentativasController extends Controller
         }
 
         //ATUALIZA A NOTA E A DATA DE FINALIZAÇÃO NA TENTATIVA
-        Tentativas::where('idTentativa' $request->idTentativa)->update([
+        Tentativas::where('idTentativa', $request->idTentativa)->update([
             'nota' => $nota,
             'finished_at' => Carbon::now()
         ]);
+
+        return redirect()->route('tentativas.show', $request->idAtividade);
     }
 
     /**

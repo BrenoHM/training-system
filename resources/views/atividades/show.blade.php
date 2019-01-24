@@ -41,8 +41,9 @@
 
               @include('layouts.mensagens')
                 
-              <form action="{{ route('atividades.update', $atividade->idAtividade) }}" method="POST">
+              <form action="{{ route('tentativas.update', $idTentativa) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <div class="row">
                   @foreach( $atividade->perguntas as $key => $pergunta )
                     <div class="question col-12">
@@ -53,7 +54,7 @@
                       <div class="row">
                         @foreach( $pergunta->alternativas as $key => $alternativa )
                           <div class="col-xs-1 col-sm-1 col-md-1 text-center">
-                            <input type="radio" id="{{ $alternativa->idAlternativa }}" class="mt-2" name="certa[{{ $pergunta->idPergunta }}]" value="{{ $alternativa->idAlternativa }}" onchange="salvaPergunta(this.value, '{{ $pergunta->idPergunta }}')" {{ $respostas[$pergunta->idPergunta] == $alternativa->idAlternativa ? 'checked' : '' }}>
+                            <input type="radio" id="{{ $alternativa->idAlternativa }}" class="mt-2" name="certa[{{ $pergunta->idPergunta }}]" value="{{ $alternativa->idAlternativa }}" onchange="salvaPergunta(this.value, '{{ $pergunta->idPergunta }}')" @if(isset($respostas[$pergunta->idPergunta])) {{ ($respostas[$pergunta->idPergunta] == $alternativa->idAlternativa) ? 'checked' : '' }} @endif>
                           </div>
                           <div class="col-xs-11 col-sm-11 col-md-11">
                             <label for="{{ $alternativa->idAlternativa }}">{{ $alternativa->alternativa }}</label>
@@ -67,8 +68,9 @@
                 <hr>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                  <button type="submit" class="btn btn-primary">Finalizar</button>
+                  <button type="submit" class="btn btn-primary" onclick="return confirm('Deseja realmente entregar sua atividade?')">Finalizar</button>
                   <input type="hidden" name="idAtividade" value="{{ $atividade->idAtividade }}">
+                  <input type="hidden" name="idTentativa" value="{{ $idTentativa }}">
                 </div>
 
               </form>

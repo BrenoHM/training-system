@@ -11,7 +11,7 @@ class Cursos extends Model
 {
     protected $table = "cursos";
     protected $primaryKey = 'idCurso';
-    const     PERCENTUAL_CERTIFICADO = 70;
+    const     PERCENTUAL_CERTIFICADO = 100;
 
     protected $fillable = ['curso', 'instrutor', 'idCategoria', 'palavrasChave', 'idUsuario'];
 
@@ -59,9 +59,9 @@ class Cursos extends Model
     {
 
         $qtdAulas = Conteudos::join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
-                                    ->where('modulos.idCurso', $idCurso)
-                                    ->where('conteudos.tipoConteudo', 'video')
-                                    ->count();
+                                ->where('modulos.idCurso', $idCurso)
+                                ->where('conteudos.tipoConteudo', 'video')
+                                ->count();
 
         $aulasVistas = ConteudosRealizados::join('conteudos', 'conteudos_realizados.idConteudo', '=', 'conteudos.idConteudo')
                                             ->join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
@@ -73,7 +73,7 @@ class Cursos extends Model
 
         $porcentagemAssistidas = ( $aulasVistas / $qtdAulas ) * 100;
 
-        return $porcentagemAssistidas >= self::PERCENTUAL_CERTIFICADO ? true : false;
+        return $porcentagemAssistidas == self::PERCENTUAL_CERTIFICADO ? true : false;
 
     }
 }

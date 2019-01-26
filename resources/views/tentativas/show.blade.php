@@ -56,12 +56,18 @@
                 </thead>
                 <tbody>
                   @if( count($tentativas) )
-                    @foreach( $tentativas as $tentativa )
+                    @foreach( $tentativas as $key => $tentativa )
                         <tr>
-                          <td align="center">{{ $tentativa->idTentativa }}</td>
-                          <td>Finalizada em: <br>{{ $tentativa->finished_at->format('d/m/Y H:m:i') }}</td>
-                          <th>{{ $tentativa->nota }}</th>
-                          <td><a href="{{ route('revisao', $tentativa->idTentativa) }}">Revisão</a></td>
+                          <td align="center">{{ $key + 1 }}</td>
+                          <td>
+                            @if( $tentativa->finished_at !== null )
+                              Finalizada em: <br>{{ $tentativa->finished_at->format('d/m/Y H:m:i') }}
+                            @else
+                              Em progresso
+                            @endif
+                          </td>
+                          <th>{{ $tentativa->nota !== null ? $tentativa->nota : '' }}</th>
+                          <td><a href="{{ route('revisao', $tentativa->idTentativa) }}">{{ $tentativa->finished_at !== null ? 'Revisão' : '' }}</a></td>
                         </tr>
                     @endforeach
                   @else

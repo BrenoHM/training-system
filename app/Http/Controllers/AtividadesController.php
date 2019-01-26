@@ -17,7 +17,7 @@ class AtividadesController extends Controller
     {
         
         $this->middleware('auth');
-        $this->middleware('admin');
+        $this->middleware('admin')->except('show');
     }
 
     /**

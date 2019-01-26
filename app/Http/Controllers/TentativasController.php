@@ -79,7 +79,6 @@ class TentativasController extends Controller
 
         $tentativas = Tentativas::where('idAtividade', $request->tentativa)
                                 ->where('idUsuario', $request->user()->id)
-                                ->where('finished_at', '!=', null)
                                 ->get();
 
         $data['tentativas'] = $tentativas;

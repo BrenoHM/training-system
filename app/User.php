@@ -34,4 +34,8 @@ class User extends Authenticatable
      * @return \Illuminate\Http\Response
      */
     
+    public function inscricoes()
+    {
+        return $this->hasMany('App\Inscricoes', 'idUsuario');
+    }
 }

@@ -17,9 +17,10 @@ class Conteudos extends Model
     	return $this->belongsTo('App\Modulos', 'idModulo');
     }
 
-    public function realizado()
+    public function realizado($idUsuario = false)
     {
-        return $this->hasMany('App\ConteudosRealizados', 'idConteudo')->where('idUsuario', Auth::user()->id);
+        $id = $idUsuario ? $idUsuario : Auth::user()->id;
+        return $this->hasMany('App\ConteudosRealizados', 'idConteudo')->where('idUsuario', $id);
     }
 
     public function anotacao()

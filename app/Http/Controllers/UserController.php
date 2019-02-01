@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Inscricoes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -165,5 +166,18 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+    }
+
+    public function evolucao(Request $request)
+    {
+
+        $with = ['curso', 'curso.modulos', 'curso.modulos.conteudo'];
+
+        $inscricoes = Inscricoes::with($with)->where('idUsuario', $request->idUsuario)->get();
+
+        $data['usuario']    = User::find($request->idUsuario);
+        $data['inscricoes'] = $inscricoes;
+
+        return view('usuarios.evolucao', $data);
     }
 }

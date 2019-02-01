@@ -60,20 +60,42 @@ class Cursos extends Model
 
         $qtdAulas = Conteudos::join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
                                 ->where('modulos.idCurso', $idCurso)
-                                ->where('conteudos.tipoConteudo', 'video')
+                                ->whereIn('conteudos.tipoConteudo', ['video', 'anexo'])
                                 ->count();
 
         $aulasVistas = ConteudosRealizados::join('conteudos', 'conteudos_realizados.idConteudo', '=', 'conteudos.idConteudo')
                                             ->join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
                                             ->join('cursos', 'modulos.idCurso', '=', 'cursos.idCurso')
                                             ->where('modulos.idCurso', $idCurso)
-                                            ->where('conteudos.tipoConteudo', 'video')
+                                            ->whereIn('conteudos.tipoConteudo', ['video', 'anexo'])
                                             ->where('conteudos_realizados.idUsuario', Auth::user()->id)
                                             ->count();
 
         $porcentagemAssistidas = ( $aulasVistas / $qtdAulas ) * 100;
 
         return $porcentagemAssistidas == self::PERCENTUAL_CERTIFICADO ? true : false;
+
+    }
+
+    public function porcentagemAssistidas($idCurso, $idUsuario)
+    {
+
+        $qtdAulas = Conteudos::join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
+                                ->where('modulos.idCurso', $idCurso)
+                                ->whereIn('conteudos.tipoConteudo', ['video', 'anexo'])
+                                ->count();
+
+        $aulasVistas = ConteudosRealizados::join('conteudos', 'conteudos_realizados.idConteudo', '=', 'conteudos.idConteudo')
+                                            ->join('modulos', 'conteudos.idModulo', '=', 'modulos.idModulo')
+                                            ->join('cursos', 'modulos.idCurso', '=', 'cursos.idCurso')
+                                            ->where('modulos.idCurso', $idCurso)
+                                            ->whereIn('conteudos.tipoConteudo', ['video', 'anexo'])
+                                            ->where('conteudos_realizados.idUsuario', $idUsuario)
+                                            ->count();
+
+        $porcentagemAssistidas = ( $aulasVistas / $qtdAulas ) * 100;
+        
+        return round($porcentagemAssistidas, 2);
 
     }
 }

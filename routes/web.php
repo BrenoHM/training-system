@@ -42,6 +42,7 @@ Route::get('/minhas-anotacoes', 'ConteudosController@minhasAnotacoes');
 Route::get('/meus-cursos', 'CursosController@meusCursos');
 
 Route::resource('usuarios', 'UserController');
+Route::get('/evolucao/{idUsuario}', 'UserController@evolucao')->name('evolucao');
 
 Route::get('/certificado/{idCurso}', 'CursosController@certificado')->name('certificado');
 

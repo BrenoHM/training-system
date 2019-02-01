@@ -64,6 +64,9 @@
                                   @csrf
                                   @method('DELETE')
                                   <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir este registro?');"><i class="fa fa-trash"></i></button>
+                                  @if( auth()->user()->profile == 'admin' )
+                                    <a class="btn btn-secondary" href="{{ route('evolucao', $usuario->id) }}" title="Evolução"><i class="fa fa-chart-pie"></i></a>
+                                  @endif
                               </form>
                           </td>
                         </tr>

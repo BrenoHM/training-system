@@ -63,7 +63,7 @@ class ConteudosController extends Controller
             'ordem'        => 'required',
         ];
 
-        $validate['url'] = $request->tipoConteudo == 'video' ? 'required' : 'mimes:pdf, xls, xlsx, doc, docx|max:15048';
+        //$validate['url'] = $request->tipoConteudo == 'video' ? 'required' : 'mimes:pdf, xls, xlsx, doc, docx|max:15048';
 
         $request->validate($validate);
 
@@ -82,18 +82,36 @@ class ConteudosController extends Controller
         if( $response['status'] == 1 ){
             
             if( $request->tipoConteudo == 'anexo' ){
-                $anexo = md5(time().rand(0,999)) . '.' . $request->url->getClientOriginalExtension();
-                $request->url->move(public_path('uploads/conteudos'), $anexo);
+
+                $extensions = array("pdf", "xls","xlsx","doc","docx");
+
+                $extensao = $request->url->getClientOriginalExtension();
+
+                $result = array($extensao);
+                
+                if( in_array( $result[0], $extensions ) ){
+                    $anexo = md5(time().rand(0,999)) . '.' . $extensao;
+                    $request->url->move(public_path('uploads/conteudos'), $anexo);
+                }else{
+                    $response = [
+                        'status'  => 0,
+                        'message' => 'Extensõees permitidas são pdf, xls, xlsx, doc, docx!',
+                    ];
+                }
             }
 
-            Conteudos::create([
-                'conteudo'     => $request->conteudo,
-                'tipoConteudo' => $request->tipoConteudo,
-                'idModulo'     => $request->idModulo,
-                'ordem'        => $request->ordem,
-                'url'          => $request->tipoConteudo == 'video' ? $request->url : $anexo,
-                'idUsuario'    => $request->user()->id
-            ]);
+            if( $response['status'] == 1 ){
+
+                Conteudos::create([
+                    'conteudo'     => $request->conteudo,
+                    'tipoConteudo' => $request->tipoConteudo,
+                    'idModulo'     => $request->idModulo,
+                    'ordem'        => $request->ordem,
+                    'url'          => $request->tipoConteudo == 'video' ? $request->url : $anexo,
+                    'idUsuario'    => $request->user()->id
+                ]);
+
+            }
 
         }
 

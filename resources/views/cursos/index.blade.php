@@ -11,7 +11,7 @@
           <!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
               <li class="breadcrumb-item active">Cursos</li>
             </ol>
           </div>
@@ -41,41 +41,43 @@
 
               @include('layouts.mensagens')
 
-              <table class="table table-bordered table-striped dataTable">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Curso</th>
-                    <th>Categoria</th>
-                    <th data-orderable="false">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach( $cursos as $curso )
-                        <tr>
-                          <td>{{ $curso->idCurso }}</td>
-                          <td>{{ $curso->curso }}</td>
-                          <td>{{ $curso->categoria->categoria }}</td>
-                          <td>
-                              <form action="{{ route('cursos.destroy', $curso->idCurso) }}" method="POST">
-                                  <a class="btn btn-primary" href="{{ route('cursos.edit', $curso->idCurso) }}"><i class="fas fa-edit"></i></a>
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir este registro?');"><i class="fa fa-trash"></i></button>
-                              </form>
-                          </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Curso</th>
-                    <th>Categoria</th>
-                    <th>Ação</th>
-                  </tr>
-                </tfoot>
-              </table>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped dataTable">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Curso</th>
+                      <th>Categoria</th>
+                      <th data-orderable="false">Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @foreach( $cursos as $curso )
+                          <tr>
+                            <td>{{ $curso->idCurso }}</td>
+                            <td>{{ $curso->curso }}</td>
+                            <td>{{ $curso->categoria->categoria }}</td>
+                            <td nowrap>
+                                <form action="{{ route('cursos.destroy', $curso->idCurso) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('cursos.edit', $curso->idCurso) }}"><i class="fas fa-edit"></i></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir este registro?');"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                          </tr>
+                      @endforeach
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>#</th>
+                      <th>Curso</th>
+                      <th>Categoria</th>
+                      <th>Ação</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>

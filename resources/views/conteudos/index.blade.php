@@ -11,7 +11,7 @@
           <!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
               <li class="breadcrumb-item active">Conteudos</li>
             </ol>
           </div>
@@ -40,45 +40,46 @@
             <div class="card-body">
 
               @include('layouts.mensagens')
-
-              <table class="table table-bordered table-striped dataTable">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Conteúdo</th>
-                    <th>Modulo</th>
-                    <th>Curso</th>
-                    <th data-orderable="false">Ação</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach( $conteudos as $conteudo )
-                        <tr>
-                          <td>{{ $conteudo->idConteudo }}</td>
-                          <td>{{ $conteudo->conteudo }}</td>
-                          <td>{{ $conteudo->modulo->modulo }}</td>
-                          <td>{{ $conteudo->modulo->curso->curso }}</td>
-                          <td>
-                              <form action="{{ route('conteudos.destroy', $conteudo->idConteudo) }}" method="POST">
-                                  <a class="btn btn-primary" href="{{ route('conteudos.edit', $conteudo->idConteudo) }}"><i class="fas fa-edit"></i></a>
-                                  @csrf
-                                  @method('DELETE')
-                                  <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir este registro?');"><i class="fa fa-trash"></i></button>
-                              </form>
-                          </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th>#</th>
-                    <th>Conteúdo</th>
-                    <th>Modulo</th>
-                    <th>Curso</th>
-                    <th>Ação</th>
-                  </tr>
-                </tfoot>
-              </table>
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped dataTable">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Conteúdo</th>
+                      <th>Modulo</th>
+                      <th>Curso</th>
+                      <th data-orderable="false">Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      @foreach( $conteudos as $conteudo )
+                          <tr>
+                            <td>{{ $conteudo->idConteudo }}</td>
+                            <td>{{ $conteudo->conteudo }}</td>
+                            <td>{{ $conteudo->modulo->modulo }}</td>
+                            <td>{{ $conteudo->modulo->curso->curso }}</td>
+                            <td nowrap>
+                                <form action="{{ route('conteudos.destroy', $conteudo->idConteudo) }}" method="POST">
+                                    <a class="btn btn-primary" href="{{ route('conteudos.edit', $conteudo->idConteudo) }}"><i class="fas fa-edit"></i></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Deseja realmente excluir este registro?');"><i class="fa fa-trash"></i></button>
+                                </form>
+                            </td>
+                          </tr>
+                      @endforeach
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th>#</th>
+                      <th>Conteúdo</th>
+                      <th>Modulo</th>
+                      <th>Curso</th>
+                      <th>Ação</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>

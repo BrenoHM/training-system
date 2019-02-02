@@ -11,7 +11,7 @@
           <!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
               <li class="breadcrumb-item active">Meus Cursos</li>
             </ol>
           </div>
@@ -33,7 +33,7 @@
                       <div class="row">
                       @if( count($cursos) )
                         @foreach( $cursos as $curso )
-                            <div class="col-lg-3 col-6">
+                            <div class="col-lg-3">
                                 <div class="small-box bg-success">
                                     <div class="inner">
                                         <h3>{{ $curso->inscricoes->count() }} Inscritos</h3>

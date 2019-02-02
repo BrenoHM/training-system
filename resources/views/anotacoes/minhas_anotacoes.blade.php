@@ -10,7 +10,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
               <li class="breadcrumb-item active">Minhas Anotações</li>
             </ol>
           </div>
@@ -31,7 +31,7 @@
               <div class="card-body">
                 <div class="row">
                   @foreach( $anotacoes as $anotacao )
-                    <div class="col-lg-4 col-6">
+                    <div class="col-lg-4">
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h4>{{ $anotacao->conteudo->modulo->curso->curso }}</h4>

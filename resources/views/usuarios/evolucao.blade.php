@@ -56,7 +56,7 @@
 				            @foreach( $inscricao->curso->modulos as $modulo )
 				              <li class="mb-2">
 				              	{{ $modulo->modulo }}
-				              	<ul>
+				              	<ul class="list-unstyled">
 				              		@foreach( $modulo->conteudo as $conteudo )
 					              		<li>
 					              			<i class="{{ $conteudo->tipoConteudo == 'video' ? 'fa fa-file-video' : 'fas fa-paperclip' }}"></i> 

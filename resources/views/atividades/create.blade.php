@@ -74,7 +74,7 @@
                     <form id="formPerguntas">
                       <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12">
-                          <textarea id="pergunta" required="required" class="form-control" rows="5" placeholder="Descrição da Pergunta..."></textarea>
+                          <textarea id="pergunta" required="required" class="form-control" rows="10" placeholder="Descrição da Pergunta..."></textarea>
                         </div>
                         
                         <div class="col-xs-1 col-sm-1 col-md-1 mt-3 text-center"><input type="radio" name="rdAlternativa" required="required" value=""></div>
@@ -139,6 +139,8 @@
 @endsection
 
 @section('javascript')
+<script src="{{url('/dist/plugins/ckeditor/ckeditor.js')}}"></script>
+<script src="{{url('/dist/plugins/ckeditor/ckfinder.js')}}"></script>
 <script>
 $(function(){  
 
@@ -190,6 +192,25 @@ $(function(){
     }
     
     e.preventDefault();
+  });
+
+  //CKEDITOR
+  //import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
+
+  ClassicEditor
+  .create(document.querySelector('#pergunta'),{
+    //plugins: [ CKFinder, ... ],
+    ckfinder: {
+        // To avoid issues, set it to an absolute path that does not start with dots, e.g. '/ckfinder/core/php/(...)'
+      //uploadUrl: '../core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
+      uploadUrl: "{{url('/dist/plugins/ckeditor/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json')}}"
+    }
+  })
+  .then(function (editor) {
+    // The editor instance
+  })
+  .catch(function (error) {
+    console.error(error)
   });
   
 });

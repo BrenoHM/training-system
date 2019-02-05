@@ -139,8 +139,19 @@
 @endsection
 
 @section('javascript')
-<script src="{{url('/dist/plugins/ckeditor/ckeditor.js')}}"></script>
-<script src="{{url('/dist/plugins/ckeditor/ckfinder.js')}}"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
+<script>
+  ClassicEditor
+  .create( document.querySelector( '#pergunta' ), {
+    ckfinder: {
+      uploadUrl: '{{url("plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json")}}',
+    },
+    //toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+  } )
+  .catch( error => {
+    console.error( error );
+  } );
+</script>
 <script>
 $(function(){  
 
@@ -192,25 +203,6 @@ $(function(){
     }
     
     e.preventDefault();
-  });
-
-  //CKEDITOR
-  //import CKFinder from '@ckeditor/ckeditor5-ckfinder/src/ckfinder';
-
-  ClassicEditor
-  .create(document.querySelector('#pergunta'),{
-    //plugins: [ CKFinder, ... ],
-    ckfinder: {
-        // To avoid issues, set it to an absolute path that does not start with dots, e.g. '/ckfinder/core/php/(...)'
-      //uploadUrl: '../core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json'
-      uploadUrl: "{{url('/dist/plugins/ckeditor/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json')}}"
-    }
-  })
-  .then(function (editor) {
-    // The editor instance
-  })
-  .catch(function (error) {
-    console.error(error)
   });
   
 });

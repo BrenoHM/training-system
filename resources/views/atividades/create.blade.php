@@ -139,19 +139,6 @@
 @endsection
 
 @section('javascript')
-<script src="https://cdn.ckeditor.com/ckeditor5/11.2.0/classic/ckeditor.js"></script>
-<script>
-  ClassicEditor
-  .create( document.querySelector( '#pergunta' ), {
-    ckfinder: {
-      uploadUrl: '{{url("plugins/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json")}}',
-    },
-    //toolbar: [ 'ckfinder', 'imageUpload', '|', 'heading', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
-  } )
-  .catch( error => {
-    console.error( error );
-  } );
-</script>
 <script>
 $(function(){  
 

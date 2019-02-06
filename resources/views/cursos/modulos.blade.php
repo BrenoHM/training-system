@@ -17,7 +17,7 @@
                   $extensao = explode(".", $conteudo->url);
                 @endphp
                 <i class="{{ ($conteudo->tipoConteudo == 'video' || ($extensao[1] == 'mp3' || $extensao[1] == 'mp4')) ? 'fa fa-file-video' : 'fas fa-paperclip' }}"></i> 
-                <a href="{{ route('conteudos.show', $conteudo->idConteudo) }}" {{ $conteudo->tipoConteudo == 'anexo' ? 'target="_blank"' : '' }}>
+                <a href="{{ route('conteudos.show', $conteudo->idConteudo) }}" {{ ($conteudo->tipoConteudo == 'video' || ($extensao[1] == 'mp3' || $extensao[1] == 'mp4')) ? '' : 'target="_blank"' }}>
                   {{ $conteudo->conteudo }}
                 </a>
                 <i class="fa fa-check-circle pull-right" title="{{ $conteudo->realizado->count() > 0 ? 'Conteúdo Estudado' : 'Conteúdo não Estudado' }}" style="color: {{ $conteudo->realizado->count() > 0 ? 'green' : '' }}"></i>

@@ -54,7 +54,17 @@
                         </div>
 
                         <div class="col-md-12 text-center" id="box-video">
-                            <?php echo $conteudo->url; ?>
+                            @php
+                              $extensao = explode(".", $conteudo->url);
+                            @endphp
+                            @if( $extensao[1] == 'mp3' || $extensao[1] == 'mp4' )
+                              <video controls>
+                                <source src="{{ url('/uploads/conteudos') }}/{{ $conteudo->url }}" type="video/{{ $extensao[1] }}">
+                                Seu browser não suporta elemento de audio.
+                              </video>
+                            @else
+                              <?php echo $conteudo->url; ?>
+                            @endif
                         </div>
                     </div>
 

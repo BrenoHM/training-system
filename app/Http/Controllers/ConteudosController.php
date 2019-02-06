@@ -147,18 +147,23 @@ class ConteudosController extends Controller
             ]);
         }
 
-        if( $conteudo->tipoConteudo == 'anexo' ){
-            $path = 'uploads/conteudos/'.$conteudo->url;
+        $extensao    = explode(".", $conteudo->url);
+        $extVideos   = ['mp3', 'mp4'];
+
+        if( $conteudo->tipoConteudo == 'anexo' && !in_array($extensao[1], $extVideos) ){
+
+            $path        = 'uploads/conteudos/'.$conteudo->url;
             $nomeArquivo = $conteudo->url;
             
             return response()->file($path, [
                 'Content-Disposition' => 'inline; filename="'. $nomeArquivo .'"'
             ]);
+
         }else{
 
             $conteudos = Conteudos::join('modulos', 'modulos.idModulo', '=', 'conteudos.idModulo')
                             ->where('modulos.idCurso', $idCurso)
-                            ->where('conteudos.tipoConteudo', 'video')
+                            ->whereIn('conteudos.tipoConteudo', ['video', 'anexo'])
                             ->orderBy('modulos.ordem')
                             ->orderBy('modulos.modulo')
                             ->orderBy('conteudos.ordem')

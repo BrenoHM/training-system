@@ -83,7 +83,7 @@ class ConteudosController extends Controller
             
             if( $request->tipoConteudo == 'anexo' ){
 
-                $extensions = array("pdf", "xls","xlsx","doc","docx");
+                $extensions = array("pdf", "xls","xlsx","doc","docx", "mp3", "mp4");
 
                 $extensao = $request->url->getClientOriginalExtension();
 

@@ -158,7 +158,8 @@ function buscaModulos(idCurso){
             if( data.modulos[i].conteudo ){
               for( x in data.modulos[i].conteudo )
               {
-                let icon = data.modulos[i].conteudo[x].tipoConteudo == 'video' ? 'fa fa-file-video' : 'fas fa-paperclip';
+                let extensao = data.modulos[i].conteudo[x].url.split('.');
+                let icon = (data.modulos[i].conteudo[x].tipoConteudo == 'video' || (extensao[1] == 'mp3' || extensao[1] == 'mp4')) ? 'fa fa-file-video' : 'fas fa-paperclip';
                 conteudos += "<p>"+data.modulos[i].conteudo[x].ordem+". <i class='"+icon+"'></i> "+data.modulos[i].conteudo[x].conteudo+"</p>";
               }
             }

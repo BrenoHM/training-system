@@ -52,7 +52,7 @@
                   @foreach( $atividade->perguntas as $pergunta )
                     <div class="col-xs-11 col-sm-11 col-md-11 offset-1">
                       <strong>Pergunta:</strong>
-                      <textarea name="perguntas[{{ $pergunta->idPergunta }}]" class="form-control" rows="4" required="required">{{ $pergunta->pergunta }}</textarea>
+                      <textarea name="perguntas[{{ $pergunta->idPergunta }}]" class="form-control pergunta" rows="10" required="required">{{ $pergunta->pergunta }}</textarea>
                     </div>
                     <div class="row">
                       @foreach( $pergunta->alternativas as $key => $alternativa )
@@ -98,9 +98,15 @@
 @endsection
 
 @section('javascript')
+<script src="{{ config('app.url') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="{{ config('app.url') }}/vendor/unisharp/laravel-ckeditor/adapters/jquery.js"></script>
+<script>
+
+    //CKEDITOR.replace( 'perguntas[*]' );
+</script>
 <script>
 $(function(){
-  
+  $('textarea').ckeditor();
 });
 
 </script>

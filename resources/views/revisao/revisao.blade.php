@@ -41,7 +41,7 @@
                   <div class="question col-12">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                       <strong>Questão {{ $key + 1 }}</strong>
-                      <div>{{ $pergunta->pergunta }}</div><br>
+                      <div><?= $pergunta->pergunta ?></div><br>
                     </div>
                     <div class="row">
                       @foreach( $pergunta->alternativas as $key => $alternativa )

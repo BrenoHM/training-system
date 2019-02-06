@@ -45,46 +45,48 @@
 
               @include('layouts.mensagens')
 
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th class="text-center">Tentativa</th>
-                    <th>Estado</th>
-                    <th>Nota</th>
-                    <th>Revisão</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @if( count($tentativas) )
-                    @foreach( $tentativas as $key => $tentativa )
-                        <tr>
-                          <td align="center">{{ $key + 1 }}</td>
-                          <td>
-                            @if( $tentativa->finished_at !== null )
-                              Finalizada em: <br>{{ $tentativa->finished_at->format('d/m/Y H:m:i') }}
-                            @else
-                              Em progresso
-                            @endif
-                          </td>
-                          <th>{{ $tentativa->nota !== null ? $tentativa->nota : '' }}</th>
-                          <td><a href="{{ route('revisao', $tentativa->idTentativa) }}">{{ $tentativa->finished_at !== null ? 'Revisão' : '' }}</a></td>
-                        </tr>
-                    @endforeach
-                  @else
+              <div class="table-responsive">
+                <table class="table table-striped">
+                  <thead>
                     <tr>
-                      <td colspan="4" align="center">Nenhuma tentativa foi realizada!</td>
+                      <th class="text-center">Tentativa</th>
+                      <th>Estado</th>
+                      <th>Nota</th>
+                      <th>Revisão</th>
                     </tr>
-                  @endif
-                </tbody>
-                <tfoot>
-                  <tr>
-                    <th class="text-center">Tentativa</th>
-                    <th>Estado</th>
-                    <th>Nota</th>
-                    <th>Revisão</th>
-                  </tr>
-                </tfoot>
-              </table>
+                  </thead>
+                  <tbody>
+                    @if( count($tentativas) )
+                      @foreach( $tentativas as $key => $tentativa )
+                          <tr>
+                            <td align="center">{{ $key + 1 }}</td>
+                            <td>
+                              @if( $tentativa->finished_at !== null )
+                                Finalizada em: <br>{{ $tentativa->finished_at->format('d/m/Y H:m:i') }}
+                              @else
+                                Em progresso
+                              @endif
+                            </td>
+                            <td>{{ $tentativa->nota !== null ? $tentativa->nota : '' }}</td>
+                            <td><a href="{{ route('revisao', $tentativa->idTentativa) }}">{{ $tentativa->finished_at !== null ? 'Revisão' : '' }}</a></td>
+                          </tr>
+                      @endforeach
+                    @else
+                      <tr>
+                        <td colspan="4" align="center">Nenhuma tentativa foi realizada!</td>
+                      </tr>
+                    @endif
+                  </tbody>
+                  <tfoot>
+                    <tr>
+                      <th class="text-center">Tentativa</th>
+                      <th>Estado</th>
+                      <th>Nota</th>
+                      <th>Revisão</th>
+                    </tr>
+                  </tfoot>
+                </table>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>

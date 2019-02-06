@@ -139,6 +139,10 @@
 @endsection
 
 @section('javascript')
+<script src="{{ config('app.url') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace( 'pergunta' );
+</script>
 <script>
 $(function(){  
 
@@ -153,7 +157,8 @@ $(function(){
   $("#formPerguntas").submit(function(e){
 
     var idAtividade  = $("#idAtividade").val();
-    var pergunta     = $("#pergunta").val();
+    //var pergunta     = $("#pergunta").val();
+    var pergunta     = CKEDITOR.instances.pergunta.getData();
     var radios       = [];
     var alternativas = [];
 
@@ -195,7 +200,8 @@ $(function(){
 });
 
 function clearInputs(){
-  $("#pergunta").val('');
+  //$("#pergunta").val('');
+  CKEDITOR.instances.pergunta.setData('');
   $("input[name=rdAlternativa]:checked").prop('checked', false);
   $(".alternativas").val('');
 }

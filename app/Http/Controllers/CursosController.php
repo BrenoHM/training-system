@@ -149,9 +149,22 @@ class CursosController extends Controller
      * @param  \App\Cursos  $cursos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cursos $cursos)
+    public function destroy(Cursos $curso)
     {
-        //
+        if( $curso->modulos->count() > 0 ){
+            return redirect()->route('cursos.index')
+                             ->with('warning', 'Existem módulos vinculados a este curso!');
+        }
+
+        if( $curso->inscricoes->count() > 0 ){
+            return redirect()->route('cursos.index')
+                             ->with('warning', 'Existem inscrições realizadas para este curso!');
+        }
+
+        $curso->delete();
+
+        return redirect()->route('cursos.index')
+                             ->with('success', 'Curso excluído com sucesso!');
     }
 
     public function certificado(Request $request)
@@ -168,7 +181,7 @@ class CursosController extends Controller
                             ->with('info', 'Você não esta matriculado neste curso!');
         }
 
-        //CASO NAO TENHA ATINGIDO OS 70%
+        //CASO NAO TENHA ATINGIDO OS 100%
         if( !Cursos::certificado($request->idCurso) ) {
             return redirect()->route('home')
                             ->with('info', 'Você não atingiu o percentual necessário para emissão do certificado!');

@@ -108,6 +108,12 @@ class CategoriasController extends Controller
      */
     public function destroy(Categorias $categoria)
     {
+
+        if( $categoria->cursos->count() > 0 ) {
+            return redirect()->route('categorias.index')
+                             ->with('warning', 'Categoria já encontra-se vinculada a um curso!');
+        }
+
         $categoria->delete();
   
         return redirect()->route('categorias.index')

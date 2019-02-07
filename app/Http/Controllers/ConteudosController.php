@@ -228,7 +228,12 @@ class ConteudosController extends Controller
             $validate['url'] = 'required';
         }else{
             if( !empty($request->anexo) || $conteudo->tipoConteudo != 'anexo' ){
-                $validate['anexo'] = 'mimes:pdf, xls, xlsx, doc, docx|max:15048';
+                //$validate['anexo'] = 'mimes:pdf, xls, xlsx, doc, docx|max:15048';
+                $extensions = array("pdf", "xls","xlsx","doc","docx", "mp3", "mp4");
+
+                $extensao = $request->anexo->getClientOriginalExtension();
+
+                $result = array($extensao);
             }
         }
 
@@ -238,8 +243,13 @@ class ConteudosController extends Controller
         if( $request->tipoConteudo == 'anexo' ){
             if( !empty($request->anexo) ){
 
-                $anexo = md5(time().rand(0,999)) . '.' . $request->anexo->getClientOriginalExtension();
-                $request->anexo->move(public_path('uploads/conteudos'), $anexo);
+                if( in_array( $result[0], $extensions ) ){
+                    $anexo = md5(time().rand(0,999)) . '.' . $request->anexo->getClientOriginalExtension();
+                    $request->anexo->move(public_path('uploads/conteudos'), $anexo);
+                }else{
+                    return redirect()->route('conteudos.edit', $request->idConteudo)
+                            ->with('warning', 'Extensões permitidas pdf, xls, xlsx, doc, docx, mp3, mp4!');
+                }
 
                 //APAGA, SE EXISTIR, O ARQUIVO ANTIGO
                 $arq = 'uploads/conteudos/'.$conteudo->url;
@@ -289,7 +299,12 @@ class ConteudosController extends Controller
         //    'conteudo' => 'required',
         //]);
 
-        //DEPOIS LEMBRAR DE TESTAR SE EXISTE ALGUM CONTEUDO REALIZADO
+        $conteudoRealizado = ConteudosRealizados::where('idConteudo', $request->conteudo)->count();
+
+        if( $conteudoRealizado ) {
+            return redirect()->route('conteudos.index')
+                             ->with('warning', 'Conteúdo já foi realizado!');
+        }
 
         $conteudo = Conteudos::find($request->conteudo);
 
@@ -303,13 +318,8 @@ class ConteudosController extends Controller
 
         $conteudo->delete();
 
-        //if( $modulo->conteudo()->count() > 0 ) {
-        //    return redirect()->route('modulos.index')
-        //                    ->with('warning', 'Existem conteúdos vinculados a este módulo!');
-        //}
-
         return redirect()->route('conteudos.index')
-                            ->with('success', 'Conteúdo excluído com sucesso!');
+                         ->with('success', 'Conteúdo excluído com sucesso!');
     }
 
     public function anotacao(Request $request)
@@ -338,7 +348,6 @@ class ConteudosController extends Controller
                                 ->where('idUsuario', $request->user()->id)
                                 ->get();
 
-        //$anotacoes = Anotacoes::info()->find(2);
         return view('anotacoes.minhas_anotacoes', ['anotacoes' => $anotacoes]);
     }
 }

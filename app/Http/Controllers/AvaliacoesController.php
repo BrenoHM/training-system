@@ -115,4 +115,21 @@ class AvaliacoesController extends Controller
     {
         //
     }
+
+    public function assessmentsDemanda(Request $request)
+    {
+
+        $limit = 10;
+
+        $avaliacoes = Avaliacoes::with('usuario')
+                                ->skip($request->page * $limit)
+                                ->take($limit)
+                                ->get();
+
+        return response()->json([
+            'avaliacoes' => $avaliacoes,
+            'page' => $request->page + 1
+        ]);
+
+    }
 }

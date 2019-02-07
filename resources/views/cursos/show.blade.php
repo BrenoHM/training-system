@@ -108,8 +108,12 @@
                     </p>
                     <hr>
                   @endforeach
+
+                  <div id="more"></div>
+                  <a href="#" class="btn btn-primary" id="ver-mais" data-page="1">Ver mais</a>
+
                 @else
-                <div class=" col-12 alert alert-info">
+                <div class="col-12 alert alert-info">
                   <p>Não há nenhuma avaliação para este curso!</p>
                 </div>
                 @endif
@@ -129,3 +133,40 @@
 @endsection
 
 @include('scripts.rating')
+
+@section('javascript')
+<script>
+$(function(){
+  $("#ver-mais").on('click', function(){
+
+    var page = $(this).data('page');
+
+    $.ajax({ 
+        url: "{{route('avaliacoes.mais')}}",
+        data: {page: page},
+        dataType: "json",
+        type: "POST",
+        beforeSend: function(){
+          $("#div-loader").show();
+        },
+        success: function(data){
+          var avaliacao = "";
+          $.each(data.avaliacoes, function(i, value){
+            avaliacao = `
+              <p><strong>${data.avaliacoes[i].usuario.name}</strong>
+                <input type="hidden" class="rating" value="${data.avaliacoes[i].nota}" data-filled="fa fa-star" data-empty="fa fa-star-o" disabled="disabled" />
+                <br>
+                ${data.avaliacoes[i].comentario}
+              </p>
+              <hr>
+            `;
+            $("#more").append(avaliacao);
+          });
+          $("#ver-mais").data('page', data.page);
+          $("#div-loader").hide();
+        }
+    });
+  });
+});
+</script>
+@endsection

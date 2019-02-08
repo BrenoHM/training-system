@@ -88,12 +88,20 @@ class CursosController extends Controller
 
         $rating = 0;
 
-        $qtdAvaliacoes  = $curso->avaliacoes()->count();
+        $avaliacoes = $curso->avaliacoes();
+
+        $qtdAvaliacoes  = $avaliacoes->count();
 
         if( $qtdAvaliacoes > 0 ){
-            $somaAvaliacoes = $curso->avaliacoes()->sum('nota');
+            $somaAvaliacoes = $avaliacoes->sum('nota');
             $rating = $somaAvaliacoes / $qtdAvaliacoes;
         }
+
+        $limit = 10;
+        $data['qtdPaginas'] = ceil($qtdAvaliacoes / $limit);
+        $data['avaliacoes'] = $avaliacoes->skip(0)
+                                         ->take($limit)
+                                         ->get();
 
         $data['certificado'] = $certificado;
 

@@ -35,6 +35,7 @@ Route::get('/revisao/{idTentativa}', 'TentativasController@revisao')->name('revi
 
 Route::get('/avaliacao/{idCurso}', 'AvaliacoesController@create')->name('avaliacao.create');
 Route::post('/avaliacao', 'AvaliacoesController@store')->name('avaliacao.store');
+Route::post('/avaliacao/mais', 'AvaliacoesController@assessmentsDemanda')->name('avaliacoes.mais');
 
 Route::post('/anotacao', 'ConteudosController@anotacao');
 Route::get('/minhas-anotacoes', 'ConteudosController@minhasAnotacoes');

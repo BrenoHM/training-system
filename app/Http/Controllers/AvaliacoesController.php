@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class AvaliacoesController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -122,6 +123,7 @@ class AvaliacoesController extends Controller
         $limit = 10;
 
         $avaliacoes = Avaliacoes::with('usuario')
+                                ->where('idCurso', $request->idCurso)
                                 ->skip($request->page * $limit)
                                 ->take($limit)
                                 ->get();

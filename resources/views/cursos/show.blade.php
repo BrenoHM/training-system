@@ -99,8 +99,8 @@
               <!-- /.box-header -->
               <div class="card-body" id="avaliacoes">
 
-                @if( count($curso->avaliacoes) )
-                  @foreach( $curso->avaliacoes as $avaliacao )
+                @if( count($avaliacoes) )
+                  @foreach( $avaliacoes as $avaliacao )
                     <p><strong>{{ $avaliacao->usuario->name }}</strong>
                       <input type="hidden" class="rating" value="{{ $avaliacao->nota }}" data-filled="fa fa-star" data-empty="fa fa-star-o" disabled="disabled" />
                       <br>
@@ -109,8 +109,15 @@
                     <hr>
                   @endforeach
 
-                  <div id="more"></div>
-                  <a href="#" class="btn btn-primary" id="ver-mais" data-page="1">Ver mais</a>
+                  @if( $qtdPaginas > 1 )
+                    <div id="more"></div>
+                    <div class="text-center">
+                      <div>
+                        <img src="{{url('/dist/img/load.gif')}}" id="loadingMore" width="50" style="display: none;">
+                      </div>
+                      <a href="javascript:void(0);" class="btn btn-primary" id="ver-mais" onclick="carregarMais(this, '{{$curso->idCurso}}', '{{$qtdPaginas}}');" data-page="1">Ver mais</a>
+                    </div>
+                  @endif
 
                 @else
                 <div class="col-12 alert alert-info">
@@ -133,40 +140,3 @@
 @endsection
 
 @include('scripts.rating')
-
-@section('javascript')
-<script>
-$(function(){
-  $("#ver-mais").on('click', function(){
-
-    var page = $(this).data('page');
-
-    $.ajax({ 
-        url: "{{route('avaliacoes.mais')}}",
-        data: {page: page},
-        dataType: "json",
-        type: "POST",
-        beforeSend: function(){
-          $("#div-loader").show();
-        },
-        success: function(data){
-          var avaliacao = "";
-          $.each(data.avaliacoes, function(i, value){
-            avaliacao = `
-              <p><strong>${data.avaliacoes[i].usuario.name}</strong>
-                <input type="hidden" class="rating" value="${data.avaliacoes[i].nota}" data-filled="fa fa-star" data-empty="fa fa-star-o" disabled="disabled" />
-                <br>
-                ${data.avaliacoes[i].comentario}
-              </p>
-              <hr>
-            `;
-            $("#more").append(avaliacao);
-          });
-          $("#ver-mais").data('page', data.page);
-          $("#div-loader").hide();
-        }
-    });
-  });
-});
-</script>
-@endsection

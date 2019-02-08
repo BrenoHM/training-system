@@ -120,7 +120,7 @@ class AvaliacoesController extends Controller
     public function assessmentsDemanda(Request $request)
     {
 
-        $limit = 10;
+        $limit = Avaliacoes::LIMIT;
 
         $avaliacoes = Avaliacoes::with('usuario')
                                 ->where('idCurso', $request->idCurso)

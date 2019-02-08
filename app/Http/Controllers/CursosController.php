@@ -6,6 +6,7 @@ use App\Cursos;
 use App\Categorias;
 use App\Inscricoes;
 use App\Conteudos;
+use App\Avaliacoes;
 use App\ConteudosRealizados;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -97,7 +98,7 @@ class CursosController extends Controller
             $rating = $somaAvaliacoes / $qtdAvaliacoes;
         }
 
-        $limit = 10;
+        $limit = Avaliacoes::LIMIT;
         $data['qtdPaginas'] = ceil($qtdAvaliacoes / $limit);
         $data['avaliacoes'] = $avaliacoes->skip(0)
                                          ->take($limit)

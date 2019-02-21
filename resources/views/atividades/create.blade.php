@@ -139,7 +139,8 @@
 @endsection
 
 @section('javascript')
-<script src="{{ config('app.url') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<!--<script src="{{ config('app.url') }}/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>-->
+<script src="{{ url('/dist/plugins/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 <script>
     CKEDITOR.replace( 'pergunta' );
 </script>

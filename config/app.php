@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Sao_Paulo',
 
     /*
     |--------------------------------------------------------------------------
@@ -162,7 +162,7 @@ return [
 
         Barryvdh\DomPDF\ServiceProvider::class,
 
-        Unisharp\Ckeditor\ServiceProvider::class,
+        //Unisharp\Ckeditor\ServiceProvider::class,
 
     ],
 

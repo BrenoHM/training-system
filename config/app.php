@@ -162,7 +162,7 @@ return [
 
         Barryvdh\DomPDF\ServiceProvider::class,
 
-        Unisharp\Ckeditor\ServiceProvider::class,
+        //Unisharp\Ckeditor\ServiceProvider::class,
 
     ],
 

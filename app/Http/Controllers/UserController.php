@@ -73,7 +73,8 @@ class UserController extends Controller
         ]);
 
         //ENVIO DE EMAIL INFORMANDO AO USUARIO  SEU EMAIL E SENHA
-        Mail::to('emaildobrenomol@gmail.com')
+        //Mail::to('emaildobrenomol@gmail.com')
+        Mail::to($request->email)
         //->cc('copy@email.com')
         ->send(new \App\Mail\SendMailUser($request->name, $request->email, $request->password));
 
@@ -163,9 +164,21 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy(Request $request)
     {
-        //
+        $usuario = User::find($request->usuario);
+
+        if( $usuario->inscricoes->count() > 0 ) {
+
+            return redirect()->route('usuarios.index')
+                        ->with('warning', 'Usuário já se encontra cadastrado em um curso!');
+
+        }
+
+        $usuario->delete();
+
+        return redirect()->route('usuarios.index')
+                        ->with('success', 'Usuário deletado com sucesso!');
     }
 
     public function evolucao(Request $request)

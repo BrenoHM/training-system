@@ -152,7 +152,7 @@ class ConteudosController extends Controller
 
         if( $conteudo->tipoConteudo == 'anexo' && !in_array($extensao[1], $extVideos) ){
 
-            $path        = 'uploads/conteudos/'.$conteudo->url;
+            $path        = public_path('uploads/conteudos/').$conteudo->url;
             $nomeArquivo = $conteudo->url;
             
             return response()->file($path, [

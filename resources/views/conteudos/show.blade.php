@@ -71,10 +71,10 @@
                     <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         @if( $anterior )
-                          <a href="{{ route('conteudos.show', $anterior->idConteudo) }}" class="btn btn-secondary"><i class="fas fa-arrow-circle-left"></i> {{ $anterior->conteudo }}</a>
+                          <a href="{{ route('conteudos.show', $anterior->idConteudo) }}" class="btn btn-secondary btn-previous-mobile"><i class="fas fa-arrow-circle-left"></i> <span class="previous-mobile">{{ $anterior->conteudo }}<span></a>
                         @endif
                         @if( $proximo )
-                          <a href="{{ route('conteudos.show', $proximo->idConteudo) }}" class="btn btn-secondary pull-right">{{ $proximo->conteudo }} <i class="fas fa-arrow-circle-right"></i></a>
+                          <a href="{{ route('conteudos.show', $proximo->idConteudo) }}" class="btn btn-secondary btn-next-mobile pull-right"><span class="next-mobile">{{ $proximo->conteudo }}</span> <i class="fas fa-arrow-circle-right"></i></a>
                         @endif
                     </div>
                     </div>

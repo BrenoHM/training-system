@@ -72,7 +72,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 <script src="{{url('/dist/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- datatables -->
-<script src="{{url('/dist/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{url('/dist/plugins/datatables/jquery.dataTables-1.10.18.min.js')}}"></script>
 <script src="{{url('/dist/plugins/datatables/dataTables.bootstrap4.js')}}"></script>
 <!-- datepicker -->
 <script src="{{url('/dist/plugins/datepicker/bootstrap-datepicker.js')}}"></script>

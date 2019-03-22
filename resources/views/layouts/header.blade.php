@@ -24,22 +24,11 @@
     <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown dropdown-meus-cursos">
-            <a class="nav-link" data-toggle="dropdown" href="#">
+            <a class="nav-link meus-cursos" data-toggle="dropdown" href="#">
               Meus Cursos
             </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                @if( Session::get('meuscursos') !== null )
-                    @foreach( Session::get('meuscursos') as $curso )
-                            @if( $curso->inscrito->count() )
-                            <div class="media">
-                                <a href="{{ route('cursos.show', $curso->idCurso) }}" class="dropdown-item">{{ $curso->curso }}</a>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                        @endif
-                    @endforeach
-                @endif
-                <a href="{{ url('/meus-cursos') }}" class="dropdown-item dropdown-footer">Ver todos</a>
-            </div>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right"></div>
+            <!--<a href="{{ url('/meus-cursos') }}" class="dropdown-item dropdown-footer">Ver todos</a>-->
         </li>
         <!-- Notifications Dropdown Menu -->
         <!--<li class="nav-item dropdown">

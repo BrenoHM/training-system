@@ -40,6 +40,8 @@ Route::post('/avaliacao/mais', 'AvaliacoesController@assessmentsDemanda')->name(
 Route::post('/anotacao', 'ConteudosController@anotacao');
 Route::get('/minhas-anotacoes', 'ConteudosController@minhasAnotacoes');
 
+Route::get('/subscribed', 'InscricoesController@subscribed');
+
 Route::get('/meus-cursos', 'CursosController@meusCursos');
 
 Route::resource('usuarios', 'UserController');

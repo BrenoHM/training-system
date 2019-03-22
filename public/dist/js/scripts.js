@@ -39,6 +39,44 @@
         }
   });
 
+  $(".meus-cursos").on('mouseover', function(){
+
+      var conteudo = $(".dropdown-menu-right").html().length;
+    
+      if ( conteudo == 0 ){
+          $.ajax({ 
+              url: "/subscribed",
+              data: {},
+              dataType: "json",
+              type: "GET",
+              beforeSend: function(){
+                  $('.dropdown-menu-right').html('<div class="text-center">Buscando...</div>');
+              },
+              success: function(data){
+                  var linha = '';
+                  if( data.length > 0 ){
+                      $.each(data, function(i, value){
+                          linha += `
+                              <div class="media">
+                                  <a href="/cursos/${data[i].curso.idCurso}" class="dropdown-item">${data[i].curso.curso}</a>
+                              </div>
+                              <div class="dropdown-divider"></div>
+                          `;
+                      });
+                      linha += '<a href="/meus-cursos" class="dropdown-item dropdown-footer">Ver todos</a>';
+                  }else{
+                      linha = `
+                          <div class="media">
+                              <a href="javascript:void(0)" class="dropdown-item">Nenhum curso!</a>
+                          </div>
+                      `;
+                  }
+                  $('.dropdown-menu-right').html(linha);
+              }
+          });
+      }
+  });
+
 })(jQuery)
 
 function mostraErro(error, alvo){

@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class InscricoesController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -90,5 +96,12 @@ class InscricoesController extends Controller
     public function destroy(Inscricoes $inscricoes)
     {
         //
+    }
+
+    public function subscribed(Request $request)
+    {
+        $inscricoes = Inscricoes::with('curso')->where('idUsuario', $request->user()->id)->take(4)->get();
+        
+        return response()->json($inscricoes);
     }
 }

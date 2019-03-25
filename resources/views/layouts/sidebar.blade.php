@@ -12,7 +12,8 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{url('/img/profile.png')}}" class="img-circle elevation-2" alt="Imagem do usuário">
+                <!--<img src="{{url('/img/profile.png')}}" class="img-circle elevation-2" alt="Imagem do usuário">-->
+                <img src="{{ Avatar::create(auth()->user()->name)->toBase64() }}" />
             </div>
             <div class="info">
                 <a href="{{ route('usuarios.edit', auth()->user()->id) }}" class="d-block"> {{auth()->user()->name != null ? auth()->user()->name : "Administrador"}} </a>

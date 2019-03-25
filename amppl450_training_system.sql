@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : AMPPLIE
+Source Server         : TRAINING
 Source Server Version : 50641
 Source Host           : 108.179.253.175:3306
 Source Database       : amppl450_training_system
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50641
 File Encoding         : 65001
 
-Date: 2019-02-08 10:42:12
+Date: 2019-03-25 10:02:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,31 +27,31 @@ CREATE TABLE `alternativas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idAlternativa`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of alternativas
 -- ----------------------------
-INSERT INTO `alternativas` VALUES ('6', '<javascript></javascript>', '2', '0', '2019-01-16 16:51:10', '2019-02-06 22:41:20');
-INSERT INTO `alternativas` VALUES ('5', '<script></script>', '2', '1', '2019-01-16 16:51:09', '2019-02-06 22:41:20');
-INSERT INTO `alternativas` VALUES ('7', '<body></body>', '2', '0', '2019-01-16 16:51:10', '2019-02-06 22:41:21');
-INSERT INTO `alternativas` VALUES ('8', '<css></css>', '2', '0', '2019-01-16 16:51:11', '2019-02-06 22:41:21');
-INSERT INTO `alternativas` VALUES ('9', 'body', '3', '1', '2019-01-19 19:19:39', '2019-02-06 22:41:22');
-INSERT INTO `alternativas` VALUES ('10', 'head', '3', '0', '2019-01-19 19:19:40', '2019-02-06 22:41:22');
-INSERT INTO `alternativas` VALUES ('11', 'document', '3', '0', '2019-01-19 19:19:40', '2019-02-06 22:41:23');
-INSERT INTO `alternativas` VALUES ('12', 'page', '3', '0', '2019-01-19 19:19:40', '2019-02-06 22:41:23');
-INSERT INTO `alternativas` VALUES ('13', 'composição', '4', '1', '2019-02-05 18:59:40', '2019-02-06 22:41:24');
-INSERT INTO `alternativas` VALUES ('14', 'generalização', '4', '0', '2019-02-05 18:59:40', '2019-02-06 22:41:24');
-INSERT INTO `alternativas` VALUES ('15', 'herança', '4', '0', '2019-02-05 18:59:41', '2019-02-06 22:41:24');
-INSERT INTO `alternativas` VALUES ('16', 'polimorfismo', '4', '0', '2019-02-05 18:59:41', '2019-02-06 22:41:25');
-INSERT INTO `alternativas` VALUES ('17', 'a', '5', '1', '2019-02-06 13:15:28', '2019-02-06 22:41:26');
-INSERT INTO `alternativas` VALUES ('18', 'b', '5', '0', '2019-02-06 13:15:28', '2019-02-06 22:41:26');
-INSERT INTO `alternativas` VALUES ('19', 'c', '5', '0', '2019-02-06 13:15:29', '2019-02-06 22:41:26');
-INSERT INTO `alternativas` VALUES ('20', 'd', '5', '0', '2019-02-06 13:15:29', '2019-02-06 22:41:27');
-INSERT INTO `alternativas` VALUES ('21', 'carregador (loader)', '6', '0', '2019-02-06 13:22:15', '2019-02-06 22:41:27');
-INSERT INTO `alternativas` VALUES ('22', 'compilador (compiler)', '6', '1', '2019-02-06 13:22:15', '2019-02-06 22:41:28');
-INSERT INTO `alternativas` VALUES ('23', 'interpretador (interpreter)', '6', '0', '2019-02-06 13:22:16', '2019-02-06 22:41:28');
-INSERT INTO `alternativas` VALUES ('24', 'ligador (linker)', '6', '0', '2019-02-06 13:22:16', '2019-02-06 22:41:29');
+INSERT INTO `alternativas` VALUES ('1', 'Word', '1', '0', '2019-03-13 11:05:26', '2019-03-13 11:05:26');
+INSERT INTO `alternativas` VALUES ('2', 'Excel', '1', '1', '2019-03-13 11:05:26', '2019-03-13 11:05:26');
+INSERT INTO `alternativas` VALUES ('3', 'Power Point', '1', '0', '2019-03-13 11:05:26', '2019-03-13 11:05:26');
+INSERT INTO `alternativas` VALUES ('4', 'Correio Eletrônico', '1', '0', '2019-03-13 11:05:26', '2019-03-13 11:05:26');
+INSERT INTO `alternativas` VALUES ('5', '.txt', '2', '0', '2019-03-13 11:11:41', '2019-03-13 11:11:41');
+INSERT INTO `alternativas` VALUES ('6', '.xlsx', '2', '1', '2019-03-13 11:11:41', '2019-03-13 11:11:41');
+INSERT INTO `alternativas` VALUES ('7', '.docx', '2', '0', '2019-03-13 11:11:41', '2019-03-13 11:11:41');
+INSERT INTO `alternativas` VALUES ('8', '.jpg', '2', '0', '2019-03-13 11:11:41', '2019-03-13 11:11:41');
+INSERT INTO `alternativas` VALUES ('9', '.pdf', '3', '0', '2019-03-22 13:51:00', '2019-03-22 13:51:00');
+INSERT INTO `alternativas` VALUES ('10', '.xls', '3', '0', '2019-03-22 13:51:00', '2019-03-22 13:51:00');
+INSERT INTO `alternativas` VALUES ('11', '.doc', '3', '1', '2019-03-22 13:51:00', '2019-03-22 13:51:00');
+INSERT INTO `alternativas` VALUES ('12', '.jpg', '3', '0', '2019-03-22 13:51:00', '2019-03-22 13:51:00');
+INSERT INTO `alternativas` VALUES ('13', 'ctrl + B', '4', '1', '2019-03-22 13:52:27', '2019-03-22 13:52:27');
+INSERT INTO `alternativas` VALUES ('14', 'ctrl + Z', '4', '0', '2019-03-22 13:52:27', '2019-03-22 13:52:27');
+INSERT INTO `alternativas` VALUES ('15', 'ctrl + X', '4', '0', '2019-03-22 13:52:27', '2019-03-22 13:52:27');
+INSERT INTO `alternativas` VALUES ('16', 'ctrl + V', '4', '0', '2019-03-22 13:52:27', '2019-03-22 13:52:27');
+INSERT INTO `alternativas` VALUES ('17', 'Apagar texto do documento', '5', '0', '2019-03-22 13:55:32', '2019-03-22 13:55:32');
+INSERT INTO `alternativas` VALUES ('18', 'Selecionar todo o texto do documento', '5', '1', '2019-03-22 13:55:32', '2019-03-22 13:55:32');
+INSERT INTO `alternativas` VALUES ('19', 'Recortar um texto do documento', '5', '0', '2019-03-22 13:55:32', '2019-03-22 13:55:32');
+INSERT INTO `alternativas` VALUES ('20', 'Colar um texto no documento', '5', '0', '2019-03-22 13:55:32', '2019-03-22 13:55:32');
 
 -- ----------------------------
 -- Table structure for `anotacoes`
@@ -65,14 +65,12 @@ CREATE TABLE `anotacoes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idAnotacao`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of anotacoes
 -- ----------------------------
-INSERT INTO `anotacoes` VALUES ('2', '1', '2', 'anotou', '2018-12-27 16:08:19', '2018-12-27 16:16:57');
-INSERT INTO `anotacoes` VALUES ('3', '2', '2', 'Variáveis do tipo inteiro, booleano, float.', '2018-12-28 18:24:18', '2018-12-28 18:24:18');
-INSERT INTO `anotacoes` VALUES ('4', '30', '1', 'Teste Angular', '2019-02-06 22:26:20', '2019-02-06 22:26:20');
+INSERT INTO `anotacoes` VALUES ('1', '35', '2', '<?php\ncomandos\n?>', '2019-03-18 19:57:53', '2019-03-18 19:57:53');
 
 -- ----------------------------
 -- Table structure for `atividades`
@@ -86,12 +84,13 @@ CREATE TABLE `atividades` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idAtividade`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of atividades
 -- ----------------------------
-INSERT INTO `atividades` VALUES ('2', 'Exercícios sobre conceitos iniciais', '1', '1', '2019-01-16 16:45:57', '2019-02-06 22:41:19');
+INSERT INTO `atividades` VALUES ('1', 'Questões básicas', '2', '1', '2019-03-13 11:04:07', '2019-03-13 11:04:07');
+INSERT INTO `atividades` VALUES ('2', 'Exercícios de Fixação', '3', '1', '2019-03-22 13:49:47', '2019-03-22 13:49:47');
 
 -- ----------------------------
 -- Table structure for `avaliacoes`
@@ -106,22 +105,14 @@ CREATE TABLE `avaliacoes` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idAvaliacao`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of avaliacoes
 -- ----------------------------
-INSERT INTO `avaliacoes` VALUES ('5', '1', '2', '5', 'Ótimo curso o conteúdo foi bem passado pelo instrutor', '2018-12-27 12:01:52', '2018-12-27 12:01:52');
-INSERT INTO `avaliacoes` VALUES ('7', '1', '1', '1', 'Teste de comentário1', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('8', '1', '1', '2', 'Teste de comentário2', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('9', '1', '1', '3', 'Teste de comentário3', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('10', '1', '1', '4', 'Teste de comentário4', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('11', '1', '1', '5', 'Teste de comentário5', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('12', '1', '1', '1', 'Teste de comentário6', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('13', '1', '1', '2', 'Teste de comentário7', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('14', '1', '1', '3', 'Teste de comentário8', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('15', '1', '1', '4', 'Teste de comentário9', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
-INSERT INTO `avaliacoes` VALUES ('16', '1', '1', '5', 'Teste de comentário10', '2019-02-08 09:18:04', '2019-02-08 09:18:07');
+INSERT INTO `avaliacoes` VALUES ('1', '1', '1', '4', 'Curso excelente, conteúdo muito bem explicado.', '2019-03-13 10:52:08', '2019-03-13 10:52:08');
+INSERT INTO `avaliacoes` VALUES ('2', '3', '2', '5', 'Ótimo curso para quem esta querendo começar com php.', '2019-03-18 19:58:51', '2019-03-18 19:58:51');
+INSERT INTO `avaliacoes` VALUES ('3', '5', '1', '5', 'Curso show de bola!', '2019-03-22 14:13:12', '2019-03-22 14:13:12');
 
 -- ----------------------------
 -- Table structure for `categorias`
@@ -134,14 +125,16 @@ CREATE TABLE `categorias` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idCategoria`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of categorias
 -- ----------------------------
 INSERT INTO `categorias` VALUES ('1', 'JAVASCRIPT', '1', '2018-12-11 08:53:55', '2018-12-11 08:54:00');
+INSERT INTO `categorias` VALUES ('6', 'PHP', '1', '2019-02-26 20:33:32', '2019-02-26 20:33:32');
 INSERT INTO `categorias` VALUES ('4', 'NEGÓCIOS', '1', '2018-12-13 16:24:27', '2018-12-13 16:24:27');
 INSERT INTO `categorias` VALUES ('5', 'INGLÊS', '1', '2018-12-27 22:38:23', '2018-12-27 22:38:23');
+INSERT INTO `categorias` VALUES ('7', 'OFFICE', '1', '2019-03-12 16:30:14', '2019-03-12 16:30:14');
 
 -- ----------------------------
 -- Table structure for `conteudos`
@@ -158,40 +151,92 @@ CREATE TABLE `conteudos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idConteudo`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of conteudos
 -- ----------------------------
-INSERT INTO `conteudos` VALUES ('1', 'Javascript Essencial - Conceitos iniciais', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ipHuSfOYhwA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2018-12-22 15:54:59', '2018-12-22 15:54:59');
-INSERT INTO `conteudos` VALUES ('2', 'Javascript Essencial - Variáveis e tipos de dados', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ZW02MWzZXPE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2018-12-22 16:03:30', '2018-12-22 16:03:30');
-INSERT INTO `conteudos` VALUES ('3', 'Javascript Essencial - Funções', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/TWmlIbvTjRo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2018-12-22 16:14:07', '2018-12-22 16:14:07');
-INSERT INTO `conteudos` VALUES ('4', 'JavaScript Essencial - Objetos e Arrays', 'video', '2', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/2sZerMlCzBM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2018-12-23 12:25:02', '2018-12-23 12:25:02');
-INSERT INTO `conteudos` VALUES ('5', 'JavaScript Essencial - Strings e números', 'video', '2', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/rDfpq25OP_Q\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2018-12-23 12:26:18', '2018-12-23 12:26:18');
-INSERT INTO `conteudos` VALUES ('6', 'Javascript Essencial - Data e hora', 'video', '2', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/MPgVZzUBTlw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2018-12-23 12:30:06', '2018-12-23 12:33:02');
-INSERT INTO `conteudos` VALUES ('7', 'Javascript Essencial - Estruturas de controle e repetição', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dJ88VdZMYKY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2018-12-23 12:32:28', '2018-12-23 12:32:28');
-INSERT INTO `conteudos` VALUES ('8', 'Javascript Essencial - Tratamento de exceções', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/KpA6Idl9-a0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2018-12-23 12:34:25', '2018-12-23 12:34:25');
-INSERT INTO `conteudos` VALUES ('9', 'Javascript Essencial - DOM parte 1', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mchmZKNBjLA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2018-12-23 12:36:14', '2018-12-23 12:36:14');
-INSERT INTO `conteudos` VALUES ('10', 'Javascript Essencial - DOM parte 2', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/zAPDX_IkNds\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2018-12-23 12:37:20', '2018-12-23 12:37:20');
-INSERT INTO `conteudos` VALUES ('11', 'CURSO DE INGLÊS ONLINE - AULA 1', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/MN7Vm_g_ySs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2018-12-27 22:41:48', '2018-12-27 22:41:48');
-INSERT INTO `conteudos` VALUES ('12', 'CURSO DE INGLÊS ONLINE - AULA 2', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AoZbRIdeGSU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2018-12-27 22:43:13', '2018-12-27 22:43:13');
-INSERT INTO `conteudos` VALUES ('13', 'CURSO DE INGLÊS ONLINE - AULA 3', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/wrlNJqvr1dU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2018-12-27 22:44:04', '2018-12-27 22:44:04');
-INSERT INTO `conteudos` VALUES ('14', 'CURSO DE INGLÊS ONLINE - AULA 4', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-Toz2RtUEok\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '3', '1', '2018-12-27 22:44:46', '2018-12-27 22:44:46');
-INSERT INTO `conteudos` VALUES ('15', 'CURSO DE INGLÊS ONLINE - AULA 5', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Ps0G62PR4Ks\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '4', '1', '2018-12-27 22:45:57', '2018-12-27 22:45:57');
-INSERT INTO `conteudos` VALUES ('16', 'CURSO DE INGLÊS ONLINE - AULA 6', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yfdcKf1KAhQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '5', '1', '2018-12-27 22:46:30', '2018-12-27 22:46:30');
-INSERT INTO `conteudos` VALUES ('17', 'CURSO DE INGLÊS ONLINE - AULA 7', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/LPlBIzDp8hg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '6', '1', '2018-12-27 22:47:11', '2018-12-27 22:47:11');
-INSERT INTO `conteudos` VALUES ('18', 'CURSO DE INGLÊS ONLINE - AULA 8', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/5ugkJAp6aK4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '7', '1', '2018-12-27 22:47:51', '2018-12-27 22:47:51');
-INSERT INTO `conteudos` VALUES ('19', 'CURSO DE INGLÊS ONLINE - AULA 9 (Parte 1)', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/HvNizuvZeN4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '8', '1', '2018-12-27 22:48:31', '2018-12-27 22:48:31');
-INSERT INTO `conteudos` VALUES ('20', 'CURSO DE INGLÊS ONLINE - AULA 9 (Parte 2)', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4nhp03Ik_Vc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '9', '1', '2018-12-27 22:49:02', '2018-12-27 22:49:02');
-INSERT INTO `conteudos` VALUES ('21', 'CURSO DE INGLÊS ONLINE - AULA 10', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-og9CiQTrqk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '10', '1', '2018-12-27 22:49:53', '2018-12-27 22:49:53');
-INSERT INTO `conteudos` VALUES ('22', 'CURSO DE INGLÊS ONLINE - AULA 11', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/13zh2LmENWg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11', '1', '2018-12-27 22:50:32', '2018-12-27 22:50:32');
-INSERT INTO `conteudos` VALUES ('23', 'CURSO DE INGLÊS ONLINE - AULA 12', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/A_7i4HmPU8s\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '12', '1', '2018-12-27 22:51:05', '2018-12-27 22:51:05');
-INSERT INTO `conteudos` VALUES ('24', 'CURSO DE INGLÊS ONLINE - AULA 13', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jimidh3O1XA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '13', '1', '2018-12-27 22:51:36', '2018-12-27 22:51:36');
-INSERT INTO `conteudos` VALUES ('25', 'CURSO DE INGLÊS ONLINE - AULA 14 (+LIVE)', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/3gDuGEsqBHE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '14', '1', '2018-12-27 22:52:11', '2018-12-27 22:52:11');
-INSERT INTO `conteudos` VALUES ('27', 'Prova IHC', 'anexo', '6', 'cf038edbacb023c9fd726ba0a9983f36.pdf', '0', '1', '2019-01-29 21:32:36', '2019-01-29 21:32:36');
-INSERT INTO `conteudos` VALUES ('28', 'Teste Excel', 'anexo', '6', '8f4403f77299d16434dd7b8468f5c8c6.xlsx', '1', '1', '2019-02-01 21:40:02', '2019-02-01 21:40:02');
-INSERT INTO `conteudos` VALUES ('29', 'Otimização de Acessos', 'anexo', '6', 'd4396c8d42c051c2b056216f06beb7f5.pdf', '3', '1', '2019-02-01 21:50:34', '2019-02-01 21:50:34');
-INSERT INTO `conteudos` VALUES ('30', 'Falando sobre o Angular 2', 'anexo', '1', 'd7f14800f9de25c282d774fe4898f586.mp4', '3', '1', '2019-02-06 18:35:17', '2019-02-07 11:13:02');
+INSERT INTO `conteudos` VALUES ('1', 'Curso Excel #01 - Como surgiu o Excel?', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ZVURQLXZtIc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2019-03-13 10:27:59', '2019-03-13 10:27:59');
+INSERT INTO `conteudos` VALUES ('2', 'Curso Excel #02 - 10 Dicas e Truques para Excel', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yCRUWtDcrJQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2019-03-13 10:37:21', '2019-03-13 10:37:21');
+INSERT INTO `conteudos` VALUES ('3', 'Curso Excel #03 - Primeiros Passos no Excel', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/X4RLqvl0Ch8\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2019-03-13 10:38:02', '2019-03-13 10:38:02');
+INSERT INTO `conteudos` VALUES ('4', 'Curso Excel #04 - Manipulando Arquivos', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4dBE45hiDz8\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '3', '1', '2019-03-13 10:38:25', '2019-03-13 10:38:25');
+INSERT INTO `conteudos` VALUES ('5', 'Curso Excel #05 - Selecionando Dados', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ZPQIm6_0Z5A\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '4', '1', '2019-03-13 10:38:51', '2019-03-13 10:38:51');
+INSERT INTO `conteudos` VALUES ('6', 'Curso Excel #06 - Formatando Planilhas', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/nM3GqVDfREI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '5', '1', '2019-03-13 10:39:17', '2019-03-13 10:39:17');
+INSERT INTO `conteudos` VALUES ('7', 'Curso Excel #07 - Dicas para Formatação de Dados', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/JF8lit7wrrM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '6', '1', '2019-03-13 10:39:43', '2019-03-13 10:39:43');
+INSERT INTO `conteudos` VALUES ('8', 'Curso Excel #08 - Classificação de Dados', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8mV30b60YYQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '7', '1', '2019-03-13 10:40:08', '2019-03-13 10:40:08');
+INSERT INTO `conteudos` VALUES ('9', 'Curso Excel #09 - Fórmulas Básicas', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/_-2deLFAJeM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '8', '1', '2019-03-13 10:40:31', '2019-03-13 10:40:31');
+INSERT INTO `conteudos` VALUES ('10', 'Curso Excel #10 - Funções do Excel (Parte 1)', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/boUzkJJNOPI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '9', '1', '2019-03-13 10:40:57', '2019-03-13 10:40:57');
+INSERT INTO `conteudos` VALUES ('11', 'Curso Excel #11 - Funções do Excel (Parte 2)', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jpuYGqeL7Ig\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '10', '1', '2019-03-13 10:41:31', '2019-03-13 10:41:31');
+INSERT INTO `conteudos` VALUES ('12', 'Curso Excel #12 - Formatação Condicional', 'video', '1', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/LArhLXDKqNg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11', '1', '2019-03-13 10:42:03', '2019-03-13 10:42:03');
+INSERT INTO `conteudos` VALUES ('13', 'Curso Word #01 - Apresentação do Curso de Word 2016', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/59lDXVkqlqQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2019-03-14 18:45:34', '2019-03-14 18:45:34');
+INSERT INTO `conteudos` VALUES ('14', 'Curso Word #02 - 10 Dicas para Word 2016', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qVoiU4MMCZ8\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2019-03-14 18:45:57', '2019-03-14 18:45:57');
+INSERT INTO `conteudos` VALUES ('15', 'Curso Word #03 - Primeiros Passos no Word 2016', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/iOlONI3F300\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2019-03-14 18:46:17', '2019-03-14 18:46:17');
+INSERT INTO `conteudos` VALUES ('16', 'Curso Word #04 - Salvando Documentos Locais e na Nuvem', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Vp0UZie4rq0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '3', '1', '2019-03-14 18:46:42', '2019-03-14 18:46:42');
+INSERT INTO `conteudos` VALUES ('17', 'Curso Word #05 - Abrindo e Editando PDF no Word 2016', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/--aFom9XFxQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '4', '1', '2019-03-14 18:47:05', '2019-03-14 18:47:05');
+INSERT INTO `conteudos` VALUES ('18', 'Curso Word #06 - Digitação e Formatação Básica', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/eNJUq2-q2Ps\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '5', '1', '2019-03-14 18:47:27', '2019-03-14 18:47:27');
+INSERT INTO `conteudos` VALUES ('19', 'Curso Word #07 - Formatações Baseadas em Estilos', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ELtk2wmrmQc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '6', '1', '2019-03-14 18:47:49', '2019-03-14 18:47:49');
+INSERT INTO `conteudos` VALUES ('20', 'Curso Word #08 - Trabalhando com Imagens', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/goajzoo8oMc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '7', '1', '2019-03-14 18:48:07', '2019-03-14 18:48:07');
+INSERT INTO `conteudos` VALUES ('21', 'Curso Word #09 - Marcas de Tabulação', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/F8YHug52D10\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '8', '1', '2019-03-14 18:48:30', '2019-03-14 18:48:30');
+INSERT INTO `conteudos` VALUES ('22', 'Curso Word #10 - Configurações na Página', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/JvSVkrDbzf0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '9', '1', '2019-03-14 18:48:54', '2019-03-14 18:48:54');
+INSERT INTO `conteudos` VALUES ('23', 'Curso Word #11 - Texto em Colunas', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/CIGujgOfpl8\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '10', '1', '2019-03-14 18:49:19', '2019-03-14 18:49:19');
+INSERT INTO `conteudos` VALUES ('24', 'Curso Word #12 - Quebras de Texto', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/XaMgzE9no1E\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11', '1', '2019-03-14 18:49:44', '2019-03-14 18:49:44');
+INSERT INTO `conteudos` VALUES ('25', 'Curso Word #13 - Cabeçalho e Rodapé', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ck-Bx_KAmPg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '12', '1', '2019-03-14 18:50:20', '2019-03-14 18:50:20');
+INSERT INTO `conteudos` VALUES ('26', 'Curso Word #14 - Estrutura Avançada de um Documento Word', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/uE1AAAkr_OQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '13', '1', '2019-03-14 18:50:41', '2019-03-14 18:50:41');
+INSERT INTO `conteudos` VALUES ('27', 'Curso Word #15 - Folha de Rosto (Capas no Word)', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/sLNR2cVG4dQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '14', '1', '2019-03-14 18:51:00', '2019-03-14 18:51:00');
+INSERT INTO `conteudos` VALUES ('28', 'Curso Word #16 - Componentes de Design', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AZt14AuqwnY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '15', '1', '2019-03-14 18:51:35', '2019-03-14 18:51:35');
+INSERT INTO `conteudos` VALUES ('29', 'Curso Word #17 - Sumário Automático', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/iq4kIodKBv8\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '16', '1', '2019-03-14 18:51:57', '2019-03-14 18:51:57');
+INSERT INTO `conteudos` VALUES ('30', 'Curso Word #18 - Criando Bibliografia ABNT Automática no Word', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/SJkXd7kIIKA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '17', '1', '2019-03-14 18:52:17', '2019-03-14 18:52:17');
+INSERT INTO `conteudos` VALUES ('31', 'Curso Word #19 - Notas de Rodapé e Comentários', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/V0iN-op4_Y0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '18', '1', '2019-03-14 18:52:40', '2019-03-14 18:52:40');
+INSERT INTO `conteudos` VALUES ('32', 'Curso Word #20 - Listas no Word', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/sJBmPFS3Zl0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '19', '1', '2019-03-14 18:53:05', '2019-03-14 18:53:05');
+INSERT INTO `conteudos` VALUES ('33', 'Curso Word #21 - Tabelas no Word', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/8kZekn96fvU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '20', '1', '2019-03-14 18:53:26', '2019-03-14 18:53:26');
+INSERT INTO `conteudos` VALUES ('34', 'Curso Word #22 - Fórmulas e Equações', 'video', '3', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/iVrd8Bl1pSA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '21', '1', '2019-03-14 18:53:51', '2019-03-14 18:53:51');
+INSERT INTO `conteudos` VALUES ('35', 'História do PHP - Curso PHP Iniciante #01', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/F7KzJ7e6EAc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2019-03-18 19:45:03', '2019-03-18 19:45:03');
+INSERT INTO `conteudos` VALUES ('36', 'Como funciona o PHP - Curso PHP Iniciante #02', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Eup6utTPe2U\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2019-03-18 19:45:27', '2019-03-18 19:45:27');
+INSERT INTO `conteudos` VALUES ('37', 'Como Instalar o PHP - Curso de PHP Iniciante #03', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/3ltZBbKACh4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2019-03-18 19:45:49', '2019-03-18 19:45:49');
+INSERT INTO `conteudos` VALUES ('38', 'Variáveis em PHP - Curso PHP Iniciante #04', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/DGZS9KrlrjI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '3', '1', '2019-03-18 19:46:12', '2019-03-18 19:46:12');
+INSERT INTO `conteudos` VALUES ('39', 'Operadores Aritméticos - Curso PHP Iniciante #05', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/fCZdbl9-qkw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '4', '1', '2019-03-18 19:46:39', '2019-03-18 19:46:39');
+INSERT INTO `conteudos` VALUES ('40', 'Operadores de Atribuição - Curso PHP Iniciante #06', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/NuBt0B_GeEo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '5', '1', '2019-03-18 19:47:06', '2019-03-18 19:47:06');
+INSERT INTO `conteudos` VALUES ('41', 'Operadores Relacionais - Curso PHP Iniciante #07', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/YrmPk8zL9Qw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '6', '1', '2019-03-18 19:47:38', '2019-03-18 19:47:38');
+INSERT INTO `conteudos` VALUES ('42', 'Integração HTML5 + PHP - Curso PHP Iniciante #08', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/gvZfP2iBkw4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '7', '1', '2019-03-18 19:48:02', '2019-03-18 19:48:02');
+INSERT INTO `conteudos` VALUES ('43', 'Estrutura Condicional if - Curso de PHP Iniciante #09', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/qAisUeI5oKE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '8', '1', '2019-03-18 19:48:25', '2019-03-18 19:48:25');
+INSERT INTO `conteudos` VALUES ('44', 'Estrutura Condicional Switch - Curso de PHP Iniciante #10', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/thElQ5IhM1Q\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '9', '1', '2019-03-18 19:48:46', '2019-03-18 19:48:46');
+INSERT INTO `conteudos` VALUES ('45', 'Estrutura de Repetição While - Curso de PHP Iniciante #11', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/3jk8fSWpQIg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '10', '1', '2019-03-18 19:49:10', '2019-03-18 19:49:10');
+INSERT INTO `conteudos` VALUES ('46', 'Estrutura de Repetição Do While - Curso de PHP Iniciante #12', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/6QymvmX3YJU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11', '1', '2019-03-18 19:49:34', '2019-03-18 19:49:34');
+INSERT INTO `conteudos` VALUES ('47', 'Estrutura de Repetição For - Curso de PHP Iniciante #13', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ancrPpEq9Rw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '12', '1', '2019-03-18 19:49:57', '2019-03-18 19:49:57');
+INSERT INTO `conteudos` VALUES ('48', 'Rotinas em PHP - Parte 1 - Curso de PHP Iniciante #14', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/7V6MdZQFArc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '13', '1', '2019-03-18 19:50:25', '2019-03-18 19:50:25');
+INSERT INTO `conteudos` VALUES ('49', 'Rotinas em PHP - Parte 2 - Curso PHP Iniciante #15', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/o3y8af8rSKM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '14', '1', '2019-03-18 19:50:53', '2019-03-18 19:50:53');
+INSERT INTO `conteudos` VALUES ('50', 'Funções String em PHP (Parte 1) - Curso PHP Iniciante #16', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/hQLyylI2LwI\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '15', '1', '2019-03-18 19:51:17', '2019-03-18 19:51:17');
+INSERT INTO `conteudos` VALUES ('51', 'Funções String em PHP (Parte 2) - Curso PHP Iniciante #17', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1KdhIz0Gh5A\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '16', '1', '2019-03-18 19:51:46', '2019-03-18 19:51:46');
+INSERT INTO `conteudos` VALUES ('52', 'Vetores e Matrizes - Parte 1 - Curso PHP Iniciante #18', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/g8Gr2NIMxQQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '17', '1', '2019-03-18 19:52:17', '2019-03-18 19:52:17');
+INSERT INTO `conteudos` VALUES ('53', 'Vetores e Matrizes - Parte 2 - Curso PHP Iniciantes #19', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/1f5H4mqCGHo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '18', '1', '2019-03-18 19:52:49', '2019-03-18 19:52:49');
+INSERT INTO `conteudos` VALUES ('54', 'Entrevista com Rasmus Lerdorf - Curso PHP Iniciantes #20', 'video', '4', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/5ENwW7f2fbg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '19', '1', '2019-03-18 19:53:24', '2019-03-18 19:53:24');
+INSERT INTO `conteudos` VALUES ('55', 'Apostila de PHP', 'anexo', '4', '8dc03dae5242e1ec302e2359aa9b7c98.pdf', '20', '1', '2019-03-18 19:54:43', '2019-03-18 19:54:43');
+INSERT INTO `conteudos` VALUES ('56', 'Javascript Essencial - Conceitos iniciais', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ipHuSfOYhwA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2019-03-19 19:35:57', '2019-03-19 19:35:57');
+INSERT INTO `conteudos` VALUES ('57', 'Javascript Essencial - Variáveis e tipos de dados', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ZW02MWzZXPE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2019-03-19 19:36:18', '2019-03-19 19:36:18');
+INSERT INTO `conteudos` VALUES ('58', 'Javascript Essencial - Funções', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/TWmlIbvTjRo\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2019-03-19 19:36:38', '2019-03-19 19:36:38');
+INSERT INTO `conteudos` VALUES ('59', 'JavaScript Essencial - Objetos e Arrays', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/2sZerMlCzBM\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '3', '1', '2019-03-19 19:36:57', '2019-03-19 19:36:57');
+INSERT INTO `conteudos` VALUES ('60', 'JavaScript Essencial - Strings e números', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/rDfpq25OP_Q\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '4', '1', '2019-03-19 19:37:16', '2019-03-19 19:37:16');
+INSERT INTO `conteudos` VALUES ('61', 'Javascript Essencial - Data e hora', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/MPgVZzUBTlw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '5', '1', '2019-03-19 19:37:33', '2019-03-19 19:37:33');
+INSERT INTO `conteudos` VALUES ('62', 'Javascript Essencial - Estruturas de controle e repetição', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dJ88VdZMYKY\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '6', '1', '2019-03-19 19:37:56', '2019-03-19 19:37:56');
+INSERT INTO `conteudos` VALUES ('63', 'Javascript Essencial - Tratamento de exceções', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/KpA6Idl9-a0\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '7', '1', '2019-03-19 19:38:14', '2019-03-19 19:38:14');
+INSERT INTO `conteudos` VALUES ('64', 'Javascript Essencial - DOM parte 1', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mchmZKNBjLA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '8', '1', '2019-03-19 19:38:36', '2019-03-19 19:38:36');
+INSERT INTO `conteudos` VALUES ('65', 'Javascript Essencial - DOM parte 2 - BOM', 'video', '5', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/zAPDX_IkNds\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '9', '1', '2019-03-19 19:39:03', '2019-03-19 19:39:03');
+INSERT INTO `conteudos` VALUES ('66', 'CURSO DE INGLÊS ONLINE - AULA 1', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/MN7Vm_g_ySs\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '0', '1', '2019-03-21 13:53:54', '2019-03-21 13:53:54');
+INSERT INTO `conteudos` VALUES ('67', 'CURSO DE INGLÊS ONLINE - AULA 2', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/AoZbRIdeGSU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '1', '1', '2019-03-21 13:54:14', '2019-03-21 13:54:14');
+INSERT INTO `conteudos` VALUES ('68', 'CURSO DE INGLÊS ONLINE - AULA 3', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/wrlNJqvr1dU\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '2', '1', '2019-03-21 13:54:38', '2019-03-21 13:54:38');
+INSERT INTO `conteudos` VALUES ('69', 'CURSO DE INGLÊS ONLINE - AULA 4', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-Toz2RtUEok\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '3', '1', '2019-03-21 13:54:58', '2019-03-21 13:54:58');
+INSERT INTO `conteudos` VALUES ('70', 'CURSO DE INGLÊS ONLINE - AULA 5', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/Ps0G62PR4Ks\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '4', '1', '2019-03-21 13:55:19', '2019-03-21 13:55:19');
+INSERT INTO `conteudos` VALUES ('71', 'CURSO DE INGLÊS ONLINE - AULA 6', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/yfdcKf1KAhQ\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '5', '1', '2019-03-21 13:55:38', '2019-03-21 13:55:38');
+INSERT INTO `conteudos` VALUES ('72', 'CURSO DE INGLÊS ONLINE - AULA 7', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/LPlBIzDp8hg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '6', '1', '2019-03-21 13:55:55', '2019-03-21 13:55:55');
+INSERT INTO `conteudos` VALUES ('73', 'CURSO DE INGLÊS ONLINE - AULA 8', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/5ugkJAp6aK4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '7', '1', '2019-03-21 13:56:21', '2019-03-21 13:56:21');
+INSERT INTO `conteudos` VALUES ('74', 'CURSO DE INGLÊS ONLINE - AULA 9 (Parte 1)', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/HvNizuvZeN4\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '8', '1', '2019-03-21 13:56:49', '2019-03-21 13:56:49');
+INSERT INTO `conteudos` VALUES ('75', 'CURSO DE INGLÊS ONLINE - AULA 9 (Parte 2)', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/4nhp03Ik_Vc\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '9', '1', '2019-03-21 13:57:09', '2019-03-21 13:57:09');
+INSERT INTO `conteudos` VALUES ('76', 'CURSO DE INGLÊS ONLINE - AULA 10', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/-og9CiQTrqk\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '10', '1', '2019-03-21 13:57:28', '2019-03-21 13:57:28');
+INSERT INTO `conteudos` VALUES ('77', 'CURSO DE INGLÊS ONLINE - AULA 11', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/13zh2LmENWg\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '11', '1', '2019-03-21 13:57:55', '2019-03-21 13:57:55');
+INSERT INTO `conteudos` VALUES ('78', 'CURSO DE INGLÊS ONLINE - AULA 12', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/A_7i4HmPU8s\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '12', '1', '2019-03-21 13:58:14', '2019-03-21 13:58:14');
+INSERT INTO `conteudos` VALUES ('79', 'CURSO DE INGLÊS ONLINE - AULA 13', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/jimidh3O1XA\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '13', '1', '2019-03-21 13:58:32', '2019-03-21 13:58:32');
+INSERT INTO `conteudos` VALUES ('80', 'CURSO DE INGLÊS ONLINE - AULA 14 (+LIVE)', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/3gDuGEsqBHE\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '14', '1', '2019-03-21 13:58:51', '2019-03-21 13:58:51');
+INSERT INTO `conteudos` VALUES ('81', 'CURSO DE INGLÊS ONLINE - AULA 15', 'video', '6', '<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/ywWk9hxw8Vw\" frameborder=\"0\" allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>', '15', '1', '2019-03-21 13:59:15', '2019-03-21 13:59:15');
 
 -- ----------------------------
 -- Table structure for `conteudos_realizados`
@@ -204,28 +249,14 @@ CREATE TABLE `conteudos_realizados` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idConteudoRealizado`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of conteudos_realizados
 -- ----------------------------
-INSERT INTO `conteudos_realizados` VALUES ('1', '2', '1', '2018-12-24 12:18:25', '2018-12-24 12:18:25');
-INSERT INTO `conteudos_realizados` VALUES ('2', '2', '2', '2018-12-24 12:35:15', '2018-12-24 12:35:15');
-INSERT INTO `conteudos_realizados` VALUES ('3', '2', '3', '2018-12-24 12:35:24', '2018-12-24 12:35:24');
-INSERT INTO `conteudos_realizados` VALUES ('4', '2', '4', '2018-12-24 12:35:33', '2018-12-24 12:35:33');
-INSERT INTO `conteudos_realizados` VALUES ('5', '2', '5', '2018-12-24 12:35:41', '2018-12-24 12:35:41');
-INSERT INTO `conteudos_realizados` VALUES ('6', '2', '6', '2018-12-24 12:36:11', '2018-12-24 12:36:11');
-INSERT INTO `conteudos_realizados` VALUES ('7', '2', '7', '2018-12-24 12:37:14', '2018-12-24 12:37:14');
-INSERT INTO `conteudos_realizados` VALUES ('8', '1', '11', '2018-12-27 22:55:37', '2018-12-27 22:55:37');
-INSERT INTO `conteudos_realizados` VALUES ('9', '1', '1', '2019-01-16 21:29:32', '2019-01-16 21:29:32');
-INSERT INTO `conteudos_realizados` VALUES ('10', '1', '27', '2019-01-29 21:33:56', '2019-01-29 21:33:56');
-INSERT INTO `conteudos_realizados` VALUES ('11', '1', '29', '2019-02-01 21:52:04', '2019-02-01 21:52:04');
-INSERT INTO `conteudos_realizados` VALUES ('12', '1', '28', '2019-02-01 21:52:16', '2019-02-01 21:52:16');
-INSERT INTO `conteudos_realizados` VALUES ('13', '1', '12', '2019-02-01 21:56:56', '2019-02-01 21:56:56');
-INSERT INTO `conteudos_realizados` VALUES ('14', '1', '3', '2019-02-06 21:43:22', '2019-02-06 21:43:22');
-INSERT INTO `conteudos_realizados` VALUES ('15', '1', '4', '2019-02-06 21:44:01', '2019-02-06 21:44:01');
-INSERT INTO `conteudos_realizados` VALUES ('16', '1', '30', '2019-02-06 21:45:28', '2019-02-06 21:45:28');
-INSERT INTO `conteudos_realizados` VALUES ('17', '1', '8', '2019-02-06 22:21:01', '2019-02-06 22:21:01');
+INSERT INTO `conteudos_realizados` VALUES ('1', '1', '1', '2019-03-13 10:50:33', '2019-03-13 10:50:33');
+INSERT INTO `conteudos_realizados` VALUES ('2', '2', '35', '2019-03-18 19:56:39', '2019-03-18 19:56:39');
+INSERT INTO `conteudos_realizados` VALUES ('3', '2', '55', '2019-03-18 19:57:20', '2019-03-18 19:57:20');
 
 -- ----------------------------
 -- Table structure for `cursos`
@@ -241,13 +272,16 @@ CREATE TABLE `cursos` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idCurso`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of cursos
 -- ----------------------------
-INSERT INTO `cursos` VALUES ('1', 'Javacript Essencial', 'RBTech', '1', 'javascipt, essencial', '1', '2018-12-22 15:46:55', '2018-12-22 15:46:55');
-INSERT INTO `cursos` VALUES ('2', 'CURSO DE INGLÊS ONLINE', 'Mais Língua Concept', '5', 'ingles', '1', '2018-12-27 22:39:24', '2018-12-27 22:39:24');
+INSERT INTO `cursos` VALUES ('1', 'Curso de Excel 2016 Essencial', 'Gustavo Guanabara', '7', 'excel, office, planilha', '1', '2019-03-13 10:24:46', '2019-03-13 10:24:46');
+INSERT INTO `cursos` VALUES ('2', 'Curso de Word 2016 Essencial', 'Gustavo Guanabara', '7', 'documento, office, word', '1', '2019-03-14 18:44:23', '2019-03-14 18:44:23');
+INSERT INTO `cursos` VALUES ('3', 'Curso de PHP para Iniciantes', 'Gustavo Guanabara', '6', 'programação, php, web', '1', '2019-03-18 19:43:03', '2019-03-18 19:43:03');
+INSERT INTO `cursos` VALUES ('4', 'Curso de Javascript para iniciantes', 'RBtech', '1', 'javascript, programação', '1', '2019-03-19 19:34:01', '2019-03-19 19:34:01');
+INSERT INTO `cursos` VALUES ('5', 'Curso de Inglês - Elementary', 'Mais Língua Concept', '5', 'inglês, idioma', '1', '2019-03-20 20:32:15', '2019-03-20 20:32:15');
 
 -- ----------------------------
 -- Table structure for `inscricoes`
@@ -265,9 +299,9 @@ CREATE TABLE `inscricoes` (
 -- ----------------------------
 -- Records of inscricoes
 -- ----------------------------
-INSERT INTO `inscricoes` VALUES ('1', '2', '1', '2018-12-23 12:54:40', '2018-12-23 12:54:40');
-INSERT INTO `inscricoes` VALUES ('2', '1', '2', '2018-12-27 22:54:51', '2018-12-27 22:54:51');
-INSERT INTO `inscricoes` VALUES ('3', '1', '1', '2019-01-09 12:33:40', '2019-01-09 12:33:40');
+INSERT INTO `inscricoes` VALUES ('1', '1', '1', '2019-03-13 10:50:20', '2019-03-13 10:50:20');
+INSERT INTO `inscricoes` VALUES ('2', '2', '3', '2019-03-18 19:56:28', '2019-03-18 19:56:28');
+INSERT INTO `inscricoes` VALUES ('3', '1', '5', '2019-03-22 08:48:49', '2019-03-22 08:48:49');
 
 -- ----------------------------
 -- Table structure for `migrations`
@@ -278,13 +312,11 @@ CREATE TABLE `migrations` (
   `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of migrations
 -- ----------------------------
-INSERT INTO `migrations` VALUES ('1', '2014_10_12_000000_create_users_table', '1');
-INSERT INTO `migrations` VALUES ('2', '2014_10_12_100000_create_password_resets_table', '1');
 
 -- ----------------------------
 -- Table structure for `modulos`
@@ -304,12 +336,12 @@ CREATE TABLE `modulos` (
 -- ----------------------------
 -- Records of modulos
 -- ----------------------------
-INSERT INTO `modulos` VALUES ('1', 'Conceitos Iniciais', '1', '0', '1', '2018-12-22 15:52:55', '2018-12-22 15:52:55');
-INSERT INTO `modulos` VALUES ('2', 'Objetos e arrays', '1', '1', '1', '2018-12-23 12:22:58', '2018-12-23 12:22:58');
-INSERT INTO `modulos` VALUES ('3', 'Estruturas de controle e repetição', '1', '2', '1', '2018-12-23 12:31:16', '2018-12-23 12:31:16');
-INSERT INTO `modulos` VALUES ('4', 'DOM', '1', '3', '1', '2018-12-23 12:35:31', '2018-12-23 12:35:31');
-INSERT INTO `modulos` VALUES ('5', 'Aulas', '2', '0', '1', '2018-12-27 22:40:39', '2018-12-27 22:40:39');
-INSERT INTO `modulos` VALUES ('6', 'Apostilas', '1', '3', '1', '2019-01-29 21:28:44', '2019-01-29 21:30:01');
+INSERT INTO `modulos` VALUES ('1', 'Aulas', '1', '0', '1', '2019-03-13 10:26:02', '2019-03-13 10:26:02');
+INSERT INTO `modulos` VALUES ('2', 'Exercícios', '1', '1', '1', '2019-03-13 11:03:10', '2019-03-13 11:03:10');
+INSERT INTO `modulos` VALUES ('3', 'Aulas', '2', '0', '1', '2019-03-14 18:44:47', '2019-03-14 18:44:47');
+INSERT INTO `modulos` VALUES ('4', 'Todas as Aulas', '3', '0', '1', '2019-03-18 19:44:01', '2019-03-18 19:44:01');
+INSERT INTO `modulos` VALUES ('5', 'Aulas', '4', '0', '1', '2019-03-19 19:34:21', '2019-03-19 19:34:21');
+INSERT INTO `modulos` VALUES ('6', 'Aulas', '5', '0', '1', '2019-03-21 13:53:33', '2019-03-21 13:53:33');
 
 -- ----------------------------
 -- Table structure for `password_resets`
@@ -325,7 +357,6 @@ CREATE TABLE `password_resets` (
 -- ----------------------------
 -- Records of password_resets
 -- ----------------------------
-INSERT INTO `password_resets` VALUES ('emaildobrenomol@gmail.com', '$2y$10$ym758aQV/n2dYAcDVwIfMe2TxM24kUcChdZDpkclXNJfSffEqjAzG', '2018-12-19 18:46:26');
 
 -- ----------------------------
 -- Table structure for `perguntas`
@@ -339,16 +370,16 @@ CREATE TABLE `perguntas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idPergunta`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of perguntas
 -- ----------------------------
-INSERT INTO `perguntas` VALUES ('2', '<p>As tags XML que delimitam um c&oacute;digo Javascript s&atilde;o:</p>', '2', '1', '2019-01-16 16:51:07', '2019-02-06 22:41:20');
-INSERT INTO `perguntas` VALUES ('3', '<p>A linguagem HTML 4.0 adicionou a capacidade de determinados eventos dispararem a&ccedil;&otilde;es em um navegador web. Por exemplo, o atributo onload permite que um script seja executado no momento em que um documento HTML &eacute; &quot;carregado&quot; pelo navegador web. Na HTML 4.0, o atributo onload deve ser utilizado, portanto, com o elemento:</p>', '2', '1', '2019-01-19 19:19:39', '2019-02-06 22:41:22');
-INSERT INTO `perguntas` VALUES ('4', '<p>No comando apresentado, s&atilde;o encontrados fragmentos de um programa escrito em JavaScript, ou seja, n&atilde;o est&aacute; completo nem funcional. Com base nessas informa&ccedil;&otilde;es, assinale a op&ccedil;&atilde;o correta, relativa ao conceito de orienta&ccedil;&atilde;o a objetos que &eacute; diretamente invocado pelo comando&nbsp;<strong>AlunoMestrado.prototype = Object.create(Aluno.prototype);</strong></p>\r\n\r\n<p><img alt=\"Imagem da Questão\" src=\"https://www.gabaritou.com.br/Content/UploadedFiles/Questao/questao-92279-tre-rs-2015-cespe-cargo-40308-especialidade-30621-img_01.png\" /></p>', '2', '1', '2019-02-05 18:59:40', '2019-02-06 22:41:23');
-INSERT INTO `perguntas` VALUES ('5', '<p>No comando apresentado, s&atilde;o encontrados fragmentos de um programa escrito em JavaScript, ou seja, n&atilde;o est&aacute; completo nem funcional. Com base nessas informa&ccedil;&otilde;es, assinale a op&ccedil;&atilde;o correta, relativa ao conceito de orienta&ccedil;&atilde;o a objetos que &eacute; diretamente invocado pelo comando&nbsp;<strong>AlunoMestrado.prototype = Object.create(Aluno.prototype);</strong>.</p>\r\n\r\n<p><img alt=\"Imagem da Questão\" src=\"https://www.gabaritou.com.br/Content/UploadedFiles/Questao/questao-92279-tre-rs-2015-cespe-cargo-40308-especialidade-30621-img_01.png\" /></p>', '2', '1', '2019-02-06 13:15:28', '2019-02-06 22:41:25');
-INSERT INTO `perguntas` VALUES ('6', '<p>Um navegador web, para executar um c&oacute;digo Javascript, utiliza um</p>', '2', '1', '2019-02-06 13:22:15', '2019-02-06 22:41:27');
+INSERT INTO `perguntas` VALUES ('1', '<p>Para execu&ccedil;&atilde;o de uma atividade administrativa, o funcion&aacute;rio de um departamento necessita utilizar um programa de computador do pacote Microsoft Office capaz de manter planilhas categorizadas de acordo com as fun&ccedil;&otilde;es. Este funcion&aacute;rio dever&aacute; recorrer ao:</p>', '1', '1', '2019-03-13 11:05:26', '2019-03-13 11:05:26');
+INSERT INTO `perguntas` VALUES ('2', '<p>Qual a extens&atilde;o de arquivo padr&atilde;o do Excel?</p>', '1', '1', '2019-03-13 11:11:41', '2019-03-13 11:11:41');
+INSERT INTO `perguntas` VALUES ('3', '<p>Qual a <strong>extens&atilde;o</strong> para arquivos criados com o&nbsp;Word?</p>', '2', '1', '2019-03-22 13:51:00', '2019-03-22 13:51:00');
+INSERT INTO `perguntas` VALUES ('4', '<p>Qual o atalho para colocar um texto em negrito?</p>', '2', '1', '2019-03-22 13:52:27', '2019-03-22 13:52:27');
+INSERT INTO `perguntas` VALUES ('5', '<p>Para que serve o atalho ctrl + T?</p>', '2', '1', '2019-03-22 13:55:32', '2019-03-22 13:55:32');
 
 -- ----------------------------
 -- Table structure for `respostas`
@@ -364,29 +395,12 @@ CREATE TABLE `respostas` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idResposta`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of respostas
 -- ----------------------------
-INSERT INTO `respostas` VALUES ('1', '1', '2', '2', '6', '1', '2019-01-22 21:36:27', '2019-01-22 21:50:21');
-INSERT INTO `respostas` VALUES ('2', '1', '2', '3', '9', '1', '2019-01-22 21:38:19', '2019-01-22 21:47:43');
-INSERT INTO `respostas` VALUES ('3', '2', '2', '2', '5', '1', '2019-01-24 18:24:25', '2019-01-24 18:24:25');
-INSERT INTO `respostas` VALUES ('4', '2', '2', '3', '9', '1', '2019-01-24 18:24:39', '2019-01-24 18:24:39');
-INSERT INTO `respostas` VALUES ('5', '3', '2', '2', '5', '1', '2019-01-24 18:34:48', '2019-01-24 18:34:48');
-INSERT INTO `respostas` VALUES ('6', '4', '2', '3', '10', '1', '2019-01-24 18:41:50', '2019-01-24 18:42:05');
-INSERT INTO `respostas` VALUES ('7', '7', '2', '2', '5', '2', '2019-01-26 17:21:14', '2019-01-26 17:21:14');
-INSERT INTO `respostas` VALUES ('8', '7', '2', '3', '9', '2', '2019-01-26 17:21:33', '2019-01-26 17:21:33');
-INSERT INTO `respostas` VALUES ('9', '8', '2', '2', '6', '2', '2019-01-26 17:33:33', '2019-01-26 17:33:33');
-INSERT INTO `respostas` VALUES ('10', '8', '2', '3', '11', '2', '2019-01-26 17:33:36', '2019-01-26 17:33:36');
-INSERT INTO `respostas` VALUES ('11', '6', '2', '4', '13', '1', '2019-02-06 12:55:57', '2019-02-06 12:55:57');
-INSERT INTO `respostas` VALUES ('12', '6', '2', '3', '9', '1', '2019-02-06 12:56:01', '2019-02-06 12:56:01');
-INSERT INTO `respostas` VALUES ('13', '6', '2', '2', '6', '1', '2019-02-06 12:56:05', '2019-02-06 12:56:05');
-INSERT INTO `respostas` VALUES ('14', '9', '2', '2', '6', '1', '2019-02-06 22:48:37', '2019-02-06 22:48:37');
-INSERT INTO `respostas` VALUES ('15', '9', '2', '3', '9', '1', '2019-02-06 22:48:40', '2019-02-06 22:48:40');
-INSERT INTO `respostas` VALUES ('16', '9', '2', '4', '13', '1', '2019-02-06 22:48:43', '2019-02-06 22:48:43');
-INSERT INTO `respostas` VALUES ('17', '9', '2', '5', '17', '1', '2019-02-06 22:48:52', '2019-02-06 22:48:52');
-INSERT INTO `respostas` VALUES ('18', '9', '2', '6', '21', '1', '2019-02-06 22:49:24', '2019-02-06 22:49:24');
+INSERT INTO `respostas` VALUES ('1', '1', '1', '1', '2', '1', '2019-03-13 11:07:27', '2019-03-13 11:07:27');
 
 -- ----------------------------
 -- Table structure for `tentativas`
@@ -401,20 +415,12 @@ CREATE TABLE `tentativas` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `finished_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`idTentativa`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of tentativas
 -- ----------------------------
-INSERT INTO `tentativas` VALUES ('1', '2', '1', '5.00', '2019-01-19 18:26:33', '2019-01-24 18:04:57', '2019-01-24 18:04:57');
-INSERT INTO `tentativas` VALUES ('2', '2', '1', '10.00', '2019-01-24 18:06:18', '2019-01-24 18:24:54', '2019-01-24 18:24:54');
-INSERT INTO `tentativas` VALUES ('3', '2', '1', '5.00', '2019-01-24 18:27:23', '2019-01-24 18:34:57', '2019-01-24 18:34:57');
-INSERT INTO `tentativas` VALUES ('4', '2', '1', '0.00', '2019-01-24 18:36:14', '2019-01-24 18:42:20', '2019-01-24 18:42:20');
-INSERT INTO `tentativas` VALUES ('5', '2', '1', '0.00', '2019-01-24 18:43:16', '2019-01-24 18:43:55', '2019-01-24 18:43:55');
-INSERT INTO `tentativas` VALUES ('6', '2', '1', '10.00', '2019-01-24 18:48:18', '2019-02-06 12:56:09', '2019-02-06 12:56:09');
-INSERT INTO `tentativas` VALUES ('7', '2', '2', '10.00', '2019-01-26 17:15:57', '2019-01-26 17:21:54', '2019-01-26 17:21:54');
-INSERT INTO `tentativas` VALUES ('8', '2', '2', '0.00', '2019-01-26 17:27:52', '2019-01-26 17:33:44', '2019-01-26 17:33:44');
-INSERT INTO `tentativas` VALUES ('9', '2', '1', '15.00', '2019-02-06 13:19:54', '2019-02-06 22:49:45', '2019-02-06 22:49:45');
+INSERT INTO `tentativas` VALUES ('1', '1', '1', '5.00', '2019-03-13 11:07:18', '2019-03-13 11:07:35', '2019-03-13 11:07:35');
 
 -- ----------------------------
 -- Table structure for `users`
@@ -431,13 +437,10 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'Breno Mol', 'emaildobrenomol@gmail.com', '$2y$10$7kIesuGtrPVkePS1qEDxj.HMU5a.rY9dIbG24UDNvd3S2eMbtzT6e', 'admin', 'p0PpACdyKGsEcIxqf2w4KXoXFIz4sreCEZmjpjTTuzWo2860gaKwZSUvyBYv', '2018-12-08 14:47:01', '2018-12-18 21:24:38');
-INSERT INTO `users` VALUES ('2', 'JOAO SILVA', 'breno.mol@pbh.gov.br', '$2y$10$fHbzr/36YvNmKEsCr86hQu9IRCJSs6uJnclbUTd4CzrWnlgxrMLwy', 'user', 'A8vy5CoivzxIe6i7yJbSAVv9oE2IFLVGxTivp6LbQXSqUibEdS4X3HoA5Tmd', '2018-12-12 16:05:58', '2018-12-13 11:58:06');
-INSERT INTO `users` VALUES ('3', 'Sebastião da Silva', 'sebastiao@gmail.com', '$2y$10$fHbzr/36YvNmKEsCr86hQu9IRCJSs6uJnclbUTd4CzrWnlgxrMLwy', 'user', 'jn1Fpi1CD2FlI07OIqRDf4r2OrIrkqGiWmwH0cooGvaAhRVkwrbY1ruMUpPT', '2018-12-26 22:53:37', '2018-12-26 22:53:37');
-INSERT INTO `users` VALUES ('4', 'Lucas', 'lucas@gmail.com', '$2y$10$mznU3Ro93eoJxkSbT7xpo.q2ToQYf31/rUphEZGVh/OlJznzwgcoa', 'user', null, '2018-12-26 23:21:37', '2018-12-26 23:21:37');
-INSERT INTO `users` VALUES ('5', 'JOAO DE DEUS', 'joao@email.com', '$2y$10$MkmKdiHGgu8BXC/PUbfFvOyP3YnnNPq7d5PLDumFWBufnLutwuWgW', 'user', null, '2018-12-27 16:52:29', '2018-12-27 16:52:29');
+INSERT INTO `users` VALUES ('1', 'Administrador', 'emaildobrenomol@gmail.com', '$2y$10$UVq2WUoER.qGEyQ8Xl.dGOWsgRo5HGJoxwQoQIuFW.QIfymCJFS9O', 'admin', '63b4E4jQH4NIUpSlRTZG09Z93wAQN7mw1vxPGrPKf2UU4OIDFrAx1LolCaIt', '2018-12-08 14:47:01', '2019-03-13 10:21:43');
+INSERT INTO `users` VALUES ('2', 'Usuário', 'breno.mol@pbh.gov.br', '$2y$10$eUCOQ91G40.7lAqaOUP6NeqiHbnvrOatdyaysqbcQT1wVT3ZRSxWa', 'user', 'MyJoKVe0rmarSjnfBEMfGQ5tAQHlXQHCzY4EQliGK8ehhosUi6iKNpf0ItOa', '2018-12-12 16:05:58', '2019-03-13 10:46:46');

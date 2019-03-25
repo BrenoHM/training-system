@@ -127,9 +127,9 @@ class AvaliacoesController extends Controller
                                 ->skip($request->page * $limit)
                                 ->take($limit)
                                 ->get();
-
+        
         return response()->json([
-            'avaliacoes' => $avaliacoes,
+            'avaliacoes' => html_entity_decode(view('avaliacoes.mais-avaliacoes', ['avaliacoes' => $avaliacoes])),
             'page' => $request->page + 1
         ]);
 

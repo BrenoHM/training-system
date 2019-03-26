@@ -88,3 +88,7 @@ function mostraErro(error, alvo){
   msg += "</ul></div>";
   $("#"+alvo).html(msg);
 }
+
+function hideLoad() {
+    $("#div-loader").hide();
+}

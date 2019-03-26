@@ -39,7 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body onload="hideLoad()" class="hold-transition sidebar-mini">
     @guest @yield('content') @else
     <div class="wrapper" id="app">
         <!-- Header -->
@@ -57,6 +57,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
+  $("#div-loader").show();
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 4 -->
